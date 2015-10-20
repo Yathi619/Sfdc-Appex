@@ -12,7 +12,7 @@ that is specified by a query string parameter.
 <apex:column >
 
 
-<apex:facet name="header">Name</apex:facet>
+<apex:facet name="header">Name to display</apex:facet>
 {!cont.Name}
 </apex:column>
 
