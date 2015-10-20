@@ -1,0 +1,28 @@
+<apex:page standardController="Project__c">
+<apex:pageBlock title="Project Details"  >
+<apex:pageBlockSection >
+<apex:outputField value="{!Project__c.Projects_Name__c}"  label="Project Name"/>
+<apex:outputField value="{!Project__c.Status__c}" label="Project Status"/> 
+</apex:pageBlockSection>
+ </apex:pageBlock>
+ 
+ <apex:pageBlock title="Project Towers" >
+ <apex:pageBlockSection >
+ <apex:dataTable width="1000px" cellpadding="8" cellspacing="2" bgcolor="#cccccc" value="{!Project__c.Towers__r}" var="pro" border="1">
+ <apex:column >
+ <apex:facet name="header">Tower Name</apex:facet>
+ {!pro.Name}
+</apex:column>
+<apex:column >
+<apex:facet name="header">Construction Launch Date </apex:facet>
+ {!pro.Const_Launch_Date__c}
+ </apex:column>
+ <apex:column >
+<apex:facet name="header">No of Residential Floors </apex:facet>
+ {!pro.No_of_Residential_Floors__c}
+ </apex:column>
+ 
+ </apex:dataTable>
+ </apex:pageBlockSection>
+ </apex:pageBlock>
+ </apex:page>

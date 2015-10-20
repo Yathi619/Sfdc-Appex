@@ -1,0 +1,30 @@
+<apex:page standardController="Candidate__c">
+<apex:form >
+<apex:pageBlock title="Candidate Details">
+
+<apex:pageBlockSection title="You are displaying the Candidate Details of {!Candidate__c.Full_Name__c}">
+<apex:outputField value="{!Candidate__c.Name}"/>
+<apex:outputField value="{!Candidate__c.First_Name__c}"/>
+<apex:outputField value="{!Candidate__c.Last_Name__c}"/>
+<apex:outputField value="{!Candidate__c.Full_Name__c}"/>
+<apex:outputField value="{!Candidate__c.City__c}"/>
+</apex:pageBlockSection>
+
+
+
+     <apex:outputPanel id="jobDetails">
+         <apex:detail subject="{!$CurrentPage.parameters.cid}" relatedList="false"/>
+         
+             <apex:dataList value="{!Candidate__c.Job_Applications__r}"  var="canjon">
+                
+                 <apex:commandLink reRender="jobDetails">
+                  <apex:param name="cid" value="{!canjon.id}"/>
+                     <apex:outputField value="{!canjon.Name}"/>
+                 </apex:commandLink>
+             </apex:dataList>
+     </apex:outputPanel>
+
+
+</apex:pageBlock>
+</apex:form>
+</apex:page>

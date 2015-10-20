@@ -1,0 +1,13 @@
+<apex:page standardController="Lead" extensions="LeadExtension2" >
+    <apex:form >
+    <apex:pageBlock title="Add Lead Record">
+        <apex:pageBlockSection title="Adding Lead Record" collapsible="true">
+            <apex:inputField value="{!Led.LastName}"/>
+            <apex:inputField value="{!Led.Company}"/>
+        </apex:pageBlockSection>
+        <apex:pageBlockButtons >
+        <apex:commandButton value="Save" action="{!save}"/>
+        </apex:pageBlockButtons>
+    </apex:pageBlock>
+    </apex:form>
+</apex:page>

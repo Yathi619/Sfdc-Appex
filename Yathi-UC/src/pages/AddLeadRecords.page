@@ -1,0 +1,36 @@
+<apex:page standardcontroller="Lead" tabstyle="lead" extensions="LeadExtension">
+
+
+
+<apex:form >
+
+<apex:pageBlock title="Lead Edit" tabstyle="contact">
+<apex:pageblockbuttons >
+<apex:commandButton action="{!save}" value="Save"/>
+<apex:commandButton action="{!Cancel}" value="cancel"/>
+</apex:pageblockbuttons>
+
+<apex:pageBlockSection title="Lead Information" columns="2">
+    <apex:inputfield value="{!mylead .firstname}"/>
+    <apex:inputfield value="{!mylead .lastname}"/>
+    <apex:inputfield value="{!mylead .company}"/>
+    <apex:inputfield value="{!mylead .leadsource}"/>
+    <apex:inputfield value="{!mylead .title}"/>
+    <apex:inputfield value="{!mylead .status}"/>
+    <apex:inputfield value="{!mylead .industry}"/>
+</apex:pageBlockSection>
+
+<apex:pageblocksection title="Address Information">
+    <apex:inputfield value="{!mylead .street}"/>
+    <apex:inputfield value="{!mylead .city}"/>
+    <apex:inputfield value="{!mylead .state}"/>
+    <apex:inputfield value="{!mylead .postalcode}"/>
+    <apex:inputfield value="{!mylead .country}"/>
+    <apex:inputfield value="{!campmem .campaignID}"/>
+</apex:pageblocksection>
+
+<apex:pageBlocksection title="Additional Information">
+</apex:pageBlocksection>
+</apex:pageBlock>
+</apex:form>
+</apex:page>

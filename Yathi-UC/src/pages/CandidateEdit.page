@@ -1,0 +1,57 @@
+<apex:page standardController="Candidate__c">
+
+<apex:pageBlock title="Candidate Details">
+
+<apex:pageBlockSection title="You are displaying the Candidate Details of {!Candidate__c.Full_Name__c}">
+</apex:pageBlockSection>
+
+
+
+<apex:pageBlockSection >
+<apex:outputField value="{!Candidate__c.First_Name__c}"/>
+<apex:outputField value="{!Candidate__c.Last_Name__c}"/>
+<apex:outputField value="{!Candidate__c.Full_Name__c}"/>
+<apex:outputField value="{!Candidate__c.City__c}"/>
+</apex:pageBlockSection>
+
+<apex:form >
+<apex:pageBlockSection title="Edititng the Candidate records of {!Candidate__c.Full_Name__c}"   >
+<apex:inputField label="Country" value="{!Candidate__c.Country__c}"/>
+<apex:inputField label="State" value="{!Candidate__c.State_Province__c}"/>
+<apex:inputField label="Current Employer" value="{!Candidate__c.Current_Employer__c}"/>
+</apex:pageBlockSection>
+
+<apex:pageBlock >
+<apex:commandButton value="save" action="{!save}"/>
+<apex:commandButton value="edit" action="{!edit}"/>
+<apex:commandButton value="delete" action="{!delete}"/>
+</apex:pageBlock>
+
+
+</apex:form>
+
+<apex:pageBlock title=" You Are viewing Job Application details of {!Candidate__c.Full_Name__c} ">
+
+ 
+<apex:outputPanel id="CanJobDetails" >
+<apex:detail subject="{!$CurrentPage.Parameters.cid}" relatedList="false"/>
+
+</apex:outputPanel>
+
+<apex:dataList value="{!Candidate__c.Job_Applications__r}" var="can">
+<apex:form >
+<apex:commandLink reRender="CanJobDetails">
+{!can.Name}
+<apex:param name="cid" value="{!can.id}"/>
+</apex:commandLink>
+</apex:form>
+</apex:dataList>
+ 
+     
+     
+</apex:pageBlock>
+ 
+ 
+
+</apex:pageBlock>
+</apex:page>

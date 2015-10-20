@@ -1,0 +1,36 @@
+<apex:page standardController="Position__c" extensions="PicklistReadController">
+<apex:form >
+
+    <apex:pageBlock title="Display Text box based on the values selected">
+    
+          <apex:actionStatus startText="Starting" stopText="Finished" id="stat"/>
+          
+        <apex:pageBlockSection id="disp">
+            <apex:inputField value="{!Position__c.Resident__c}">
+            <apex:actionSupport event="onchange" action="{!showtextbox}" reRender="disp"  status="stat"/>
+            </apex:inputField>
+            
+            
+            
+             <apex:inputField value="{!Position__c.vegetarian__c}">
+             <apex:actionSupport event="onchange" action="{!showtextbox1}" reRender="disp" status="stat"  />
+            </apex:inputField>
+        
+         
+         <apex:inputText rendered="{!read1}" value="{!Position__c.items_1__c}"/>
+           <apex:inputText rendered="{!read1}" value="{!Position__c.items_2__c}"/>
+         <apex:inputText rendered="{!!read1}" value="{!Position__c.items_1__c}" disabled="true"/>
+           <apex:inputText rendered="{!!read1}" value="{!Position__c.items_2__c}" disabled="true"/>
+         
+         <apex:inputText rendered="{!read}" value="{!Position__c.Country__c}"/>
+         <apex:inputText rendered="{!!read}" value="{!Position__c.Country__c}" disabled="true"/>
+        </apex:pageBlockSection>
+       
+     
+     
+     
+     
+     
+    </apex:pageBlock>
+</apex:form>
+</apex:page>

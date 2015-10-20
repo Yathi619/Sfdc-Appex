@@ -1,0 +1,21 @@
+<apex:page standardController="Account" extensions="ErrorMessageInVfController">
+    <apex:form >
+    <apex:pageBlock >
+    
+    <apex:pageMessages id="ShowMsg"></apex:pageMessages>
+    
+   <apex:panelGrid columns="2"> 
+    
+    Account Name : <apex:inputText value="{!acc.name}"/>
+    Account Number : <apex:inputText value="{!acc.AccountNumber}"/>
+    Account Phone : <apex:inputText value="{!acc.Phone}"/>
+    Account Site : <apex:inputText value="{!acc.site}"/>
+  
+    
+    <apex:commandButton value="Update" action="{!Save}"  style="width:90px" reRender="ShowMsg"/>
+    
+   </apex:panelGrid>
+    
+    </apex:pageBlock>
+    </apex:form>
+</apex:page>

@@ -1,0 +1,24 @@
+<apex:page controller="DisplayCandidatesUsingWrapper" tabStyle="Candidate__c" >
+    <apex:form >
+        <apex:pageBlock title="Candidate Details">
+            <apex:pageBlockSection columns="2" title="Candidate Wrapper List">
+            <apex:commandButton value="Display" action="{!DisplayCandidates}"/>
+            </apex:pageBlockSection>
+            
+               <apex:pageBlockTable value="{!canlist}" var="c">
+           
+            <apex:column headerValue="Select">
+         
+            <apex:actionSupport event="onclick" action="{!getselected}">
+            <apex:inputCheckbox value="{!c.selected}"/>
+            </apex:actionSupport>
+            </apex:column>
+            
+            <apex:column value="{!c.can.id}"/>
+            <apex:column value="{!c.can.Name}"/>
+            <apex:column value="{!c.can.Full_Name__c}"/>
+            </apex:pageBlockTable>
+            
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

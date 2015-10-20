@@ -1,0 +1,39 @@
+<apex:page controller="Check_box_class2" tabStyle="Lead" action="{!AccDetails}">
+    <apex:form >
+        <apex:pageBlock title="List of Accounts">
+            <apex:commandButton value="Display the selected records" action="{!getSelected}" reRender="down"/>
+                <apex:pageBlockTable value="{!accountlist}" var="a">
+                    <apex:column headerValue="Select">
+                    
+                 
+                    <apex:actionSupport event="onclick" action="{!getSelected}">
+                     
+                        <apex:inputCheckbox value="{!a.Selected}" />
+                        </apex:actionSupport>
+                    </apex:column>
+                    <apex:column headerValue="Account Name" value="{!a.acc.name}"/>
+                    <apex:column headerValue="Phone" value="{!a.acc.Phone}"/>        
+                </apex:pageBlockTable>
+        </apex:pageBlock>
+        
+                <apex:pageBlock title="Selected Accounts">
+                    <apex:pageBlockTable value="{!selectedAccounts}" var="s" id="down">
+                    
+                         <apex:column headerValue="Select">
+                         <apex:commandLink value="Remove" action="{!RemoveRec}">
+                         <apex:inputHidden value="{!s.id}"/>
+                         
+                       
+                         <apex:param name="abc" value="{!s.Id}" assignTo="{!sid}"/>
+                       
+                        </apex:commandLink>
+                        </apex:column>
+                        
+                        
+                        <apex:column headerValue="Account Name" value="{!s.Name}"/>
+                        <apex:column headerValue="Phone" value="{!s.Phone}"/>
+                        </apex:pageBlockTable>
+                 </apex:pageBlock>
+             
+    </apex:form>
+</apex:page>

@@ -1,0 +1,11 @@
+<apex:page sidebar="false" standardStylesheets="false" controller="LinkController">
+
+<apex:outputPanel styleClass="app-icon" layout="block" id="app" >
+   <apex:form >
+    <apex:commandLink action="{!Save}" reRender="app" value="rediff" >
+    
+</apex:commandLink>
+    </apex:form>
+</apex:outputPanel>
+
+</apex:page>

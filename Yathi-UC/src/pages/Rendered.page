@@ -1,0 +1,26 @@
+<apex:page standardController="Position__c" tabStyle="Position__c">
+
+<apex:form >
+
+<apex:pageBlock >
+
+<!-- <apex:outputField value="{!Position__c.Java__c}" label="JAVA" / > -->
+
+<br/>
+
+<!--  <apex:outputField value="{!Position__c.Job_Description__c}" rendered="{!Position__c.Java__c}" >  -->
+
+<apex:pageBlockSection >
+<apex:inputField value="{!Position__c.Java__c}" label="JAVA"/>
+
+<apex:outputField value="{!Position__c.Job_Description__c}" label="Job Description" rendered="{!Position__c.Java__c}" />
+
+</apex:pageBlockSection>
+</apex:pageBlock>
+
+
+
+
+</apex:form>
+ 
+</apex:page>

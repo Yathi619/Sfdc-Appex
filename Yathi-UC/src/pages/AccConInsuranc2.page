@@ -1,0 +1,25 @@
+<apex:page controller="AccConInsurance2">
+    
+<apex:pageMessages id="Pm"></apex:pageMessages>
+
+      <apex:form >
+      <apex:pageBlock >
+         <apex:pageBlockSection >
+             <apex:inputText label="Search using Contact Name" value="{!ConName}"/>
+             <apex:inputText label="Search using Account Name" value="{!AccName}"/>
+         </apex:pageBlockSection>
+         <apex:commandButton value="Search" action="{!AccConSearch}" reRender="NewBlock,Pm"/>
+      </apex:pageBlock>
+     
+     <apex:pageBlock id="NewBlock">
+         <apex:pageBlockTable value="{!ins}" var="i">
+             <apex:column value="{!i.Name}"/>
+             <apex:column value="{!i.contact__r.Name}"/>
+             <apex:column value="{!i.contact__r.Account.Name}"/>
+         
+                 
+         </apex:pageBlockTable>
+     </apex:pageBlock>     
+     
+    </apex:form>
+</apex:page>

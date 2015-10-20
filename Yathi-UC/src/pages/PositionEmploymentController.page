@@ -1,0 +1,78 @@
+<apex:page standardController="Job_Posting__c" extensions="PositionEmplWebsiteController">
+
+<apex:form >
+
+
+<style type="text/css">
+
+.custPopup{
+    background-color: white;
+    border-color:grey;
+    border-width: 3px;
+    border-style: solid;
+    z-index: 9999;
+    left: 25%;
+    padding:20px;
+    position:absolute;
+    /* These are the 3 css properties you will need to change so the popup 
+    displays in the center of the screen. First set the width. Then set 
+    margin-left to negative half of what the width is. You can add 
+    the height property for a fixed size pop up if you want.*/
+    width: 50%;
+    
+    top:100px;
+    box-shadow:5px 5px 5px #cccccc;
+}
+.blurBackground{
+    background-color:black;
+    opacity: 0.80;
+    filter: alpha(opacity = 80);
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 9998;
+    }
+
+
+</style>
+
+    <apex:pageBlock title="Position Employment Website Details">
+        
+           
+            <apex:pageBlockSection title="Position Details">
+                <apex:outputtext value="{!poid}"/>
+                <apex:outputtext value="{!poname}"/>
+                <apex:inputField value="{!Job_Posting__c.Position__c}"/>
+                <apex:inputField value="{!Job_Posting__c.Employment_Website__c}"/>
+            </apex:pageBlockSection>
+        
+        
+            <apex:pageBlockButtons location="bottom">
+                <apex:commandButton value="save" action="{!save}"/>
+                <apex:commandButton value="Add New Website" reRender="displayweb" action="{!openPopUp}" />
+            </apex:pageBlockButtons>
+    
+            <apex:outputPanel id="displayweb">
+                <apex:outputPanel styleClass="blurBackground" rendered="{!disp}" />
+                <apex:outputPanel styleClass="custPopup" rendered="{!disp}">
+          
+                <apex:pageBlock >
+                    <apex:pageBlockButtons location="top">
+                        <apex:commandButton value="Close PopUp window"  action="{!closepopup}"/>
+                    </apex:pageBlockButtons>
+                 
+                    <apex:pageBlockSection >
+                        <apex:outputField value="{!Job_Posting__c.Position__c}"/>
+                         <apex:outputField value="{!Job_Posting__c.Employment_Website__c}"/>
+                    </apex:pageBlockSection>
+                </apex:pageBlock>
+             
+           </apex:outputPanel>
+           </apex:outputPanel>
+
+    </apex:pageBlock>  
+
+</apex:form>
+</apex:page>

@@ -1,0 +1,54 @@
+<apex:page standardController="Position__c" sidebar="false" showHeader="false">
+ 
+<style type="text/css">
+
+.left{
+background-color: #c6e1ff;
+border-color: #9cf;
+height: 100px;
+border:#9cf 1px solid;
+border-radius: 20px;
+}
+
+
+.right{
+background-color: #c6e1ff;
+border-color: #9cf;
+height: 100px;
+border:#9cf 1px solid;
+border-radius: 20px;
+}
+
+#NewDestination {
+width="100%";
+  position: absolute;
+
+  background-color: #cccccc;
+ border-color: #98bf21;
+ height: 100px;
+ border: 2px solid;
+ border-radius: 20px;
+  
+}
+#NewDestination1 {
+width="100%";
+  position: absolute;
+
+  background-color: #cccccc;
+ border-color: #98bf21;
+ height: 100px;
+ border: 2px solid;
+ border-radius: 20px;
+}
+
+</style> 
+ 
+ 
+ <html>
+ <div>
+     <div id="NewDestination" width="100%">hi hello</div>
+     <div id="NewDestination1">hi hello</div>
+ </div>
+ </html>
+
+</apex:page>

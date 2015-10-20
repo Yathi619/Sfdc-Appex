@@ -1,0 +1,141 @@
+<apex:page standardController="Offer__c" sidebar="false" renderAs="pdf">
+<body>
+<center>
+<apex:panelGrid width="100%" columns="1" >
+<b><apex:outputText value="{!$Organization.Name}"/></b>
+<apex:outputText value="{!$Organization.Street}"/>
+<i><apex:outputText value="{!$Organization.City},{!$Organization.State}"/></i>
+<apex:outputText value="Pin - {!$Organization.PostalCode}"/> 
+</apex:panelGrid>
+</center>
+<br/>
+<br/>
+<p>
+<apex:outputText value="Date : {!CASE(MONTH(Offer__c.Offer_Date__c),
+
+1,"January",
+
+2,"February",
+
+3,"March",
+
+4,"April",
+
+5,"May",
+
+6,"June",
+
+7,"July",
+
+8,"August",
+
+9,"September",
+
+10,"October",
+
+11,"November",
+
+12,"December",
+
+"None")} {!DAY(Offer__c.Offer_Date__c)},{!YEAR(Offer__c.Offer_Date__c)}"/>
+
+</p>
+
+<apex:panelGrid width="100%" columns="1">
+
+<apex:outputText value=" {!Offer__c.Candidate__r.Full_Name__c}"></apex:outputText>
+
+
+
+
+
+
+<apex:outputText value="{!Offer__c.Candidate__r.Street__c}" rendered="{!NOT(ISNULL(Offer__c.Candidate__r.Street__c))}">
+</apex:outputText>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<apex:outputText value="{!Offer__c.Candidate__r.City__c},{!Offer__c.Candidate__r.State_Province__c},
+  ">              </apex:outputText>
+
+<apex:outputText value="{!Offer__c.Candidate__r.Country__c} ,{!Offer__c.Candidate__r.Phone__c}"></apex:outputText>
+
+<br/>
+<apex:outputText value="Dear {!Offer__c.Candidate__r.Full_Name__c}"></apex:outputText>
+
+
+<p>
+I am pleased to offer you a position with {!$Organization.Name} as a " {!Offer__c.Position__r.Name} " for a start date of {!DAY(Offer__c.Offer_Date__c)}
+{!MONTH(Offer__c.Offer_Date__c)}  {!YEAR(Offer__c.Offer_Date__c)}
+reporting to {!Offer__c.Position__r.Hiring_Manager__r.Name}</p>
+
+<p>                 
+            If you decide to join us, you will receive an annual base salary of {!ROUND(Offer__c.Actual_Salary__c,0)}
+            less applicable withholding, which will be paid semi-monthly in accordance with the Company's normal payroll
+             procedures.  In addition, you will be eligible to receive a discretionary 
+             {!ROUND(Offer__c.Bonus__c,0)}% bonus based on individual performance, Company performance, and corporate matrix.                   
+            </p>
+
+
+<p>                 
+            As a Company employee, you are also eligible to receive certain employee benefits. The Company reserves
+             the right to change the benefits and compensation programs at any time. This offer expires on
+           {!DAY(Offer__c.Offer_Expiry_Date__c)}  {!MONTH(Offer__c.Offer_Expiry_Date__c)} {!YEAR(Offer__c.Offer_Expiry_Date__c)}
+         and is contingent upon the results of your background investigation.                 
+            </p>
+
+<p>                 
+            If you accept this job offer, your hire date will be on the day that you attend new-hire orientation. Plan to work for the remainder of the business day after new-hire orientation ends.                  
+            </p>
+            
+            
+    {!Offer__c.Additional_Instructions__c}    <p>                 
+            We look forward to working with you at {!$Organization.Name} Welcome aboard!                 
+            </p>    
+            
+            {!Offer__c.Job_Application__r.Position__r.Owner.Name}   
+            
+</apex:panelGrid>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</apex:page>

@@ -1,0 +1,24 @@
+<apex:page standardController="Account">
+<apex:form >
+<apex:pageBlock title="MyContent" mode="edit">
+<apex:pageBlockSection title="Save the record" >
+<apex:commandButton action="{!save}" value="save"/>
+</apex:pageBlockSection>
+
+<apex:pageBlockSection title="Edit the records">
+
+
+
+<apex:inputField value="{!account.name}"/>
+<apex:inputField value="{!account.Phone}"/>
+<apex:inputField value="{!account.Registration_Number__c}"/>
+<apex:inputField value="{!account.Email_ID__c}"/>
+
+
+</apex:pageBlockSection>
+
+</apex:pageBlock>
+</apex:form>
+
+
+</apex:page>

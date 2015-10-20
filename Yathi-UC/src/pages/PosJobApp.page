@@ -1,0 +1,42 @@
+<apex:page standardController="Position__c" extensions="myControllerExtension">
+
+
+<apex:pageBlock title="Position  Details">
+
+<apex:pageBlockSection title="Position {!Position__c.Name} Details" columns="2">
+
+<apex:outputField value="{!Position__c.Id}" />
+<apex:outputField value="{!Position__c.Status__c}" />
+<apex:outputField value="{!Position__c.Location__c}"/>
+
+<apex:outputField value="{!Position__c.Max_Pay__c}"/>
+<apex:outputField value="{!Position__c.Min_Pay__c}"/>
+
+<apex:outputField value="{!Position__c.Responsibilities__c}"/>
+<apex:outputField value="{!Position__c.Skills_Required__c}"/>
+
+</apex:pageBlockSection>
+</apex:pageBlock>
+
+<apex:pageBlock >
+<apex:pageBlockSection title="Job Applications">
+<apex:dataTable bgcolor="#cccccc"  value="{!JobApp}" var="app"  cellpadding="10"  cellspacing="10" border="1">
+
+<apex:column >
+<apex:facet name="header">Status</apex:facet>
+{!app.Status__c}
+</apex:column>
+
+<apex:column >
+<apex:facet name="header">Candidate Name</apex:facet>
+{!app.Candidate__r.Full_Name__c}
+</apex:column>
+
+</apex:dataTable>
+</apex:pageBlockSection>
+</apex:pageBlock>
+
+
+
+
+</apex:page>

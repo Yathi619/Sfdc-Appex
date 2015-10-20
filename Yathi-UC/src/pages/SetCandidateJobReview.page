@@ -1,0 +1,32 @@
+<apex:page standardController="Candidate__c" extensions="SetCandidateJobReviExt">
+    <apex:form >
+    
+        <apex:pageBlock >
+        
+        <apex:actionStatus startText="fetching data" stopText=" done retrieved" id="check"/>
+        
+            <apex:pageBlockTable title="Candidate Details" value="{!can}" var="c">
+               <apex:column headerValue="candidate name">
+               <apex:outputField value="{!c.Full_Name__c}"/>
+               
+               <apex:actionSupport event="onclick" action="{!populateCanReview}" reRender="pageblk" status="check">
+               <apex:param name="abc" value="{!c.id}" assignTo="{!canid}"/>
+               
+               <!-- <apex:column value="{!c.Full_Name__c}"/>
+                <apex:column value="{!c.id}"/>
+                <apex:column value="{!c.Name}"/> -->
+                </apex:actionSupport>
+                </apex:column>
+            </apex:pageBlockTable>
+            
+            
+            <apex:pageBlockTable title="Job Application Details" id="pageblk" value="{!rev}" var="r">
+                <apex:column value="{!r.name}"/>        
+            </apex:pageBlockTable>
+            
+            
+      
+        </apex:pageBlock>
+    
+    </apex:form>
+</apex:page>

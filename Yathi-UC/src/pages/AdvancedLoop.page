@@ -1,0 +1,10 @@
+<apex:page standardController="Position__c" extensions="forLoopAdvanced" >
+<apex:form >
+<apex:pageBlock >
+<apex:pageBlockTable value="{!poslist}" var="p">
+<apex:column value="{!p.id}"/>
+<apex:column value="{!p.name}"/>
+</apex:pageBlockTable>
+</apex:pageBlock>
+</apex:form>  
+</apex:page>

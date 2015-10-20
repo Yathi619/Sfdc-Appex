@@ -1,0 +1,24 @@
+<apex:page standardController="Project__c" extensions="ProjectTowerExt"> 
+    <apex:form >
+        <apex:pageBlock title="Project Details"  >
+        
+            <apex:pageBlockButtons location="top" >
+          <!--   <apex:commandbutton action="{!save}" value="Save"/> -->
+                <apex:commandButton action="{!addTower}" value="Add Tower"/>
+            </apex:pageblockbuttons>
+            
+            <apex:pageBlockSection title="Trial" columns="1">
+                <apex:inputField style="height:100%;width:50%" value="{!Project__c.Projects_Name__c}"  label="Project Name"/>
+                <apex:inputField value="{!Project__c.Status__c}" label="Project Status"/> 
+            </apex:pageBlockSection>
+            
+        </apex:pageBlock>
+        
+     <apex:pageBlock >
+         <apex:pageBlockTable value="{!Project__c.Towers__r}" var="to">
+         <apex:column value="{!to.name}"/>
+         </apex:pageBlockTable>
+     </apex:pageBlock>
+    </apex:form>
+    
+</apex:page>

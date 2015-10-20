@@ -1,0 +1,17 @@
+<apex:page standardController="account">
+<apex:form >
+<apex:pageBlock >
+    <apex:pageBlockSection collapsible="true" columns="2">
+        <apex:pageBlockSection >
+        
+          <apex:outputLabel >Field 2</apex:outputLabel>
+         <apex:inputField value="{!account.name}" style="width:80px"/>  
+         </apex:pageBlockSection>
+         
+           <apex:outputLabel >Field 2</apex:outputLabel>
+         <apex:inputField value="{!account.name}"  />  
+        
+</apex:pageBlockSection>
+</apex:pageBlock>
+</apex:form>
+</apex:page>

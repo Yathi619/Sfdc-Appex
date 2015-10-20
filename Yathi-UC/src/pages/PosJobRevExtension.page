@@ -1,0 +1,41 @@
+<apex:page standardController="Position__c" extensions="PosJobRevExt">
+    <apex:form >
+        <apex:pageBlock title="Position Job Application Review Details">
+            <apex:pageBlockSection title="Position Records">
+                <apex:outputField value="{!Position__c.Name}"/>
+                <apex:outputText value="{!Position__c.Status__c}"/> 
+                <apex:outputText value="{!Position__c.Functional_Area__c}"/>
+                <apex:outputText value="{!Position__c.Job_Description__c}"/>
+            </apex:pageBlockSection>
+            
+            <apex:pageBlockSection title="Job Application Records">
+                <apex:pageBlockTable value="{!Position__c.Job_Applications__r}" var="posjob">
+                    <apex:column headerValue="JOB Application Number">   
+                       <apex:actionSupport event="onclick" action="{!PopulatePosJobRev}" status="hi2" reRender="hi">
+                           <apex:param name="yathi" value="{!posjob.Id}" assignTo="{!posId}"/>
+                           <apex:outputField value="{!posjob.name}"/>
+                       </apex:actionSupport>
+                    </apex:column>
+                    <apex:column value="{!posjob.Position__c}"/>
+                    <apex:column value="{!posjob.Full_Name_of_candidate__c}"/>
+                    <apex:column value="{!posjob.Status__c}"/>
+                    <apex:column value="{!posjob.Sum_of_Reviews_Score__c}"/>
+                    <apex:column value="{!posjob.Max_Score_of_Reviews__c}"/>
+                    <apex:column value="{!posjob.Number_of_Reviews__c}"/>
+                    <apex:column value="{!posjob.Average_Rating_of_Reviews__c   }"/>
+                </apex:pageBlockTable>
+            </apex:pageBlockSection>
+            
+            
+                <apex:pageBlockTable id="hi" value="{!JobRev}" var="revi">
+                    <apex:column value="{!revi.Cost_Of_Review__c}"/>
+                    <apex:column value="{!revi.Name}"/>
+                </apex:pageBlockTable>
+        
+            
+        
+        </apex:pageBlock> 
+ 
+  <apex:actionStatus id="hi2" startText="Retrieving Data..." stopText="Done!"/>
+    </apex:form>
+</apex:page>

@@ -1,0 +1,29 @@
+<apex:page standardController="Position__c" extensions="SetPositionJobRevExt">
+    <apex:form >
+         <apex:pageBlock >
+         <apex:actionStatus startText="Fetching Data" stopText="Done" id="check"/> 
+            
+            <apex:pageBlockTable value="{!pos}" var="p">
+                <apex:column headerValue="Position Name">
+                    <apex:outputField value="{!p.Name}"/>
+                    
+                    <apex:actionSupport event="onclick" action="{!populateReview}" reRender="secondtable" status="check" >
+                        <apex:param name="abc" value="{!p.Id}" assignTo="{!pid}"/>
+                    </apex:actionSupport>
+                    
+                </apex:column>
+                
+            </apex:pageBlockTable>
+            
+            
+            <apex:pageBlockTable id="secondtable" value="{!rev}" var="r">
+            <apex:column value="{!r.id}"/>
+            <apex:column value="{!r.name}"/>
+            <apex:column value="{!r.Rating__c}"/>
+            
+            </apex:pageBlockTable>
+          
+  
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

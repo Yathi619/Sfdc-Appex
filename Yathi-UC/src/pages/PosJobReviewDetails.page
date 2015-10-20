@@ -1,0 +1,42 @@
+<apex:page standardController="Position__c" extensions="myControllerExtension2">
+    <apex:form >
+        <apex:pageBlock title="Position">
+            <apex:pageBlockSection title="Position Details" columns="2" collapsible="true">
+                <apex:outputField value="{!Position__c.Name}" label="Title"/>
+                <apex:outputField value="{!Position__c.Location__c}"/>
+                <apex:outputField value="{!Position__c.Status__c}"/>
+                <apex:outputField value="{!Position__c.Max_Pay__c}" label="Maximum pay"/>
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+
+        <apex:pageBlock title="Job Applications" id="pgblk">
+            <apex:actionStatus id="jobStatus">
+                <apex:facet name="start">
+                    <apex:image value="{!$Resource.Load}"/>
+                </apex:facet>
+            </apex:actionStatus>
+     
+       <apex:pageBlockTable value="{!JobApp}" var="woo">
+           <apex:column headerValue="Name">
+               <apex:outputField value="{!woo.Candidate__r.Full_Name__c}"/>
+               <apex:actionSupport event="onclick" action="{!populateReview}" reRender="revSec" status="jobStatus">
+                    <apex:param name="jid" assignTo="{!jid}" value="{!woo.Id}"/>
+               </apex:actionsupport>
+           </apex:column>
+        
+            <apex:column value="{!woo.Status__c}"/>
+            <apex:column value="{!woo.Candidate__r.Full_Name__c}"/>
+            <apex:column value="{!woo.Cover_Letter__c}"/>
+        </apex:pageBlockTable>
+    
+    
+        <apex:pageBlock title="Review Details" id="revSec">
+            <apex:pageBlockTable value="{!re}" var="rev" width="1000px" columns="4">
+           <!--     <apex:column value="{!rev.Job_Application__r.Candidate__r.Full_Name__c}"/>  -->
+                <apex:column value="{!rev.Rating__c}"/>
+                <apex:column value="{!rev.Name}"/>
+            </apex:pageBlockTable>
+       </apex:pageBlock> 
+</apex:pageBlock> 
+</apex:form>
+</apex:page>

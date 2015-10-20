@@ -1,0 +1,37 @@
+<apex:page standardController="Position__c" sidebar="true" showHeader="true">
+ 
+<style type="text/css">
+
+.pos1{
+background-color: #c6e1ff;
+border-color: #9cf;
+height: 100px;
+border:#9cf 1px solid;
+border-radius: 20px;
+
+}
+
+
+.pos2{
+background-color: #c6e1ff;
+border-color: #9cf;
+height: 100px;
+border:#9cf 1px solid;
+border-radius: 20px;
+
+}
+
+</style> 
+ 
+ 
+ <html>
+ <table style="width:100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td width="48%"  class="pos1" >hai</td>
+    <td>&nbsp;</td>
+    <td  width="48%" class="pos2"  >hello</td>
+  </tr>
+ </table>
+ </html>
+
+</apex:page>

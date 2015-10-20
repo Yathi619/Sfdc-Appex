@@ -1,0 +1,20 @@
+<apex:page standardController="Opportunity" extensions="OpportunityExt">
+    <apex:form >
+    <apex:sectionHeader title="Adding Opportunity"/>
+        <apex:pageBlock >
+        <apex:pageBlockSection title="Add New Opportunity" columns="1">
+        <apex:inputField value="{!opp.Name}"/>
+        <apex:inputField value="{!opp.CloseDate}"/>
+        <apex:inputField value="{!opp.StageName}"/>
+        <apex:inputField value="{!opp.DeliveryInstallationStatus__c}"/>
+
+
+
+                    <apex:commandButton value="save" action="{!save}"/>
+        </apex:pageBlockSection>
+ 
+        </apex:pageBlock>
+
+    </apex:form>
+
+</apex:page>

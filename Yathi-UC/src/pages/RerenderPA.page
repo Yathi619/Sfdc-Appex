@@ -1,0 +1,43 @@
+<apex:page standardController="Position__c" sidebar="false">
+
+    <apex:pageBlock title="Position Details for {!Position__c.Name}"> 
+        <apex:pageBlockSection >
+            <apex:outputField value="{!Position__c.Location__c}"/>
+            <apex:outputField value="{!Position__c.Position_Type__c}"/>
+            <apex:outputField value="{!Position__c.Functional_Area__c}"/>
+            <apex:outputField value="{!Position__c.Job_Description__c}"/>
+        </apex:pageBlockSection>
+    </apex:pageBlock>
+    
+    <apex:pageBlock >
+       <apex:pageBlockSection title="Job Application Details">
+       <apex:outputPanel id="appDetails">
+       <apex:detail subject="{! $CurrentPage.parameters.cid}" relatedList="false" title="false"/>
+       </apex:outputPanel>
+       </apex:pageBlockSection>
+    </apex:pageBlock>
+
+
+<apex:pageBlock tabStyle="Job_Application__c">
+
+       <apex:pageBlockSection title="Job Application Details">
+      <apex:form >
+       <apex:dataList value="{!Position__c.Job_Applications__r}" var="jobapps" >
+       <apex:commandLink rerender="appDetails">
+       {!jobapps.Name}
+       <apex:param name="cid"  value="{!jobapps.id}"/>
+       
+       </apex:commandLink>
+       
+       </apex:dataList>
+       </apex:form>
+       </apex:pageBlockSection>
+      
+    </apex:pageBlock>
+
+
+   
+
+
+  
+</apex:page>

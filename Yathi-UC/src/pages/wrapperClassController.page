@@ -1,0 +1,16 @@
+<apex:page controller="wrapperClassController" tabStyle="Account">
+    <apex:form >
+        <apex:pageBlock title="Wrapper Class Example">
+            <apex:pageBlockSection columns="2" title="My Wrapper Class">
+            <!-- <apex:commandButton title="Process Selected" action="{!ProcessSelected}" reRender="BelowTable"/> -->
+            </apex:pageBlockSection>
+            
+            <apex:pageBlockTable title="Contact List" value="{!contactlist}" var="a">
+                <apex:column value="{!a.Name}"/>
+                <apex:column value="{!a.Email}"/>
+                <apex:column value="{!a.Department}"/>
+            </apex:pageBlockTable>
+            
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

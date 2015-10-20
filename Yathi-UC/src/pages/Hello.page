@@ -1,0 +1,50 @@
+<apex:page sidebar="false" tabStyle="Candidate__c">
+
+    <apex:PageBlock >
+        {!$User.FirstName} {!$User.LastName}
+    </apex:PageBlock>
+ 
+ <!--<apex:pageBlock>
+ {! $User.FirstName & ' ' & $User.Lastname} 
+ </apex:pageBlock>-->
+
+  
+    <apex:pageBlock title="A Block Title">
+        <apex:pageBlockSection title="A Section Title">
+          
+        </apex:pageBlockSection>
+   
+
+ 
+     <apex:pageBlockSection title="A new Section">
+     
+     </apex:pageBlockSection>
+ 
+ </apex:pageBlock>
+ 
+ 
+       
+      <apex:pageBlock >
+          <p>Todays Date is {!Today()}</p>
+          <p>Next Week it will be {!Today()+7}</p>
+          <p>The Year Toay is {!YEAR(Today())} </p>
+          <p>Tomorrow will be day number {!Day(Today() +1)} </p>
+          <p>Lets Find the Maximum : {!MAX(1,2,4,5,8,6,4,7,1)}</p>
+          <p>The Square Root of 49 is : {!SQRT(49)}</p>
+          <p>Is it True {!CONTAINS('SALESFORCE.COM','FORCE.COM')}</p>
+
+
+     </apex:pageBlock>
+
+<apex:pageBlock >
+{! if (contains('Salesforce.com','force.com'),'kishan','ajay') }
+</apex:pageBlock>
+
+<apex:pageBlock >
+{! if(DAY(TODAY())>14 ,'After the 14th','On or Before the 14th')}
+</apex:pageBlock>
+
+
+
+
+</apex:page>

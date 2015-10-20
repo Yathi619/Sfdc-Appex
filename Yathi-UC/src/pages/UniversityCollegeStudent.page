@@ -1,0 +1,101 @@
+<apex:page standardController="University__c" extensions="UniColStuExtension">
+<style>
+    /* This is for the full screen DIV */
+    .popupBackground {
+        /* Background color */
+        background-color:black;
+        opacity: 0.20;
+        filter: alpha(opacity = 20);
+    
+        /* Dimensions */
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        z-index: 998;
+        position: absolute;
+        
+        /* Mouse */
+        cursor:wait;
+    }
+ 
+    /* This is for the message DIV */
+    .PopupPanel {
+        /* Background color */
+        border: solid 2px blue;
+        background-color: white;
+ 
+        /* Dimensions */
+        left: 50%;
+        width: 200px;
+        margin-left: -100px;
+        top: 50%;
+        height: 50px;
+        margin-top: -25px;
+        z-index: 999;
+        position: fixed;
+        
+        /* Mouse */
+        cursor:pointer;
+    }
+</style>
+
+    <apex:form >
+        <apex:pageBlock title="University, College, Student Details">
+            
+            <apex:pageBlockSection title="University Details" collapsible="true">
+                <apex:outputText value="{!University__c.Name}" />
+                <apex:outputField value="{!University__c.Location__c}"/>
+            </apex:pageBlockSection>
+        </apex:pageBlock>   
+  
+            <apex:pageBlock title="College Details" id="hey1">
+              <apex:actionStatus id="stat" stopText="">
+    <apex:facet name="start">
+        <div>
+            <div class="popupBackground" />
+            <div class="PopupPanel">
+                <table border="0" width="100%" height="100%">
+                    <tr>
+                        <td align="center"><b>Please Wait</b></td>
+                    </tr>
+                    <tr>
+                        <td align="center"><img src="{!$Resource.Loading}"/></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </apex:facet>
+</apex:actionStatus>
+                <apex:pageBlockTable value="{!University__c.Colleges__r}" var="col">
+                
+                    <apex:column headerValue="College Name">
+                    <apex:outputField value="{!col.name}" />
+                    <apex:actionSupport event="onclick" action="{!populateStudent}" reRender="hey1,hey" status="stat">
+                  
+                        <apex:param name="yathi" value="{!col.Id}" assignTo="{!colId}"/>
+                    </apex:actionSupport>
+                    
+                    </apex:column>
+                    
+                    
+                    <apex:column value="{!col.University__c}"/>
+                    <apex:column value="{!col.Address__c}"/>
+                    <apex:column value="{!col.Number_of_Students__c}"/>
+                </apex:pageBlockTable>
+            
+            </apex:pageBlock>
+            
+            
+            <apex:pageBlock title="Students List"> 
+            <apex:dataList value="{!studnt}" var="st" id="hey">
+           <apex:outputField value="{!st.Name}"/>
+          </apex:dataList>
+        
+            </apex:pageBlock>
+         
+         
+  
+       
+  </apex:form>
+</apex:page>

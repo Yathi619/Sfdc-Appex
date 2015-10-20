@@ -1,0 +1,66 @@
+<apex:page controller="PositionWrapper" action="{!DisposList}">
+
+<!--<apex:page controller="PositionWrapper" >-->
+
+    <apex:form >
+        <apex:pageBlock title="List of Positions">
+            <apex:pageBlockButtons location="top" >
+                <apex:commandButton value="Add Selected" action="{!AddSelected}" reRender="NewBlock"/>
+                </apex:pageBlockButtons>
+                
+           <!--     <apex:pageBlockTable value="{!Pos}" var="pp"> -->
+                
+                <apex:pageBlockTable value="{!wrapposlst}" var="pp">
+                
+              <!--      <apex:column headerValue="Select">
+                        <apex:inputCheckbox value="{!pp.Selected}"/> 
+                    </apex:column>
+                  -->  
+                     <apex:column >
+                           <!-- facet name is used to place the select all checkbox on the header -->  
+                     <apex:facet name="header">
+                     <apex:inputCheckbox onclick="checkAll(this)"  >
+                     </apex:inputCheckbox>
+                     </apex:facet>
+                    
+                      <apex:inputCheckbox id="checkedone" value="{!pp.selected}"   />
+                     
+                     </apex:column>
+                     
+                    <apex:column value="{!pp.po.id}"/>
+                    <apex:column value="{!pp.po.name}"/>
+                    <apex:column value="{!pp.po.Max_Pay__c}"/>
+                    </apex:pageBlockTable>
+                
+               <apex:pageBlockTable value="{!poslst}" var="p" id="NewBlock">
+               
+               <apex:column headerValue="Select">
+               <apex:commandLink value="Remove" action="{!RemoveRec}" >
+               
+               <apex:inputHidden value="{!p.Id}"/>
+               <apex:param name="raaz"  value="{!p.id}" assignTo="{!posid}"/>
+               </apex:commandLink>
+               </apex:column>
+
+               <apex:column value="{!p.name}"/>
+               <apex:column value="{!p.Max_Pay__c}"/>
+               </apex:pageBlockTable>
+          
+</apex:pageBlock>
+</apex:form>
+
+<script>
+        function checkAll(cb)
+        {
+            var inputElem = document.getElementsByTagName("input");
+            for(var i=0; i<inputElem.length; i++)
+            {
+                if(inputElem[i].id.indexOf("checkedone")!=-1)
+                inputElem[i].checked = cb.checked;
+            }
+        }
+    </script>
+
+
+
+</apex:page>

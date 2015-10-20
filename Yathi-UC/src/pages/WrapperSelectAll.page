@@ -1,0 +1,45 @@
+<apex:page standardController="Position__c" extensions="myControllerExtension" sidebar="true" tabStyle="Account" standardStylesheets="true" showHeader="true">
+    <apex:form id="theForm">
+    <apex:pageBlock id="InfraBlock" title="List of Positions" mode="edit">
+    
+    <apex:pageBlockButtons location="bottom">
+    <apex:commandButton value="Add" action="{!Save}"/>
+    <apex:commandButton value="Cancel" action="{!Cancel}"/>
+    </apex:pageBlockButtons>
+    
+    <apex:pageBlockSection columns="2" title="Positions">
+    <apex:pageBlockTable value="{!JobApp}" var="jo" border="1" cellpadding="5" cellspacing="6">
+    
+             <apex:column >
+                 <apex:facet name="header"> 
+                     <apex:inputCheckbox onclick="checkAll(this)">
+                     </apex:inputCheckbox>
+                 </apex:facet>
+               
+             </apex:column>
+                
+               <apex:column >
+                <apex:facet name="header">Status</apex:facet>
+                {!jo.Status__c}
+                </apex:column>
+                
+    
+    </apex:pageBlockTable>
+    </apex:pageBlockSection>
+    
+    
+    </apex:pageBlock>
+    </apex:form>
+     <script>
+        function checkAll(cb)
+        {
+            var inputElem = document.getElementsByTagName("input");
+            for(var i=0; i<inputElem.length; i++)
+            {
+                if(inputElem[i].id.indexOf("checkedone")!=-1)
+                inputElem[i].checked = cb.checked;
+            }
+        }
+    </script>
+    
+</apex:page>
