@@ -1,0 +1,36 @@
+<!-- 
+    Type:       VF Page
+    Purpose:    Used to display the Ongoing and Completed projects of a developer. It is invoked by clicking
+    			on the Developer Name link in the Upcoming and Launched projects screen in Customer Portal           
+
+    ---------------------------------------------------------------------------------------------------------------
+    History:
+    
+    24-Apr-2013     Created		Tugboat Info Solutions Pvt. Ltd
+
+-->
+<apex:page standardController="List_of_Values__c" extensions="RBI_DeveloperOtherProjects" standardStylesheets="true" showHeader="true" sidebar="true">
+	<apex:sectionHeader title="Other Ongoing or Completed Projects" subtitle="Create other Projects"/>
+    <apex:pageMessages escape="false" />
+    <apex:form id="theForm">
+		<apex:pageBlock mode="edit" id="thePageBlock">
+			<apex:pageBlockButtons >
+				<apex:commandButton value="Save" action="{!save}" />
+				<apex:commandButton value="Save & New" action="{!SaveandNew}" />
+				<apex:commandButton value="Cancel" action="{!docancel}" immediate="true"/>
+			</apex:pageBlockButtons>
+			<apex:PageBlockSection id="lovdtl" columns="2" title="Information">
+		
+				<apex:inputField value="{!List_of_Values__c.Dev_Project_Name__c}" />
+				<apex:inputField value="{!List_of_Values__c.Project_Type__c}" />
+				<apex:inputField value="{!List_of_Values__c.Dev_Project_Address__c}" />
+				<apex:inputField value="{!List_of_Values__c.Land_Area_in_Acres__c}" />
+				<apex:inputField value="{!List_of_Values__c.Dwelling_Units__c}" />
+				<apex:inputField value="{!List_of_Values__c.Total_BUA__c}" />
+				<apex:inputField value="{!List_of_Values__c.Completion_Year__c}" />
+				<apex:inputField value="{!List_of_Values__c.Developer__c}" />
+		
+			</apex:PageBlockSection>
+		</apex:pageBlock>
+	</apex:form>			
+</apex:page>

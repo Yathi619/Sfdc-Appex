@@ -1,0 +1,7 @@
+Hello {!Project__c.Surveyor__c},
+
+You are assigned to below mentioned project as Surveyor.
+Project Name : {!Project__c.Project_Name__c}
+
+Thanks & Regards. 
+Realty BI Team

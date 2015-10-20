@@ -1,0 +1,54 @@
+<apex:page id="RBI_Terms_Conditions" showHeader="false"> 
+<html>
+    <head>
+    <title>Realty BI Terms and Conditions Page</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+        <style type="text/css">
+            #bodycss{
+                padding-top: 8%;
+                width:100%;
+                text-align: center;
+            }
+            #maindiv{
+                margin: auto;
+                height: 425px;
+                width: 800px;
+                background:url(/resource/1365772892000/RBI_Logout_Page) no-repeat;
+                font-family: biondi;
+                padding: 18px 0px 0px 0px;
+            }
+            #logo {
+                padding: 105px 0px 0px 0px;
+                background: url(/resource/1377694700000/RBI_Logo) no-repeat top;
+            }
+            #subdiv{
+               padding-top: 23%;
+               font-family: biondi;
+            }
+        </style>
+    </head>
+    <body id="bodycss" align="center">
+        <div align="center" id="maindiv">
+        <div id="logo"></div>    
+        <apex:outputPanel layout="block" style="padding-top:0px;">
+            <apex:panelGrid cellpadding="10" cellspacing="0" columns="2"> 
+            <apex:image url="{!$Resource.RBI_TC}" style="padding-left:35px;"/> 
+                <apex:panelGroup style="color: #1A4862; font: 11px biondi;">
+                    1.  This information technology is a Realty Business Intelligence property and is made available to employees and third party for the business of the company.
+                    <br/><br/>
+                    2.  The technology or data herein is not to be used for personal use or inappropriate use which includes hacking, pirating software and data.
+                    <br/><br/>
+                    3.  The company does not allow disclosing of confidential information of Realty Business Intelligence or of its clients or using Realty Business Resources in a way that violates the letter or spirit of the company's policies.
+                    <br/><br/>
+                    4.  Passwords are to be used only by the assigned employees / parties.
+                    <br/><br/>
+                    5.  Realty Business Intelligence reserves the right to access, intercept, copy, review, disclose and delete communications, or data you access, create, or maintain with or on company's resources or property and by using the company's resources, you consent to this action.
+                    <br/><br/>
+                    6.  The above terms are legally binding on all users.
+                </apex:panelGroup>
+            </apex:panelGrid> 
+        </apex:outputPanel>
+        </div>
+    </body>
+</html>    
+</apex:page>

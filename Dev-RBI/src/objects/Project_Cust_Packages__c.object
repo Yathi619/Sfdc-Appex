@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <enableActivities>false</enableActivities>
+    <enableEnhancedLookup>true</enableEnhancedLookup>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableReports>true</enableReports>
+    <fields>
+        <fullName>Account_Id__c</fullName>
+        <description>To get account Id from Customer Project.</description>
+        <externalId>false</externalId>
+        <formula>Customer_Project__r.AccountId__c</formula>
+        <label>Account Id</label>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CalcfollowupVisitdt__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(ISBLANK(LastFollowupDate__c), Service_Requested_Date__c , LastFollowupDate__c )</formula>
+        <label>CalcfollowupVisitdt</label>
+        <required>false</required>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Customer_Project__c</fullName>
+        <deleteConstraint>Restrict</deleteConstraint>
+        <description>Stores relationship of Customer project</description>
+        <externalId>false</externalId>
+        <label>Customer Project</label>
+        <referenceTo>Customer_Projects__c</referenceTo>
+        <relationshipLabel>Customer Package</relationshipLabel>
+        <relationshipName>Customer_Package</relationshipName>
+        <required>true</required>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Discount__c</fullName>
+        <description>Used to store discount</description>
+        <externalId>false</externalId>
+        <label>Discount %</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>End_Date__c</fullName>
+        <description>This field will store the Expiry date for the service</description>
+        <externalId>false</externalId>
+        <label>Expiry Date</label>
+        <required>false</required>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>FTR_File_Path__c</fullName>
+        <description>Used to store FTR link. The FTR report link will be populated after the Customer generates FTR for the first time.</description>
+        <externalId>false</externalId>
+        <label>FTR File Path</label>
+        <length>100</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>IsContractInActive__c</fullName>
+        <description>If Contract is over then it will display Y  else N.</description>
+        <externalId>false</externalId>
+        <formula>IF(ISBLANK(End_Date__c), &apos;N&apos;, IF(End_Date__c  &lt; TODAY(), &apos;Y&apos;, &apos;N&apos;))</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>IsContractInActive</label>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>LOV_Name__c</fullName>
+        <description>This field is used in Trigger.</description>
+        <externalId>false</externalId>
+        <formula>List_of_Values__r.Name</formula>
+        <label>LOV Name</label>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>LastFollowupDate__c</fullName>
+        <description>This is used in FollowupBatch.</description>
+        <externalId>false</externalId>
+        <label>LastFollowupDate</label>
+        <required>false</required>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>List_Pricing__c</fullName>
+        <description>This field is used to store list price for the service.</description>
+        <externalId>false</externalId>
+        <label>List Pricing</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>List_of_Values__c</fullName>
+        <deleteConstraint>Restrict</deleteConstraint>
+        <description>Stores reference of master data for List of Values object</description>
+        <externalId>false</externalId>
+        <label>Package Name</label>
+        <referenceTo>List_of_Values__c</referenceTo>
+        <relationshipLabel>Customer Package</relationshipLabel>
+        <relationshipName>Customer_Package</relationshipName>
+        <required>true</required>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Project_City__c</fullName>
+        <description>Used for reporting</description>
+        <externalId>false</externalId>
+        <label>Project City</label>
+        <length>50</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Project_Id__c</fullName>
+        <description>This field is used in Trigger.</description>
+        <externalId>false</externalId>
+        <formula>Customer_Project__r.Project_Id__c &amp; 
+MID( 
+&quot;ABCDEFGHIJKLMNOPQRSTUVWXYZ012345&quot;, 
+MIN(FIND(MID(Customer_Project__r.Project_Id__c, 5, 1), &quot;ABCDEFGHIJKLMNOPQRSTUVWXYZ&quot;), 1) * 16 + 
+MIN(FIND(MID(Customer_Project__r.Project_Id__c, 4, 1), &quot;ABCDEFGHIJKLMNOPQRSTUVWXYZ&quot;), 1) * 8 + 
+MIN(FIND(MID(Customer_Project__r.Project_Id__c, 3, 1), &quot;ABCDEFGHIJKLMNOPQRSTUVWXYZ&quot;), 1) * 4 + 
+MIN(FIND(MID(Customer_Project__r.Project_Id__c, 2, 1), &quot;ABCDEFGHIJKLMNOPQRSTUVWXYZ&quot;), 1) * 2 + 
+MIN(FIND(MID(Customer_Project__r.Project_Id__c, 1, 1), &quot;ABCDEFGHIJKLMNOPQRSTUVWXYZ&quot;), 1) * 1 + 1, 
+1) &amp; 
+MID( 
+&quot;ABCDEFGHIJKLMNOPQRSTUVWXYZ012345&quot;, 
+MIN(FIND(MID(Customer_Project__r.Project_Id__c, 10, 1), &quot;ABCDEFGHIJKLMNOPQRSTUVWXYZ&quot;), 1) * 16 + 
+MIN(FIND(MID(Customer_Project__r.Project_Id__c, 9, 1), &quot;ABCDEFGHIJKLMNOPQRSTUVWXYZ&quot;), 1) * 8 + 
+MIN(FIND(MID(Customer_Project__r.Project_Id__c, 8, 1), &quot;ABCDEFGHIJKLMNOPQRSTUVWXYZ&quot;), 1) * 4 + 
+MIN(FIND(MID(Customer_Project__r.Project_Id__c, 7, 1), &quot;ABCDEFGHIJKLMNOPQRSTUVWXYZ&quot;), 1) * 2 + 
+MIN(FIND(MID(Customer_Project__r.Project_Id__c, 6, 1), &quot;ABCDEFGHIJKLMNOPQRSTUVWXYZ&quot;), 1) * 1 + 1, 
+1) &amp; 
+MID( 
+&quot;ABCDEFGHIJKLMNOPQRSTUVWXYZ012345&quot;, 
+MIN(FIND(MID(Customer_Project__r.Project_Id__c, 15, 1), &quot;ABCDEFGHIJKLMNOPQRSTUVWXYZ&quot;), 1) * 16 + 
+MIN(FIND(MID(Customer_Project__r.Project_Id__c, 14, 1), &quot;ABCDEFGHIJKLMNOPQRSTUVWXYZ&quot;), 1) * 8 + 
+MIN(FIND(MID(Customer_Project__r.Project_Id__c, 13, 1), &quot;ABCDEFGHIJKLMNOPQRSTUVWXYZ&quot;), 1) * 4 + 
+MIN(FIND(MID(Customer_Project__r.Project_Id__c, 12, 1), &quot;ABCDEFGHIJKLMNOPQRSTUVWXYZ&quot;), 1) * 2 + 
+MIN(FIND(MID(Customer_Project__r.Project_Id__c, 11, 1), &quot;ABCDEFGHIJKLMNOPQRSTUVWXYZ&quot;), 1) * 1 + 1, 
+1)</formula>
+        <label>Project Id</label>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Project_Monitoring_Frequency__c</fullName>
+        <externalId>false</externalId>
+        <formula>Customer_Project__r.AccountId__r.Project_Monitoring_Frequency__c</formula>
+        <label>Project Monitoring Frequency</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Project_Name__c</fullName>
+        <externalId>false</externalId>
+        <formula>Customer_Project__r.Project_Id__r.Name</formula>
+        <label>Project Name</label>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Project__c</fullName>
+        <externalId>false</externalId>
+        <formula>Customer_Project__r.Project_Id__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Project</label>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Service_Requested_Date__c</fullName>
+        <description>This is used to store the Date requested by the Customer for the service</description>
+        <externalId>false</externalId>
+        <label>Service Requested Date</label>
+        <required>false</required>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Start_Date__c</fullName>
+        <description>This is used to store the Start date for the service</description>
+        <externalId>false</externalId>
+        <label>Start Date</label>
+        <required>false</required>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Surveyor_Id__c</fullName>
+        <description>This field is used in Trigger.</description>
+        <externalId>false</externalId>
+        <formula>Customer_Project__r.Project_Id__r.Surveyor__c</formula>
+        <label>Surveyor Id</label>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Team_Leader__c</fullName>
+        <externalId>false</externalId>
+        <formula>Customer_Project__r.Project_Id__r.Team_Leader__c</formula>
+        <label>Team Leader</label>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Technical_Head__c</fullName>
+        <externalId>false</externalId>
+        <formula>Customer_Project__r.Project_Id__r.Technical_Head__c</formula>
+        <label>Technical Head</label>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>Customer Package</label>
+    <listViews>
+        <fullName>All</fullName>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <nameField>
+        <displayFormat>CP-{0000}</displayFormat>
+        <label>Package Id</label>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Customer Package</pluralLabel>
+    <searchLayouts/>
+    <sharingModel>ReadWrite</sharingModel>
+</CustomObject>

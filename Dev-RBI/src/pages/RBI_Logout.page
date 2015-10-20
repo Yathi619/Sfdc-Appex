@@ -1,0 +1,57 @@
+<!-- 
+    Type:       VF Page
+    Purpose:    Used to log the customer out of the Customer Portal. 
+
+    ---------------------------------------------------------------------------------------------------------------
+    History:
+    
+    29-Apr-2013     Created     Tugboat Info Solutions Pvt. Ltd
+
+-->
+<apex:page showHeader="false" sidebar="false">
+    <apex:iframe src="{!$Site.Prefix}/secur/logout.jsp" height="1px;" width="1px;" />
+        <script>
+            function redirectToLogin(){
+                 //window.parent.location="{!$Site.Prefix}/";
+                 window.parent.location="{!$Label.RBI_SiteURL}";
+                 //window.parent.location="http://crms.rbidev.cs5.force.com/";
+                 }
+                 <!-- window.parent.location="http://realtybi.in/";} -->
+            setTimeout("redirectToLogin()", 4000);
+        </script>
+<html>
+    <head>
+        <title>Realty BI Logout</title>
+            <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+                <style type="text/css">
+                    #bodycss{
+                        padding-top: 8%;
+                        width:100%;
+                        text-align: center;}
+                    
+                    #maindiv{
+                        margin: auto;
+                        height: 425px;
+                        width: 815px;
+                        background:url(/resource/1365753075000/RBI_Logout_Page) no-repeat;
+                        padding: 18px 0px 0px 0px;
+                        }
+                    #logo {
+                        padding: 105px 0px 0px 0px;
+                        background: url(/resource/1377694700000/RBI_Logo) no-repeat top;
+                        }
+                    #subdiv{
+                        padding-top: 10%;
+                        font-family: biondi, tahoma;}
+                </style>
+    </head>
+    <body id="bodycss" align="center">
+        <div align="center" id="maindiv">
+        <div id="logo"></div>
+            <div align="center" id="subdiv">
+                <img src="/resource/1365753149000/RBI_Processing" width="45" height="45" align="absmiddle">You are now logging out of Realty BI Customer Portal...</img>
+            </div>
+        </div>
+    </body>
+</html> 
+</apex:page>

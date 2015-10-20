@@ -1,0 +1,7 @@
+Hello {!Project__c.Technical_Head__c}, 
+
+You are assigned to below mentioned project as Technical Head. 
+Project Name : {!Project__c.Project_Name__c} 
+
+Thanks & Regards.
+Realty BI Team

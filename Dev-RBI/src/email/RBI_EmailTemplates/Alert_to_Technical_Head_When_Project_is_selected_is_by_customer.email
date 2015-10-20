@@ -1,0 +1,8 @@
+Hello {!Project__c.Technical_Head__c},
+
+Customer has selected the Project Services. The details are mentioned below.
+Customer Name : {!Customer_Projects__c.Customer_Name__c}
+Project Name : {!Project__c.Project_Name__c}
+
+Thanks and Regards, 
+Realty BI Team

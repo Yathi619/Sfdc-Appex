@@ -1,0 +1,235 @@
+<!-- 
+    Type:       VF Page
+    Purpose:    Used to display caveats and assumptions for the reports generated. The link to invoke this page
+    			under My Projects tab - Reports sub-tab.           
+
+    ---------------------------------------------------------------------------------------------------------------
+    History:
+    
+    29-Apr-2013     Created		Tugboat Info Solutions Pvt. Ltd
+
+-->
+<apex:page renderAs="pdf">
+	<html>
+    	<head>
+			<apex:stylesheet value="{!URLFOR($Resource.PDFDocumentStyle, 'PDFDocumentStyle.css')}"/>
+	   		<c:PDFHeaderFooterComponent type="footer" position="left">www.realtybi.in </c:PDFHeaderFooterComponent>
+    		<c:PDFHeaderFooterComponent type="footer" position="right" showPageNumbers="true"/> 
+    		<c:PDFHeaderFooterComponent type="header" position="center"> <apex:image id="theImage1" value="{!$Resource.LogoforPDF}"/></c:PDFHeaderFooterComponent>
+    	</head>
+       <table width="100%" cellpadding="3" cellspacing="0" class="noborder" style="font-size: 11pt; line-height: 1.3em;">
+        <tr>
+            <td colspan="2" align="Center">
+                <h1>Caveats and Assumptions</h1>
+            </td>
+        </tr>
+        <tr>
+            <td valign="top">
+              1.
+            </td>
+            <td valign="top">
+               
+                The status of project is as on date of visit and data provided is to the best of our knowledge 
+                under the current circumstances and market scenario. 
+            </td>
+        </tr>
+        <tr>
+        <td valign="top">
+               2.
+            </td>
+            <td valign="top">
+                The report is based on information collected from the developer and 
+                other market players which has been assumed to be reliable.
+            </td>
+        </tr>
+        <tr>
+            <td valign="top">
+                3.
+            </td>
+            <td valign="top">
+                This report contains no representations or warranties of any kind 
+                including but not limited to warranties regarding marketability, 
+                functional or economical obsolescence, and environmental 
+                contamination or flood insurance determination.
+            </td>
+        </tr>
+        <tr>
+            <td valign="top">
+               4.
+            </td>
+            <td valign="top">
+                This report does not warrant the accuracy or completeness of any 
+                public record information or data sources used to prepare the report.
+            </td>
+        </tr>
+        <tr>
+            <td valign="top">
+                5.
+            </td>
+            <td valign="top">
+                This document is confidential in nature and is for sole usage of the Client,
+                its affiliates, designates, assignees, rating agencies, auditors, 
+                prospective investors and investors, and no other party shall have any 
+                right to rely upon the recommendations / conclusions, etc.
+            </td>
+        </tr>
+        <tr>
+            <td valign="top">
+                6.
+            </td>
+            <td valign="top">
+                The data provided may not be re-sold, re marketed, published, or 
+                incorporated into other products or services in any form or manner 
+                whatsoever.
+
+            </td>
+        </tr>
+        <tr>
+            <td valign="top">
+                7.
+            </td>
+            <td valign="top">
+                The report is based on the assumption that the development site is
+                 suitable for development and the land is not contaminated and has not 
+                 been affected by pollutants of any kind.
+                
+            </td>
+        </tr>
+        
+        <tr>
+            <td valign="top">
+                8.
+            </td>
+            <td valign="top">
+                
+               Any market projections included in the report are based on a host of 
+               variables which are sensitive to varying conditions. Hence, the 
+               projections should be interpreted as an indicative assessment of 
+               potentialities, as opposed to certainties.
+				
+            </td>
+        </tr>  
+        
+        <tr>
+            <td valign="top">
+                9.
+            </td>
+            <td valign="top">
+                
+                We have assumed that the subject property is free from and clear of 
+                any and all charges, liens and encumbrances unless otherwise stated.
+				
+            </td>
+        </tr> 
+        <tr>
+            <td valign="top">
+                10.
+            </td>
+            <td valign="top">
+                
+              We assume no responsibility for matters legal in nature nor do we 
+              render any opinion as to the title which is assumed to be good and 
+              marketable.
+				
+            </td>
+        </tr> 
+        <tr>
+            <td valign="top">
+                11.
+            </td>
+            <td valign="top">
+                
+               We assume that there are no claims, disputes, etc on the property 
+               unless otherwise stated.
+				
+            </td>
+        </tr> 
+        <tr>
+            <td valign="top">
+                12.
+            </td>
+            <td valign="top">
+                
+               We have assumed that the Subject Property has been constructed, 
+               occupied and used in full compliance with, and without contravention 
+               of, all ordinances, except only where otherwise stated. We have further
+               assumed that, for any use of the Subject Property upon which this 
+               report is based, any and all required licences, permits, certificates, and 
+               authorisations have been obtained, except only where otherwise stated.
+
+				
+            </td>
+        </tr> 
+        
+        <tr>
+            <td valign="top">
+                13.
+            </td>
+            <td valign="top">
+                
+              No detailed measurements and Structural Survey have been
+              undertaken on the property and we have relied on the information 
+              provided by the developer, unless otherwise stated.
+				
+            </td>
+        </tr> 
+        <div style="page-break-before: always"></div>
+        <tr>
+            <td valign="top">
+                14.
+            </td>
+            <td valign="top">
+                
+               The information pertaining to sales / prices has been obtained from 
+               sources deemed to be reliable however no written confirmation or
+               verification was made available. Hence, our analysis is limited to that
+               extent.  Reality Business Intelligence Pvt. Ltd. and henceforth 
+               employee shall not be held responsible in case the same does not hold 
+               true / does not align with actual data.
+
+				
+            </td>
+        </tr> 
+        <tr>
+            <td valign="top">
+                15.
+            </td>
+            <td valign="top">
+                
+              Where third party expert or specialist information or reports are obtained 
+              by Realty BI in connection with Services (including but not limited to Title 
+              Search Report and Document Verification Report), we will rely upon the apparent 
+              expertise of such experts/ specialists. We will not verify the accuracy of this 
+              information or reports, and assume no responsibility for their accuracy.
+
+				
+            </td>
+        </tr>    
+        <tr>
+            <td valign="top">
+                16.
+            </td>
+            <td valign="top">
+                
+              Realty Business Intelligence Pvt Ltd, or any employee of ours shall not be held 
+              responsible for giving testimony or to appear in court or any other tribunal or 
+              to any government agency by reason of this report or with reference to the property 
+              in question unless prior arrangements have been made and we are properly reimbursed.
+
+				
+            </td>
+        </tr> 
+        <tr>
+            <td valign="top">
+                17.
+            </td>
+            <td valign="top">
+                
+              Realty Business Intelligence Pvt. Ltd or any employee of ours does not assume the 
+              responsibility of any possible legal and/ or non-legal issue which may attach to the 
+              Property’s title documents.				
+            </td>
+        </tr>         
+	</table>
+  </html>
+</apex:page>

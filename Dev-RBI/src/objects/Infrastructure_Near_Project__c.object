@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <enableActivities>false</enableActivities>
+    <enableEnhancedLookup>true</enableEnhancedLookup>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableReports>true</enableReports>
+    <fields>
+        <fullName>Distance_From_Project_In_Km__c</fullName>
+        <externalId>false</externalId>
+        <label>Distance From Project (In Km)</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Within 5 KM</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>5-10 KM</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Greater Than 10 KM</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Infra_Hyperlink__c</fullName>
+        <description>This field is used in the related list of the project for the hyperlink</description>
+        <externalId>false</externalId>
+        <formula>HYPERLINK(&quot;/&quot; + Id,   Infrastructure_Near_Project__r.Name ,  &quot;_blank&quot;)</formula>
+        <label>Infrastructure Near Project</label>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Infrastructure_Near_Project__c</fullName>
+        <deleteConstraint>Restrict</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Infrastructure Near Project</label>
+        <referenceTo>List_of_Values__c</referenceTo>
+        <relationshipLabel>Infrastructure Near Project</relationshipLabel>
+        <relationshipName>Infrastructure_Near_Project</relationshipName>
+        <required>true</required>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Infrastructure_Nr_Project__c</fullName>
+        <externalId>false</externalId>
+        <formula>Infrastructure_Near_Project__r.Key__c</formula>
+        <label>Infrastructure Nr Project</label>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>ProjInfraUniqueKey__c</fullName>
+        <caseSensitive>false</caseSensitive>
+        <externalId>true</externalId>
+        <label>ProjInfraUniqueKey</label>
+        <length>80</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>true</unique>
+    </fields>
+    <fields>
+        <fullName>Proj_Id__c</fullName>
+        <externalId>false</externalId>
+        <formula>Project_Id__c</formula>
+        <label>Proj Id</label>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Project_Id__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Project Id</label>
+        <referenceTo>Project__c</referenceTo>
+        <relationshipLabel>Infrastructure Near Project</relationshipLabel>
+        <relationshipName>Infrastructure_Near_Project</relationshipName>
+        <required>false</required>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Status__c</fullName>
+        <externalId>false</externalId>
+        <label>Status</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Developed</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Proposed</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Developing</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Under Developed</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Visit_Id__c</fullName>
+        <externalId>false</externalId>
+        <formula>Visit__c</formula>
+        <label>Visit Id</label>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Visit__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Stores Visit Id</description>
+        <externalId>false</externalId>
+        <label>Visit</label>
+        <referenceTo>Visit__c</referenceTo>
+        <relationshipLabel>Infrastructure Near Project</relationshipLabel>
+        <relationshipName>Infrastructure_Near_Project</relationshipName>
+        <required>false</required>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>VstInfraUniqueKey__c</fullName>
+        <externalId>false</externalId>
+        <formula>LOWER(Infrastructure_Near_Project__r.Name &amp;  Visit__r.Name  )</formula>
+        <label>VstInfraUniqueKey</label>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>Infrastructure Near Project</label>
+    <nameField>
+        <displayFormat>INF-{0000000000}</displayFormat>
+        <label>Infrastructure Id</label>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Infrastructure Near Project</pluralLabel>
+    <searchLayouts>
+        <lookupDialogsAdditionalFields>Infrastructure_Near_Project__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Distance_From_Project_In_Km__c</lookupDialogsAdditionalFields>
+    </searchLayouts>
+    <sharingModel>ReadWrite</sharingModel>
+    <validationRules>
+        <fullName>Project_Id_Should_Not_be_blank_for_PMS_V</fullName>
+        <active>true</active>
+        <description>Project ID field should be blank for all the entities associated with PMS Visit</description>
+        <errorConditionFormula>AND( 
+NOT(ISBLANK( Project_Id__c )), 
+NOT(ISBLANK( Visit__c)) 
+
+)</errorConditionFormula>
+        <errorMessage>Please ensure that either Project Id or Visit Id is blank!</errorMessage>
+    </validationRules>
+    <webLinks>
+        <fullName>Add_Infrastructure</fullName>
+        <availability>online</availability>
+        <description>Button to add multiple Infrastructure near projects</description>
+        <displayType>massActionButton</displayType>
+        <linkType>url</linkType>
+        <masterLabel>Add Infrastructure Near Project</masterLabel>
+        <openType>replace</openType>
+        <protected>false</protected>
+        <requireRowSelection>true</requireRowSelection>
+        <url>\apex\RBI_AddInfraNearProject?VstId={! Visit__c.Id }&amp;VstName={!Visit__c.Name}</url>
+    </webLinks>
+    <webLinks>
+        <fullName>Add_Infrastructure_Near_Project</fullName>
+        <availability>online</availability>
+        <description>Button to add multiple Infrastructure near projects</description>
+        <displayType>massActionButton</displayType>
+        <linkType>url</linkType>
+        <masterLabel>Add Infrastructure Near Project</masterLabel>
+        <openType>replace</openType>
+        <protected>false</protected>
+        <requireRowSelection>false</requireRowSelection>
+        <url>\apex\RBI_AddInfraNearProject?ProjId={! Project__c.Id  }</url>
+    </webLinks>
+</CustomObject>

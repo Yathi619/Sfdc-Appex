@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>Used to store list of project reports</description>
+    <enableActivities>false</enableActivities>
+    <enableEnhancedLookup>true</enableEnhancedLookup>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableReports>false</enableReports>
+    <fields>
+        <fullName>FilePath__c</fullName>
+        <description>This field will store the link of the report to AWS</description>
+        <externalId>false</externalId>
+        <label>File Path</label>
+        <length>100</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Generate_Report__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(
+	OR(Report_Name_Calc__c =&quot;Project Report&quot;, Report_Name_Calc__c =&quot;Tower Report&quot;, Report_Name_Calc__c =&quot;Project Snapshot&quot;, Report_Name_Calc__c =&quot;Unit Report&quot;), 
+		HYPERLINK( Which_Report__c &amp;Project__c, &quot;Generate Report&quot;),
+		IF (
+			Report_Name_Calc__c =&quot;Title Search Report&quot; || Report_Name_Calc__c =&quot;DVU Report&quot;, 
+				HYPERLINK(Which_Report__c&amp; Project__c &amp;&quot;&amp;rptName=&quot; &amp;Report_Name__r.Name, &quot;Generate Report&quot;),
+			IF(
+				Report_Name_Calc__c =&quot;Detail Technical Report&quot;,
+					HYPERLINK( &quot;/apex/RBI_Detail_Technical_Report_PDF?Id=&quot; &amp;Project__c, &quot;Generate Report&quot;),
+					HYPERLINK( Which_Report__c &amp;Visit__c, &quot;Generate Report&quot;)
+					
+			)
+		)
+)</formula>
+        <label>Generate Report</label>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Name__c</fullName>
+        <description>This field will store the name of the report</description>
+        <externalId>false</externalId>
+        <label>Name</label>
+        <length>80</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Project__c</fullName>
+        <description>Stores relationship with project</description>
+        <externalId>false</externalId>
+        <label>Project</label>
+        <referenceTo>Project__c</referenceTo>
+        <relationshipName>Reports</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>Report_Name_Calc__c</fullName>
+        <externalId>false</externalId>
+        <formula>Report_Name__r.Name</formula>
+        <label>Report Name</label>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Report_Name__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Name of the Report</description>
+        <externalId>false</externalId>
+        <label>Report Name</label>
+        <referenceTo>List_of_Values__c</referenceTo>
+        <relationshipLabel>CRM Reports</relationshipLabel>
+        <relationshipName>CRM_Reports</relationshipName>
+        <required>false</required>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Status__c</fullName>
+        <description>This will store the status of the report</description>
+        <externalId>false</externalId>
+        <label>Status</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Ready</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>In Progress</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Hold</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Completed</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Visit__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Used in Reports pdf.</description>
+        <externalId>false</externalId>
+        <label>Visit</label>
+        <referenceTo>Visit__c</referenceTo>
+        <relationshipLabel>CRM Reports</relationshipLabel>
+        <relationshipName>CRM_Reports</relationshipName>
+        <required>false</required>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Which_Report__c</fullName>
+        <externalId>false</externalId>
+        <label>Which Report</label>
+        <length>100</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>CRM Report</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>Name__c</columns>
+        <columns>Report_Name__c</columns>
+        <columns>Which_Report__c</columns>
+        <columns>CREATED_DATE</columns>
+        <columns>Project__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <nameField>
+        <displayFormat>RPT-{0000000}</displayFormat>
+        <label>Report Id</label>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>CRM Reports</pluralLabel>
+    <searchLayouts/>
+    <sharingModel>ControlledByParent</sharingModel>
+</CustomObject>

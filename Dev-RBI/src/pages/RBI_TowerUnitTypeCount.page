@@ -1,0 +1,20 @@
+<!-- 
+    Type:       VF Page
+    Purpose:    Used as Inline vf page to display Unit Type and the count of Units, under Tower Detail page in Employee Application          
+
+    ---------------------------------------------------------------------------------------------------------------
+    History:
+    
+    01-May-2013     Created		Tugboat Info Solutions Pvt. Ltd
+
+-->
+<apex:page standardController="Tower__c" extensions="RBI_TowerUnittypeCount" standardStylesheets="false" >
+	<apex:form >
+		<apex:pageBlock >
+			<apex:pageBlockTable value="{!floorWrapForPDF}" var="u" >
+				<apex:column headervalue="Unit Type" value="{!u.unitType}" /> 
+				<apex:column headervalue="Total Units" value="{!u.noOfUnits }" />
+			</apex:pageBlockTable>
+		</apex:pageBlock>
+	</apex:form>
+</apex:page>

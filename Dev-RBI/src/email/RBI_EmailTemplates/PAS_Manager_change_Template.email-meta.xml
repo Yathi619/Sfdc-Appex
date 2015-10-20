@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>This template is used to send email when the PAS Manager on the project is changed</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>PAS Manager change Template</name>
+    <style>none</style>
+    <subject>Assigned to {!Project__c.Project_Name__c}</subject>
+    <type>text</type>
+</EmailTemplate>

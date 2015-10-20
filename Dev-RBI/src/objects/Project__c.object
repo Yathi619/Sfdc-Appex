@@ -1,0 +1,2186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <enableActivities>true</enableActivities>
+    <enableEnhancedLookup>true</enableEnhancedLookup>
+    <enableFeeds>true</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableReports>true</enableReports>
+    <fields>
+        <fullName>Actual_No_of_Towers__c</fullName>
+        <externalId>false</externalId>
+        <label>Actual No of Towers</label>
+        <summaryForeignKey>Tower__c.Project__c</summaryForeignKey>
+        <summaryOperation>count</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Actual_Site_Land_Area__c</fullName>
+        <externalId>false</externalId>
+        <label>Actual Site Land Area</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Aerobic_Spa__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Aerobic / Spa</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Allowed_FSI__c</fullName>
+        <externalId>false</externalId>
+        <label>Allowed FSI</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Amphitheatre__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Amphitheatre</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Approx_No_of_Units__c</fullName>
+        <externalId>false</externalId>
+        <label>Approx. No. of Units</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Architect_Contractor_Address__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(ISBLANK(Architect_Id__r.BillingStreet) , &apos;&apos; , Architect_Id__r.BillingStreet &amp; &apos;,&apos;)  &amp; IF(ISBLANK( Architect_Id__r.BillingCity), &apos;&apos;, Architect_Id__r.BillingCity &amp; &apos;,&apos;) &amp;  IF(ISBLANK(Architect_Id__r.BillingState), &apos;&apos; , Architect_Id__r.BillingState &amp; &apos;,&apos; ) &amp; IF(ISBLANK(Architect_Id__r.BillingCountry), &apos;&apos; , Architect_Id__r.BillingCountry &amp; &apos;,&apos;) &amp; IF(ISBLANK(Architect_Id__r.BillingPostalCode), &apos;&apos; , Architect_Id__r.BillingPostalCode)</formula>
+        <label>Architect/Contractor Address</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Architect_Id__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Architect Id</label>
+        <referenceTo>Account</referenceTo>
+        <relationshipLabel>Projects (Architect Id)</relationshipLabel>
+        <relationshipName>Projects1</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Architect_Name__c</fullName>
+        <externalId>false</externalId>
+        <formula>Architect_Id__r.Name</formula>
+        <label>Architect Name</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Architect_s_Registration_Number__c</fullName>
+        <externalId>false</externalId>
+        <formula>Architect_Id__r.Registration_Number__c</formula>
+        <label>Architect&apos;s Registration Number</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Assigned_to_city__c</fullName>
+        <externalId>false</externalId>
+        <label>Assigned to city</label>
+        <picklist>
+            <picklistValues>
+                <fullName>NCR</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>MMR</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Pune</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Bangalore</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Badminton_Court__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Badminton Court</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Bank_ATM__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Bank ATM</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Basketball_Post__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Basketball Post</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Brochre_Address_Detail__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(ISBLANK(Brochure_Address_Line_1__c) , &apos;&apos; , Brochure_Address_Line_1__c &amp; &apos;,&apos;) &amp; IF(ISBLANK(  Brochure_Address_Line_2__c), &apos;&apos;,  Brochure_Address_Line_2__c &amp; &apos;,&apos;) &amp; IF(ISBLANK(TEXT(Brochure_City__c)), &apos;&apos; , (TEXT(Brochure_City__c) &amp; &apos;,&apos; ) &amp; IF(ISBLANK(TEXT( Brochure_State__c)), &apos;&apos; , TEXT( Brochure_State__c) &amp; &apos;,&apos;) &amp; IF(ISBLANK( Brochure_Zipcode__c), &apos;&apos; ,Brochure_Zipcode__c))</formula>
+        <label>Brochre Address Detail</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Brochure_Address_Line_1__c</fullName>
+        <externalId>false</externalId>
+        <label>Brochure Address Line 1</label>
+        <length>75</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Brochure_Address_Line_2__c</fullName>
+        <externalId>false</externalId>
+        <label>Brochure Address Line 2</label>
+        <length>75</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Brochure_City__c</fullName>
+        <externalId>false</externalId>
+        <label>Brochure City</label>
+        <picklist>
+            <controllingField>Brochure_State__c</controllingField>
+            <picklistValues>
+                <fullName>Agra</fullName>
+                <controllingFieldValues>Uttar Pradesh</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Alwar</fullName>
+                <controllingFieldValues>Rajasthan</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Bahadurgarh</fullName>
+                <controllingFieldValues>Haryana</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Bangalore</fullName>
+                <controllingFieldValues>Karnataka</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Bhiwani</fullName>
+                <controllingFieldValues>Rajasthan</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Bhiwari</fullName>
+                <controllingFieldValues>Haryana</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Chandigarh</fullName>
+                <controllingFieldValues>Chandigarh</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Chennai</fullName>
+                <controllingFieldValues>Tamil Nadu</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Delhi</fullName>
+                <controllingFieldValues>Delhi</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Dharuheda</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Dharuhera</fullName>
+                <controllingFieldValues>Haryana</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Faridabad</fullName>
+                <controllingFieldValues>Haryana</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Ghaziabad</fullName>
+                <controllingFieldValues>Uttar Pradesh</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Greater Noida</fullName>
+                <controllingFieldValues>Uttar Pradesh</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Gurgaon</fullName>
+                <controllingFieldValues>Haryana</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Hyderabad</fullName>
+                <controllingFieldValues>Andhra Pradesh</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Karnal</fullName>
+                <controllingFieldValues>Haryana</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Manesar</fullName>
+                <controllingFieldValues>Haryana</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Meerut</fullName>
+                <controllingFieldValues>Uttar Pradesh</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Mohali</fullName>
+                <controllingFieldValues>Punjab</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Mumbai</fullName>
+                <controllingFieldValues>Maharashtra</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Neemrana</fullName>
+                <controllingFieldValues>Rajasthan</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Noida</fullName>
+                <controllingFieldValues>Uttar Pradesh</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Palwal</fullName>
+                <controllingFieldValues>Haryana</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Panchkula</fullName>
+                <controllingFieldValues>Haryana</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Panipat</fullName>
+                <controllingFieldValues>Haryana</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Pune</fullName>
+                <controllingFieldValues>Maharashtra</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Rewari</fullName>
+                <controllingFieldValues>Haryana</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Rohtak</fullName>
+                <controllingFieldValues>Haryana</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Secunderabad</fullName>
+                <controllingFieldValues>Andhra Pradesh</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Sonepat</fullName>
+                <controllingFieldValues>Haryana</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Brochure_State__c</fullName>
+        <externalId>false</externalId>
+        <label>Brochure State</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Andaman &amp; Nicobar</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Andhra Pradesh</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Arunachal Pradesh</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Assam</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Bihar</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Chandigarh</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Chattisgarh</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Dadra &amp; Nagar</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Daman &amp; Diu</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Delhi</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Goa</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Gujrat</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Haryana</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Himachal Pradesh</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Jammu &amp; Kashmir</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Jharkhand</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Karnataka</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Kerala</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Lakshdweep</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Madhya Pradesh</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Maharashtra</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Manipur</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Meghalaya</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Mizoram</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Nagaland</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Orissa</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Pondichery</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Punjab</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Rajasthan</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Sikkim</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Tamil Nadu</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Tripura</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Uttaranchal</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Uttar Pradesh</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>West Bengal</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Brochure_Zipcode__c</fullName>
+        <externalId>false</externalId>
+        <label>Brochure Zipcode</label>
+        <length>6</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Children_Play_Area__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Children Play Area</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>City__c</fullName>
+        <externalId>false</externalId>
+        <label>City</label>
+        <length>50</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Clubhouse__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Clubhouse</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Commercial_Area_No_of_shops__c</fullName>
+        <externalId>false</externalId>
+        <label>If Mixed,Commercial Area / No. of shops</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Completion_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Completion Date</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Constitution__c</fullName>
+        <externalId>false</externalId>
+        <label>Constitution</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Joint Venture</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Subsidiary</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Construction_Start_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Construction Start Date</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Contact_Person__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Contact Person</label>
+        <referenceTo>Contact</referenceTo>
+        <relationshipLabel>Projects</relationshipLabel>
+        <relationshipName>Projects</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Convenience_Store__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Convenience Store</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Count_Of_Customers__c</fullName>
+        <description>Used in FollowUpVisit Batch</description>
+        <externalId>false</externalId>
+        <label>Count Of Customers</label>
+        <summaryForeignKey>Customer_Projects__c.Project_Id__c</summaryForeignKey>
+        <summaryOperation>count</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Daycare_Cresche__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Day Care / Cresche</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Developer_Address__c</fullName>
+        <description>This field is used in reports.</description>
+        <externalId>false</externalId>
+        <formula>IF(ISBLANK(Developer_Id__r.BillingStreet) , &apos;&apos; , Developer_Id__r.BillingStreet &amp; &apos;,&apos;) &amp; IF(ISBLANK( Developer_Id__r.BillingCity), &apos;&apos;, Developer_Id__r.BillingCity &amp; &apos;,&apos;) &amp; IF(ISBLANK(Developer_Id__r.BillingState), &apos;&apos; , Developer_Id__r.BillingState &amp; &apos;,&apos; ) &amp; IF(ISBLANK(Developer_Id__r.BillingPostalCode ), &apos;&apos; ,Developer_Id__r.BillingPostalCode  &amp; &apos;,&apos;) &amp; IF(ISBLANK(Developer_Id__r.BillingCountry), &apos;&apos; ,Developer_Id__r.BillingCountry)</formula>
+        <label>Developer Address</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Developer_Bank_AC_No__c</fullName>
+        <description>Field to store the developer&apos;s bank account number</description>
+        <externalId>false</externalId>
+        <label>Developer Bank A/C No</label>
+        <length>50</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Developer_Bank_Name__c</fullName>
+        <description>Field to store the Bank Name of the Developer</description>
+        <externalId>false</externalId>
+        <label>Developer Bank Name</label>
+        <length>255</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Developer_City__c</fullName>
+        <description>Used in Project Trigger Handler</description>
+        <externalId>false</externalId>
+        <formula>Developer_Id__r.BillingCity</formula>
+        <label>Developer City</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Developer_Correspondence_Address__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(ISBLANK(Developer_Id__r.ShippingStreet) , &apos;&apos; , Developer_Id__r.ShippingStreet &amp; &apos;,&apos;) &amp; IF(ISBLANK( Developer_Id__r.ShippingCity), &apos;&apos;, Developer_Id__r.ShippingCity &amp; &apos;,&apos;) &amp; IF(ISBLANK(Developer_Id__r.ShippingState), &apos;&apos; , Developer_Id__r.ShippingState &amp; &apos;,&apos; ) &amp; IF(ISBLANK(Developer_Id__r.ShippingPostalCode), &apos;&apos; ,Developer_Id__r.ShippingPostalCode &amp; &apos;,&apos;) &amp; IF(ISBLANK(Developer_Id__r.ShippingCountry), &apos;&apos; ,Developer_Id__r.ShippingCountry)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Developer Correspondence Address</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Developer_Id__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Developer Id</label>
+        <referenceTo>Account</referenceTo>
+        <relationshipLabel>Projects</relationshipLabel>
+        <relationshipName>Projects</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Developer_Name_Cust_Provided__c</fullName>
+        <description>Stores the Developer Name as entered by the Customer</description>
+        <externalId>false</externalId>
+        <label>Developer Name (Cust. Provided)</label>
+        <length>255</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Developer_Name__c</fullName>
+        <externalId>false</externalId>
+        <formula>Developer_Id__r.Name</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Developer Name</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Developer_Phone_Cust_Provided__c</fullName>
+        <description>Stores the phone number of the developer provided by the Customer</description>
+        <externalId>false</externalId>
+        <label>Developer Phone (Cust. Provided)</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Phone</type>
+    </fields>
+    <fields>
+        <fullName>Document_Received_by__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Captures who received Document.</description>
+        <externalId>false</externalId>
+        <label>Document Received by</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Projects2</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Document_Received_date__c</fullName>
+        <description>Capture Document Received date for the project.</description>
+        <externalId>false</externalId>
+        <label>Document Received date</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Expected_Possesion_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Expected Possesion Date</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>FAR_Approved_as_per_Plan__c</fullName>
+        <externalId>false</externalId>
+        <label>FAR Approved as per Plan</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FAR_constructed__c</fullName>
+        <externalId>false</externalId>
+        <label>FAR constructed</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FSI_Deviation__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF((FAR_constructed__c  &gt;  FAR_Approved_as_per_Plan__c ), &apos;Yes&apos;, &apos;No&apos;)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>FSI Deviation</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>First_Report_Provided__c</fullName>
+        <externalId>false</externalId>
+        <label>First Report Provided</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Yes</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>No</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Gymnasium__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Gymnasium</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Helipad__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Helipad</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Land_Area_as_per_documents__c</fullName>
+        <externalId>false</externalId>
+        <label>Land Area (as per documents)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Land_Area_as_per_patta__c</fullName>
+        <externalId>false</externalId>
+        <label>Land Area (as per patta)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Land_Area_in_acres__c</fullName>
+        <description>Stores the Land Area used for the development of the project</description>
+        <externalId>false</externalId>
+        <label>Land Area (in Acres)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Landscaped_Pathway__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Landscaped Pathway</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Launch_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Launch Date</label>
+        <required>true</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Launched_Flag__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF( Launch_Date__c &lt; TODAY(), &apos;True&apos;, &apos;False&apos;)</formula>
+        <label>Launched Flag</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>License_Registration_Number__c</fullName>
+        <externalId>false</externalId>
+        <label>License Registration Number</label>
+        <length>50</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Major_Shareholding_Group_1__c</fullName>
+        <externalId>false</externalId>
+        <label>Major Share Hold Group</label>
+        <length>100</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Major_Shareholding_Group_2__c</fullName>
+        <externalId>false</externalId>
+        <label>Major Share Hold Group</label>
+        <length>100</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Major_Shareholding_Group_3__c</fullName>
+        <externalId>false</externalId>
+        <label>Major Share Hold Group</label>
+        <length>100</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Major_Shareholding_Group_4__c</fullName>
+        <externalId>false</externalId>
+        <label>Major Share Hold Group</label>
+        <length>100</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Medicare_Store__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Medicare / Store</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Name_of_the_Municipal_Corporation__c</fullName>
+        <externalId>false</externalId>
+        <label>Name of the Municipal Corporation</label>
+        <length>50</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Occupancy__c</fullName>
+        <externalId>false</externalId>
+        <label>Occupancy (%)</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Other_Amenities__c</fullName>
+        <externalId>false</externalId>
+        <label>Others</label>
+        <length>255</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Other_Banks_Prov_Loan_1__c</fullName>
+        <externalId>false</externalId>
+        <label>Bank Name</label>
+        <length>100</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Other_Banks_Prov_Loan_2__c</fullName>
+        <externalId>false</externalId>
+        <label>Bank Name</label>
+        <length>100</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Other_Banks_Prov_Loan_3__c</fullName>
+        <externalId>false</externalId>
+        <label>Bank Name</label>
+        <length>100</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Other_Banks_Prov_Loan_4__c</fullName>
+        <externalId>false</externalId>
+        <label>Bank Name</label>
+        <length>100</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Other_Banks_Prov_Loan_5__c</fullName>
+        <externalId>false</externalId>
+        <label>Bank Name</label>
+        <length>100</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PAS_Manager_Email__c</fullName>
+        <description>This field is updated when the PAS Manager is changed</description>
+        <externalId>false</externalId>
+        <label>PAS Manager Email</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Email</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PAS_Manager_Name__c</fullName>
+        <description>Used in RBI_AlertBatch class for Email(gives First name of the PAS Manager)</description>
+        <externalId>false</externalId>
+        <formula>Team_Leader__r.FirstName</formula>
+        <label>PAS Manager Name</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Parent_Project_Id__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Parent Project Id</label>
+        <referenceTo>Project__c</referenceTo>
+        <relationshipLabel>Projects</relationshipLabel>
+        <relationshipName>Projects</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Parent_Project_Name__c</fullName>
+        <externalId>false</externalId>
+        <formula>Parent_Project_Id__r.Project_Name__c</formula>
+        <label>Parent Project Name</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Party_Lawn__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Party Lawn</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Phone__c</fullName>
+        <externalId>false</externalId>
+        <label>Phone</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Phone</type>
+    </fields>
+    <fields>
+        <fullName>Planned_No_of_Towers__c</fullName>
+        <externalId>false</externalId>
+        <label>Planned No of Towers</label>
+        <precision>10</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Planned_Units__c</fullName>
+        <externalId>false</externalId>
+        <label>Planned Units</label>
+        <summarizedField>Tower__c.Launched_Units__c</summarizedField>
+        <summaryForeignKey>Tower__c.Project__c</summaryForeignKey>
+        <summaryOperation>sum</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Plot_Area__c</fullName>
+        <externalId>false</externalId>
+        <label>Plot Area (in Acres)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Project_Category__c</fullName>
+        <externalId>false</externalId>
+        <label>Project Category</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Mid Segment</fullName>
+                <default>true</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Affordable Segment</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Luxury Segment</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Project_LatLong__c</fullName>
+        <displayLocationInDecimal>false</displayLocationInDecimal>
+        <externalId>false</externalId>
+        <label>Project LatLong</label>
+        <required>false</required>
+        <scale>2</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Location</type>
+    </fields>
+    <fields>
+        <fullName>Project_Locality__c</fullName>
+        <externalId>false</externalId>
+        <label>Project Locality</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Low Income</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Lower Middle Class</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Middle Class</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Upper Class</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Posh</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Project_Name__c</fullName>
+        <externalId>false</externalId>
+        <label>Project Name</label>
+        <length>100</length>
+        <required>true</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Project_Phase__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Project Phase</label>
+        <referenceTo>Project__c</referenceTo>
+        <relationshipLabel>Projects (Project Phase)</relationshipLabel>
+        <relationshipName>Projects1</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Project_Photos__c</fullName>
+        <externalId>false</externalId>
+        <formula>IMAGE(&apos;/servlet/servlet.FileDownload?file=015900000013UWx&apos;,&quot;&quot;)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Project Photos</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Project_Region__c</fullName>
+        <externalId>false</externalId>
+        <label>Project Region</label>
+        <picklist>
+            <picklistValues>
+                <fullName>East</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>North</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>South</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>West</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Project_Rejected__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Field to indicated whether the project created by Customer has been approved or rejected</description>
+        <externalId>false</externalId>
+        <label>Project Rejected?</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Project_Type__c</fullName>
+        <externalId>false</externalId>
+        <label>Project Type</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Apartment</fullName>
+                <default>true</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Commercial / Mall</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Row House</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Villa</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Mixed</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Commercial Mall</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>MultiselectPicklist</type>
+        <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Query_L_End_Date__c</fullName>
+        <description>End Date for querying the Launched Projects</description>
+        <externalId>false</externalId>
+        <label>Query_L_End_Date</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Query_L_Start_Date__c</fullName>
+        <description>Start date for querying the Launched Projects</description>
+        <externalId>false</externalId>
+        <label>Query_L_Start_Date</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>RBI_Created_By_Batch_Job__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>RBI Created By Batch Job</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Rejection_Remark__c</fullName>
+        <description>This captures the Rejection Remark from technical manager(Entered only for projects created by customer).</description>
+        <externalId>false</externalId>
+        <label>Rejection Remark</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Senior_Citizen_Facilities__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Senior Citizen Facilities</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Site_Address_Actual__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(ISBLANK(Site_Address_Line_1__c) , &apos;&apos; , Site_Address_Line_1__c &amp; &apos;,&apos;) &amp; IF(ISBLANK(Site_Address_Line_2__c), &apos;&apos;, Site_Address_Line_2__c &amp; &apos;,&apos;) &amp; IF(ISBLANK(Site_Address_Landmark__c), &apos;&apos; , Site_Address_Landmark__c &amp; &apos;,&apos; ) &amp; IF(ISBLANK(TEXT(Site_Address_City__c )), &apos;&apos; ,TEXT(Site_Address_City__c) &amp; &apos;,&apos;) &amp; IF(ISBLANK(TEXT(  Site_Address_State__c)), &apos;&apos; ,TEXT(  Site_Address_State__c) &amp; &apos;,&apos;) &amp; IF(ISBLANK(Site_Address_zipcode__c), &apos;&apos; ,Site_Address_zipcode__c)</formula>
+        <label>Site Address Actual</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Site_Address_City__c</fullName>
+        <externalId>false</externalId>
+        <label>Site Address City</label>
+        <picklist>
+            <controllingField>Site_Address_State__c</controllingField>
+            <picklistValues>
+                <fullName>Agra</fullName>
+                <controllingFieldValues>Uttar Pradesh</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Ahmedabad</fullName>
+                <controllingFieldValues>Gujrat</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Alwar</fullName>
+                <controllingFieldValues>Rajasthan</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Bahadurgarh</fullName>
+                <controllingFieldValues>Haryana</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Bangalore</fullName>
+                <controllingFieldValues>Karnataka</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Bhiwani</fullName>
+                <controllingFieldValues>Rajasthan</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Bhiwari</fullName>
+                <controllingFieldValues>Haryana</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Chandigarh</fullName>
+                <controllingFieldValues>Chandigarh</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Chennai</fullName>
+                <controllingFieldValues>Tamil Nadu</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Delhi</fullName>
+                <controllingFieldValues>Delhi</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Dharuheda</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Dharuhera</fullName>
+                <controllingFieldValues>Haryana</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Faridabad</fullName>
+                <controllingFieldValues>Haryana</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Gachar</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Ghaziabad</fullName>
+                <controllingFieldValues>Uttar Pradesh</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Ghazipur</fullName>
+                <controllingFieldValues>Uttar Pradesh</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Greater Noida</fullName>
+                <controllingFieldValues>Uttar Pradesh</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Gurgaon</fullName>
+                <controllingFieldValues>Haryana</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Hyderabad</fullName>
+                <controllingFieldValues>Andhra Pradesh</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Karnal</fullName>
+                <controllingFieldValues>Haryana</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Manesar</fullName>
+                <controllingFieldValues>Haryana</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Meerut</fullName>
+                <controllingFieldValues>Uttar Pradesh</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Mohali</fullName>
+                <controllingFieldValues>Punjab</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Mumbai</fullName>
+                <controllingFieldValues>Maharashtra</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Neemrana</fullName>
+                <controllingFieldValues>Rajasthan</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Noida</fullName>
+                <controllingFieldValues>Uttar Pradesh</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Palwal</fullName>
+                <controllingFieldValues>Haryana</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Panchkula</fullName>
+                <controllingFieldValues>Haryana</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Panipat</fullName>
+                <controllingFieldValues>Haryana</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Pune</fullName>
+                <controllingFieldValues>Maharashtra</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Rewari</fullName>
+                <controllingFieldValues>Haryana</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Rohtak</fullName>
+                <controllingFieldValues>Haryana</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Secunderabad</fullName>
+                <controllingFieldValues>Andhra Pradesh</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Sonepat</fullName>
+                <controllingFieldValues>Haryana</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Site_Address_Landmark__c</fullName>
+        <externalId>false</externalId>
+        <label>Site Address Landmark</label>
+        <length>50</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Site_Address_Line_1__c</fullName>
+        <externalId>false</externalId>
+        <label>Site Address Line 1</label>
+        <length>75</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Site_Address_Line_2__c</fullName>
+        <externalId>false</externalId>
+        <label>Site Address Line 2</label>
+        <length>75</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Site_Address_State__c</fullName>
+        <externalId>false</externalId>
+        <label>Site Address State</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Andaman &amp; Nicobar</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Andhra Pradesh</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Arunachal Pradesh</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Assam</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Bihar</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Chandigarh</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Chattisgarh</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Dadra &amp; Nagar</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Daman &amp; Diu</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Delhi</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Goa</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Gujrat</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Haryana</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Himachal Pradesh</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Jammu &amp; Kashmir</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Jharkhand</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Karnataka</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Kerala</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Lakshdweep</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Madhya Pradesh</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Maharashtra</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Manipur</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Meghalaya</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Mizoram</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Nagaland</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Orissa</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Pondichery</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Punjab</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Rajasthan</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Sikkim</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Tamil Nadu</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Tripura</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Uttaranchal</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Uttar Pradesh</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>West Bengal</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Site_Address_zipcode__c</fullName>
+        <externalId>false</externalId>
+        <label>Site Address zipcode</label>
+        <length>6</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Site_Contact_NameDesg__c</fullName>
+        <externalId>false</externalId>
+        <label>Name/Designation of Person</label>
+        <length>100</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Site_Visit_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Last Visit Date</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Sports_Area__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Sports Area</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Status__c</fullName>
+        <description>Field to hold the status of the project</description>
+        <externalId>false</externalId>
+        <label>Status</label>
+        <picklist>
+            <picklistValues>
+                <fullName>PDS</fullName>
+                <default>true</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>PSS</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>PMR</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>PQR</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Surveyor_Email__c</fullName>
+        <description>This field is updated by workflow when the surveyor is changed in the Project</description>
+        <externalId>false</externalId>
+        <label>Surveyor Email</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Email</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Surveyor__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>This field is to capture Surveyor from User Object.</description>
+        <externalId>false</externalId>
+        <label>Surveyor</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Projects</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Swimming_Pool__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Swimming Pool</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>TDR_Deviation__c</fullName>
+        <externalId>false</externalId>
+        <formula>&apos;Y&apos;</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>TDR Deviation</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>TDR_Permitted__c</fullName>
+        <externalId>false</externalId>
+        <label>TDR Permitted</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>TDR_Proposed__c</fullName>
+        <externalId>false</externalId>
+        <label>TDR Proposed</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Team_Lead_Email__c</fullName>
+        <externalId>false</externalId>
+        <formula>Team_Leader__r.Email</formula>
+        <label>Team Lead Email</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Team_Leader__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Used when (TSR or DVU)visit record is created.</description>
+        <externalId>false</externalId>
+        <label>Team Leader</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Projects1</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Technical_Head_Email__c</fullName>
+        <externalId>false</externalId>
+        <label>Technical Head Email</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Email</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Technical_Head__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Technical Head</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>TechnicalHead</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Tennis_Court__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Tennis Court</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>To_Be_Approved__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>This is flag which will determine whether a project needs to be displayed to the Customer or not. If it is Y,, then it will not be displayed to any Customer.</description>
+        <externalId>false</externalId>
+        <label>To Be Approved</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Total_Units__c</fullName>
+        <externalId>false</externalId>
+        <label>Total Units</label>
+        <summarizedField>Tower__c.Total_Units__c</summarizedField>
+        <summaryForeignKey>Tower__c.Project__c</summaryForeignKey>
+        <summaryOperation>sum</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Unique_Key__c</fullName>
+        <externalId>false</externalId>
+        <formula>LOWER( Project_Name__c &amp; TEXT( Site_Address_City__c )  &amp;  Developer_Id__r.Name )</formula>
+        <label>Unique Key</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Utilized_FSI__c</fullName>
+        <externalId>false</externalId>
+        <label>Utilized FSI</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>construction_Status__c</fullName>
+        <externalId>false</externalId>
+        <label>Construction Status</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Completed</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Underconstruction</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Halted (Builder)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Halted (Court)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Halted (External)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Not Started</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+    </fields>
+    <label>Project</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>Project_Name__c</columns>
+        <columns>Site_Address_Line_1__c</columns>
+        <columns>Site_Address_Line_2__c</columns>
+        <columns>Site_Address_City__c</columns>
+        <columns>Site_Address_State__c</columns>
+        <columns>Site_Address_zipcode__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <nameField>
+        <displayFormat>PRJ-{000000000}</displayFormat>
+        <label>Project ID</label>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Projects</pluralLabel>
+    <searchLayouts>
+        <customTabListAdditionalFields>Project_Name__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Project_Type__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Launch_Date__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>construction_Status__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Site_Address_Actual__c</customTabListAdditionalFields>
+        <lookupDialogsAdditionalFields>Project_Name__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Site_Address_Actual__c</lookupDialogsAdditionalFields>
+        <searchFilterFields>Project_Name__c</searchFilterFields>
+        <searchFilterFields>Site_Address_Line_1__c</searchFilterFields>
+        <searchFilterFields>Site_Address_Line_2__c</searchFilterFields>
+        <searchFilterFields>Site_Address_Landmark__c</searchFilterFields>
+        <searchFilterFields>Site_Address_City__c</searchFilterFields>
+        <searchFilterFields>Site_Address_State__c</searchFilterFields>
+        <searchFilterFields>Site_Address_zipcode__c</searchFilterFields>
+        <searchResultsAdditionalFields>Project_Name__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Site_Address_City__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Site_Address_Line_1__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Site_Address_Line_2__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Site_Address_State__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Site_Address_zipcode__c</searchResultsAdditionalFields>
+    </searchLayouts>
+    <sharingModel>ReadWrite</sharingModel>
+    <validationRules>
+        <fullName>Brochure_Zip_Code_Validation_Rule</fullName>
+        <active>true</active>
+        <errorConditionFormula>IF (NOT(ISBLANK(Brochure_Zipcode__c )), 
+    NOT(ISNUMBER(Brochure_Zipcode__c )),
+NULL)</errorConditionFormula>
+        <errorDisplayField>Brochure_Zipcode__c</errorDisplayField>
+        <errorMessage>Please enter correct zip code which contains only numbers</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Construction_Start_Date_Shouldnotbe_Null</fullName>
+        <active>true</active>
+        <description>Construction Start Date should not be NULL if Construction status is Not  equal to &quot;Not Started</description>
+        <errorConditionFormula>AND 
+( 
+OR 
+( 
+ISPICKVAL(construction_Status__c, &quot;Completed&quot;), 
+ISPICKVAL(construction_Status__c, &quot;Underconstruction&quot;) 
+),
+OR ( 
+  ISBLANK(Construction_Start_Date__c)  
+)
+)</errorConditionFormula>
+        <errorMessage>You should enter construction start date if construction status of project is other than &apos;Not Started&apos;</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Only_ZTH_should_be_able_to_edit</fullName>
+        <active>true</active>
+        <description>Only ZTH should be able to edit  Document Received date</description>
+        <errorConditionFormula>AND(  NOT(ISCHANGED( Document_Received_by__c ) ) , ISCHANGED(  Document_Received_date__c ) ,$User.Id  &lt;&gt;  Technical_Head__c)</errorConditionFormula>
+        <errorDisplayField>Document_Received_date__c</errorDisplayField>
+        <errorMessage>Only Zonal Technical Head  should be able to edit Document Received Date</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Site_Address_Zip_Code_Validation_Rule</fullName>
+        <active>true</active>
+        <errorConditionFormula>IF (NOT(ISBLANK(Site_Address_zipcode__c )), 
+    NOT(ISNUMBER(Site_Address_zipcode__c )),
+NULL)</errorConditionFormula>
+        <errorDisplayField>Site_Address_zipcode__c</errorDisplayField>
+        <errorMessage>Please enter correct zip code which contains only numbers</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Site_City_Validation_Rule</fullName>
+        <active>true</active>
+        <description>This is used to make the site city mandatory for the project.</description>
+        <errorConditionFormula>ISBLANK(TEXT(Site_Address_City__c))</errorConditionFormula>
+        <errorDisplayField>Site_Address_City__c</errorDisplayField>
+        <errorMessage>Please enter the project site city.</errorMessage>
+    </validationRules>
+    <webLinks>
+        <fullName>Upload_Images</fullName>
+        <availability>online</availability>
+        <displayType>button</displayType>
+        <linkType>url</linkType>
+        <masterLabel>Upload Images</masterLabel>
+        <openType>replace</openType>
+        <protected>false</protected>
+        <url>/apex/news3object?ProjectId={!Project__c.Id}</url>
+    </webLinks>
+    <webLinks>
+        <fullName>View_Kleeto_Docs</fullName>
+        <availability>online</availability>
+        <displayType>button</displayType>
+        <hasMenubar>false</hasMenubar>
+        <hasScrollbars>true</hasScrollbars>
+        <hasToolbar>false</hasToolbar>
+        <height>600</height>
+        <isResizable>true</isResizable>
+        <linkType>url</linkType>
+        <masterLabel>View Kleeto Docs</masterLabel>
+        <openType>newWindow</openType>
+        <position>none</position>
+        <protected>false</protected>
+        <showsLocation>false</showsLocation>
+        <showsStatus>false</showsStatus>
+        <url>/apex/RBI_ViewKleetoDocs?id={!Project__c.Id}</url>
+    </webLinks>
+</CustomObject>

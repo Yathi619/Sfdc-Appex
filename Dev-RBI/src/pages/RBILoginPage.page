@@ -1,0 +1,126 @@
+<!-- 
+    Type:       VF Page
+    Purpose:    Used to log the customer in to the Customer Portal. 
+
+    ---------------------------------------------------------------------------------------------------------------
+    History:
+    
+    29-Apr-2013     Created     Tugboat Info Solutions Pvt. Ltd
+
+-->
+<apex:page showHeader="false" standardStylesheets="false" sidebar="false" controller="RBI_SiteLoginController">
+    
+    <head>
+        <title>Realty BI Customer Portal</title>
+        <style>
+            #login-box {
+                width:690px;
+                height: 404px;
+                padding: 20px 76px 0 60px;
+                color: #1A4862;
+                font: 14px Biondi, Arial, Helvetica, sans-serif;
+                background: url(/resource/1365588578000/RBI_Logout_Page) no-repeat left top;
+                }
+            #logo {
+                padding: 130px 0px 0px 0px;
+                background: url(/resource/1377694700000/RBI_Logo) no-repeat top;
+                }
+            
+            #login-box img {
+                border:none;
+                }
+    
+            #login-box h2 {
+                padding:0;
+                margin:0;
+                color: #ebebeb;
+                font: bold 44px "Calibri", Arial;
+                }
+    
+            #login-box-name {
+                float: left;
+                display:inline;
+                width:80px;
+                text-align: right;
+                padding: 10px 2px 0px 190px;
+                margin:auto;
+                }
+    
+            #login-box-field {
+                float: left;
+                display:inline;
+                width:230px;
+                margin:auto;
+                padding:4px 0px 2px 0px;     
+                }
+    
+            .form-login  {
+                width: 205px;
+                padding: 6px 4px 6px 3px;
+                border: 1px solid #ffffff;
+                background-color:#45ADC8;
+                font-size: 14px;
+                color: #ebebeb;
+                margin:auto;
+                }
+    
+            .login-box-options  {
+                clear:both;
+                padding-left:59px;
+                font-size: 11px;
+                }
+    
+            .login-box-options a {
+                color: #1A4862;
+                font-size: 11px;
+                }
+            </style>
+            
+            <!-- <script>
+                function logincall(){
+                    alert('hi');
+                    login();
+                }
+            </script>  -->
+            
+            <script type='text/javascript'>
+                function noenter(ev)  {
+                    if (window.event && window.event.keyCode == 13 || ev.which == 13) {
+                    javascriptLogin();
+                    return false;
+                 } else {
+                      return true;
+                 }
+             }  
+            </script>  
+    </head>
+    
+    <body>
+        <div style="padding-top: 100px;">
+            <div id="login-box" style="margin: auto; text-align: center;">
+            <div id="logo"></div>
+                <apex:form id="loginForm" forceSSL="true" style="margin: auto;">
+                    <apex:actionFunction name="javascriptLogin" action="{!login}" />
+                    <div id="label-name" style="margin:-51px 0px 40px 145px;width:416px;color: #ffffff; font: 15px biondi;">Welcome to Realty BI Customer Portal (v1)</div>
+                    <div id="login-box-name" style="margin:auto; ">{!$Label.site.username}</div><div id="login-box-field" style="margin:auto;"><apex:inputText styleClass="form-login" id="username" value="{!username}" size="30"/></div>
+                    <div id="login-box-name">{!$Label.site.password}</div><div id="login-box-field"><apex:inputSecret styleClass="form-login" id="password" value="{!password}" onkeypress="return noenter(event);" /></div>
+                    <br/>
+                    <span class="login-box-options">
+                        <a href="{!$Site.Prefix}/apex/ForgotPassword" style="margin:auto; padding:0px 70px 0px 188px;">Forgot password?</a>
+                    </span>
+                    <br/><br/>
+                    <apex:commandLink action="{!login}" style="text-decoration: none">
+                        <div style="width: 100%; text-align: center; width: 100%; height: 0px; text-align: center; padding-left: 76px;padding-top: 10px;text-decoration: none;">
+                        <div id="label-name" style="background:url('{!$Resource.RBI_Login_Button}') no-repeat; padding: 11px;text-align: center;width: 90px; color: white; text-decoration: none; font: 14px biondi; margin: auto; padding-right: 80px;">Login</div></div>
+                    </apex:commandLink>
+                    
+                    <div id="label-name" style="margin-top:109px; padding-left: 0px; color: #1A4862; font: 11px biondi;">© 2013 Realty Business Intelligence
+                    <a href="{!$Site.Prefix}/apex/RBI_Terms_Conditions" target="_blank" style="margin:auto; padding:0px 0px 0px 306px;">Terms and Conditions</a>
+                    </div>
+                    
+                </apex:form> 
+            </div>
+        </div>
+    </body>
+
+</apex:page>

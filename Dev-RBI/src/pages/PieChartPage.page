@@ -1,0 +1,172 @@
+<apex:page controller="RBI_PortalHomePageClass" title="Region wise Projects" showHeader="false" sidebar="false">
+<apex:stylesheet value="{!$Resource.RBI_RealtyCss}"/>
+<apex:stylesheet value="{!URLFOR($Resource.RBI_PDFHeaderFooter, 'PDFDocumentStyle.css')}"/>
+<apex:form >
+	<apex:outputpanel rendered="{!alertCount > 0}">
+		<!-- <apex:image value="{!$Resource.RBI_Alert}" width="40" height="15"/>&nbsp; <b>You have {!alertCount} Project(s) waiting for your approval!</b> -->
+		<apex:image value="{!$Resource.RBI_Alert}" />&nbsp; <b>You have {!alertCount} Project(s) waiting for your approval!</b>
+	</apex:outputpanel>
+	<apex:pageblock title="Home">
+		<apex:pageBlockSection id="thePage"  columns="3" >
+		
+<!-- 			<apex:outputLabel value="Region-wise Projects"  style="font-weight:bold">
+    			<apex:chart height="200" width="300" data="{!pieData}">
+        			<apex:pieSeries dataField="data" labelField="name"/>
+        				<apex:legend position="right"/>
+    			</apex:chart>
+    		</apex:outputLabel>
+    		
+    		<apex:outputLabel value="City-wise Projects"  style="font-weight:bold;align:center">
+        		<apex:chart height="200" width="300" data="{!pieData}">
+        			<apex:pieSeries dataField="data" labelField="name"/>
+        				<apex:legend position="right"/>
+    			</apex:chart>
+    		</apex:outputLabel> -->
+    			
+     		<apex:outputLabel value="Regionwise PAS"  style="font-weight:bold">
+    			<apex:chart height="200" width="400" data="{!BarDataPAS}" colorset="#0b6fce,#EC1F71">
+        			<apex:legend position="left"/>
+        				<apex:axis type="Numeric" position="left" fields="data,data1" title="Projects" grid="false">
+        				<!-- <apex:chartLabel />  -->
+        				 </apex:axis>       				
+        				<apex:axis type="Category" position="bottom" fields="name" title="Regions">
+        				<apex:chartLabel rotate="315"/>
+        				</apex:axis>
+        			<apex:barSeries orientation="vertical" axis="left" xField="name" yField="data,data1" title="My PAS,Total PAS">
+            			<apex:chartTips height="20" width="120"/>
+            			<!-- <apex:chartLabel display="outside" field="data2" /> -->
+        			</apex:barSeries>
+        			
+          		</apex:chart>
+   			</apex:outputLabel>
+   			<apex:outputLabel value="Regionwise PMS"  style="font-weight:bold;">
+    			<apex:chart height="200" width="400" data="{!BarDataPMS}" colorset="#0b6fce,#EC1F71">
+        			<apex:legend position="left"/>
+        				<apex:axis type="Numeric" position="left" fields="data,data1" title="Projects" grid="false" dashsize="2">
+        				<!-- <apex:chartLabel />  -->
+        				 </apex:axis>       				
+        				<apex:axis type="Category" position="bottom" fields="name" title="Regions">
+        				<apex:chartLabel rotate="315"/>
+        				</apex:axis>
+        			<apex:barSeries orientation="vertical" axis="left" xField="name" yField="data,data1" title="My PMS,Total PMS">
+            			<apex:chartTips height="20" width="120"/>
+            		<!-- 	<apex:chartLabel display="outside" field="data2" /> -->
+        			</apex:barSeries>
+        			
+          		</apex:chart>
+   			</apex:outputLabel>
+   			
+    	</apex:pageBlockSection>
+    	</apex:pageblock>
+    	    	
+    	<!-- <apex:pageBlockSection >
+    		<apex:pageBlockTable value="{!CityTableData}" var="cd">
+        		<apex:column headervalue="Project City" value="{!cd.Cityname}" />
+        		<apex:column headervalue="Total PAS" value="{!cd.TotalPAS}" />
+				<apex:column headervalue="Subscribed PAS" value="{!cd.custtotalPAS}" />
+				<apex:column headervalue="My PAS Coverage" value="{!cd.CovrgPAS}" />
+        		<apex:column headervalue="Total PMS" value="{!cd.TotalPMS}" />
+        		<apex:column headervalue="Subscribed PMS" value="{!cd.custtotalPMS}" />
+        		<apex:column headervalue="My PMS Coverage" value="{!cd.CovrgPMS}" />        		
+		   	</apex:pageBlockTable>    	
+    	</apex:pageBlockSection> -->
+    	<apex:pageblock >
+    	<table cellspacing="0" border="1" height="100%" width="100%"> 	
+	 		<tr>
+			   	<td style="border-collapse: collapse; background-color:#99CCFF; font-size: 10pt;" colspan="1"></td>
+			    <td valign="middle" align="center" style="border-collapse: collapse; background-color:#99CCFF; font-size: 10pt;" colspan="3"><b>Project Approval</b></td>
+			    <td valign="middle" align="center" style="border-collapse: collapse; background-color:#99CCFF; font-size: 10pt;" colspan="3"><b>Project Monitoring</b><br></br></td>
+		  	</tr>
+		  	<tr>
+		  		<td valign="middle" align="center" style="border-collapse: collapse;  background-color:#99CCFF; font-size: 8pt; white-space: nowrap;"><b>City</b></td>
+		   		<td valign="middle" align="center" style="border-collapse: collapse;  background-color:#99CCFF; font-size: 8pt; white-space: nowrap;"><b>Total Universe</b></td>
+		   		<td valign="middle" align="center" style="border-collapse: collapse;  background-color:#99CCFF; font-size: 8pt; white-space: nowrap;"><b>Subscribed</b></td>
+		   		<td valign="middle" align="center" style="border-collapse: collapse;  background-color:#99CCFF; font-size: 8pt; white-space: nowrap;"><b>My Coverage</b></td>
+		   		<td valign="middle" align="center" style="border-collapse: collapse;  background-color:#99CCFF; font-size: 8pt; white-space: nowrap;"><b>Total Universe</b></td>
+		   		<td valign="middle" align="center" style="border-collapse: collapse;  background-color:#99CCFF; font-size: 8pt; white-space: nowrap;"><b>Subscribed</b></td>
+		   		<td valign="middle" align="center" style="border-collapse: collapse;  background-color:#99CCFF; font-size: 8pt; white-space: nowrap;"><b>My Coverage</b></td>
+		   </tr>
+		  	<apex:repeat value="{!CityTableData}" var="cd">
+		  	<tr>
+		  		<td valign="top" align="center" style="border-collapse: collapse; font-size: 8pt; white-space: nowrap;"><apex:outputText value="{!cd.Cityname}"/></td>
+		       	<td valign="top" align="center" style="border-collapse: collapse; font-size: 8pt; white-space: nowrap;">
+		       		<apex:outputText value="{0,number,###,###,##0} ">
+						<apex:param value="{!cd.TotalPAS}" />
+					</apex:outputText>
+		       	</td>
+		       	<td valign="top" align="center" style="border-collapse: collapse; font-size: 8pt; white-space: nowrap;">
+		       		<apex:outputText value="{0,number,###,###,##0} ">
+						<apex:param value="{!cd.custtotalPAS}" />
+					</apex:outputText>
+		       	</td>
+		       	<!-- <td valign="top" align="center" style="border-collapse: collapse; font-size: 8pt; white-space: nowrap;"><apex:outputText value="{!cd.CovrgPAS}" />&nbsp;%</td> -->
+		       	<td valign="top" align="center" style="border-collapse: collapse; font-size: 8pt; white-space: nowrap;">
+					<apex:outputText value="{0,number,###,###,##0} ">
+						<apex:param value="{!cd.CovrgPAS}" />
+					</apex:outputText>
+					<apex:outputtext value="%" /> 
+				</td>
+		       	<td valign="top" align="center" style="border-collapse: collapse; font-size: 8pt; white-space: nowrap;">
+		       		<apex:outputText value="{0,number,###,###,##0} ">
+						<apex:param value="{!cd.TotalPMS}" />
+					</apex:outputText>
+				</td>
+		       	<td valign="top" align="center" style="border-collapse: collapse; font-size: 8pt; white-space: nowrap;">
+		       		<apex:outputText value="{0,number,###,###,##0} ">
+						<apex:param value="{!cd.custtotalPMS}" />
+					</apex:outputText>
+		       	</td>
+		       	<!-- <td valign="top" align="center" style="border-collapse: collapse; font-size: 8pt; white-space: nowrap;"><apex:outputText value="{!cd.CovrgPMS}" />&nbsp;%</td> -->
+		       	<td valign="top" align="center" style="border-collapse: collapse; font-size: 8pt; white-space: nowrap;">
+					<apex:outputText value="{0,number,###,###,##0} ">
+						<apex:param value="{!cd.CovrgPMS}" />
+					</apex:outputText>
+					<apex:outputtext value="%" />
+				</td>
+			</tr>
+	  		</apex:repeat>
+	  		<apex:repeat value="{!totalWrapCityData}" var="ct">
+		  	<tr>
+		  		<td valign="top" align="center" style="border-collapse: collapse; font-size: 8pt; white-space: nowrap;"><apex:outputText value="{!ct.Cityname}"/></td>
+		       	<td valign="top" align="center" style="border-collapse: collapse; font-size: 8pt; white-space: nowrap;">
+		       		<apex:outputText value="{0,number,###,###,##0} ">
+						<apex:param value="{!ct.TotalPAS}" />
+					</apex:outputText>
+		       	</td>
+		       	<td valign="top" align="center" style="border-collapse: collapse; font-size: 8pt; white-space: nowrap;">
+		       		<apex:outputText value="{0,number,###,###,##0} ">
+						<apex:param value="{!ct.custtotalPAS}" />
+					</apex:outputText>
+		       	</td>
+		       	<!-- <td valign="top" align="center" style="border-collapse: collapse; font-size: 8pt; white-space: nowrap;"><apex:outputText value="{!ct.CovrgPAS}" />&nbsp;%</td> -->
+		       	<td valign="top" align="center" style="border-collapse: collapse; font-size: 8pt; white-space: nowrap;">
+					<apex:outputText value="{0,number,###,###,##0} ">
+						<apex:param value="{!ct.CovrgPAS}" />
+					</apex:outputText>
+					<apex:outputtext value="%" /> 
+				</td>
+		       	<td valign="top" align="center" style="border-collapse: collapse; font-size: 8pt; white-space: nowrap;">
+		       		<apex:outputText value="{0,number,###,###,##0} ">
+						<apex:param value="{!ct.TotalPMS}" />
+					</apex:outputText>
+				</td>
+		       	<td valign="top" align="center" style="border-collapse: collapse; font-size: 8pt; white-space: nowrap;">
+		       		<apex:outputText value="{0,number,###,###,##0} ">
+						<apex:param value="{!ct.custtotalPMS}" />
+					</apex:outputText>
+		       	</td>
+		       	<!-- <td valign="top" align="center" style="border-collapse: collapse; font-size: 8pt; white-space: nowrap;"><apex:outputText value="{!ct.CovrgPMS}" />&nbsp;%</td> -->
+		       	<td valign="top" align="center" style="border-collapse: collapse; font-size: 8pt; white-space: nowrap;">
+					<apex:outputText value="{0,number,###,###,##0} ">
+						<apex:param value="{!ct.CovrgPMS}" />
+					</apex:outputText>
+					<apex:outputtext value="%" />
+				</td>
+			</tr>
+	  		</apex:repeat>
+	</table>
+    	
+    	
+    </apex:pageblock>
+   </apex:form>
+</apex:page>

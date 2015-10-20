@@ -1,0 +1,21 @@
+<!-- 
+    Type:       VF Page
+    Purpose:    This is an Inline VF page used in Project Detail page, to display the Packages/Services
+    			associated with the Customer, in Employee application.           
+
+    ---------------------------------------------------------------------------------------------------------------
+    History:
+    
+    18-Apr-2013     Created		Tugboat Info Solutions Pvt. Ltd
+
+-->
+<apex:page standardController="Project__c" extensions="RBI_CustPackageListClass" standardStylesheets="false">
+	<apex:form >
+	<apex:pageBlock >
+			<apex:pageBlockTable value="{!liParents}" var="a" >
+				<apex:column headervalue="List of Values" value="{!a.List_of_Values__c}" /> 
+				<apex:column headervalue="List Pricing" value="{!a.List_Pricing__c }" />
+			</apex:pageBlockTable>
+	</apex:pageBlock>
+	</apex:form>
+</apex:page>

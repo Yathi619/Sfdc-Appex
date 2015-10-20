@@ -1,0 +1,20 @@
+<apex:page standardcontroller="Project__c" standardStylesheets="false" showHeader="false" sidebar="false">
+
+	<form action="https://www.kleeto.in/services/3r/realityBus/index.php" method="post" enctype="multipart/form-data" name="frm" id="frm">
+	<!-- <form action="https://www.letmecopy.in/services/3r/realityBus/index.php" method="post" enctype="multipart/form-data" name="frm" id="frm"> -->
+	
+		<input name="rbsLoginEmailID" type="hidden" id="rbsLoginEmailID" value="{!Project__c.Name}" />
+		<!-- <input name="rbsLoginEmailID" type="hidden" id="rbsLoginEmailID" value="Usr-PRJ001" /> -->
+		<input name="rbsLoginPasswd"  type="hidden" id="rbsLoginPasswd"  value="{!$Label.RBI_KLoginPwd}" />
+		<input name="rbsToken" 		  type="hidden" id="rbsToken"        value="{!$Label.RBI_KLoginToken}" />
+		
+	</form>
+	<script type="text/javascript">
+		submitform();
+		function submitform()
+		{
+  			document.frm.submit();
+		}
+	</script>
+		
+</apex:page>

@@ -1,0 +1,10 @@
+Hi {!Visit__c.OwnerFirstName},
+
+A visit record has been approved by your Manager. The details are as mentioned below: 
+
+Visit Name: {!Visit__c.Name} 
+Visit Type: {!Visit__c.Visit_Report__c} 
+Project Name: {!Visit__c.Project_Name__c}
+
+Thanks and Regards,
+Realty BI Team

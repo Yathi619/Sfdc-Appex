@@ -1,0 +1,7 @@
+Hello {!Project__c.Team_Leader__c}, 
+
+You are assigned to below mentioned project as PAS Manager. 
+Project Name : {!Project__c.Project_Name__c} 
+
+Thanks & Regards. 
+Realty BI Team

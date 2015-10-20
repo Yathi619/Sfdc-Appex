@@ -1,0 +1,49 @@
+<!-- 
+    Type:       VF Page
+    Purpose:    Used by the Customer in Customer Portal to select the tower and unit for the generation of Unit Report PDF.
+    			This can be accessed in Customer Portal under My Projects tab - Reports subtab and clicking on Generate report link.           
+
+    ---------------------------------------------------------------------------------------------------------------
+    History:
+    
+    25-Apr-2013     Created		Tugboat Info Solutions Pvt. Ltd
+
+-->
+<apex:page Controller="RBI_ProjectUnitClass" >
+	<apex:form >
+	<apex:actionFunction name="populatePicklistValue" action="{!populatePicklistValue}">
+	</apex:actionFunction>	 
+		<apex:pageBlock >
+		<apex:pageMessages />
+			<apex:pageBlockSection title="Generating Tower Report PDF" collapsible="false">
+				<apex:outputtext value="{!ProjectRec.Project_Name__c}" label="Project Name"/>
+				<apex:pageBlockSectionItem >
+					<apex:outputLabel value="Tower Name" />
+					<apex:selectList value="{!selectedTowers}" multiselect="false" size="1" style="width:150px;" onchange="populatePicklistValue()"> 
+						<apex:selectOption itemLabel="--None--" itemValue="--None--"/>
+	     				<apex:selectOptions value="{!towerRecords}"/>            
+					</apex:selectList>
+				</apex:pageBlockSectionItem>
+				<apex:pageBlockSectionItem >
+					<apex:outputLabel value="Units" />	
+					<apex:selectList value="{!SelectedUnit}" style="width:150px;" multiselect="false" size="1"> 
+	     				<apex:selectOptions value="{!unitOptions}"/>             
+					</apex:selectList>
+				</apex:pageBlockSectionItem>
+				<apex:pageBlockSectionItem >
+					<apex:outputLabel value="Payment Type" />
+					<apex:selectList value="{!selectedPaymType}" style="width:150px;" multiselect="false" size="1"> 
+	     				<apex:selectOptions value="{!TypesofPaymPlan}"/>            
+					</apex:selectList>
+				</apex:pageBlockSectionItem>
+			</apex:pageBlockSection>
+			<apex:pageBlockSection title="Borrower Information">
+				<apex:inputText value="{!BorrowerName}" label="Borrower Name"/> 
+				<apex:inputText value="{!BorrowerEmail}" label="Borrower Email"/> 
+			</apex:pageBlockSection>
+			<apex:pageBlockButtons location="bottom">
+			<apex:commandButton value="Generate PDF" action="{!generatePDF}" disabled="{!generateButtonFlag}"/>
+		</apex:pageBlockButtons>
+		</apex:pageBlock>
+	</apex:form>
+</apex:page>

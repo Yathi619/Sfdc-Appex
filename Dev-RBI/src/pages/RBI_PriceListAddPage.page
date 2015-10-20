@@ -1,0 +1,47 @@
+<apex:page Controller="RBI_PriceListAdd"  standardStylesheets="true" showHeader="true" sidebar="false">
+	<apex:form id="theForm">
+	<apex:actionFunction name="populatePicklistValue" action="{!ValidationDevbsp}" rerender="LabelId">
+	</apex:actionFunction>
+		<apex:pageBlock mode="detail" id="mainPageBlock">
+			<apex:pageMessages />
+				<table width="100%" border="0">
+				<tr>
+					<td width="200" valign="top">
+					<apex:pageBlockButtons location="bottom">
+						<apex:commandButton value="Save" action="{!Save}" />    
+						<apex:commandButton value="Go Back" action="{!Cancel}"/> 
+						  <apex:commandButton value="Reset"  action="{!resetFilters}"/>
+					</apex:pageBlockButtons>
+                   		 <apex:pageBlockSection title="Add DetailPriceList" columns="1" > </apex:pageBlockSection>
+                           	 <table  id="t1" cellpadding="2" cellspacing="2" width="100%" columns="4">
+                               <tr>
+                                   <td style="font-weight: bold;"> Tower Name<br/>
+									<apex:selectList id="sel" value="{!selectedTowers}" multiselect="false" size="1" style="width:150px;"  onchange="populatePicklistValue()"> 
+										<apex:selectOption itemLabel="--None--" itemValue="--None--"/>
+	     								<apex:selectOptions value="{!towerRecords}"/>        
+									</apex:selectList>
+									
+                                 </td> 
+                                   	<td style="font-weight: bold;"> From Floor<br /> 
+                                    	<apex:inputField value="{!Addcharge.From_Floor__c}" style="width:150px" /> 			                                  
+                                    </td>
+                                    	<td style="font-weight: bold;">To Floor<br /><apex:inputField value="{!Addcharge.To_Floor__c}" style="width:152px" /></td>
+                                    	<td id="Priceid" style="font-weight: bold;">	Price(Per Sqft)<br /><apex:inputText id="inputtext1" value="{!pricepersqft}" style="width:152px" /></td>
+	                                    	<td style="font-weight: bold;">Price list should be within the developer BSP range captured<br />
+	                                    	<apex:outputPanel id="LabelId">
+		                                    	<!--  <apex:pageBlockSection title="Price list should be within the developer BSP range captured" >-->
+		                                    		<apex:outputtext id="fld1" value="{!MinDevBsp}" label="Min Dev BSP" style="width:152px"  rendered="{!!ISBLANK(MinDevBsp)}" /> 
+		                                    		<apex:outputtext value=" -- " rendered="{!ISBLANK(MinDevBsp)}" /> To  &nbsp;   
+		                                    		<apex:outputText value="{!MaxDevBsp}" label="Max Dev BSP" style="width:152px"  rendered="{!!ISBLANK(MaxDevBsp)}"/>
+		                                    		<apex:outputtext value=" -- " rendered="{!ISBLANK(MaxDevBsp)}" /> 
+	                                    	</apex:outputPanel>
+	                                    	</td>
+                                  		<td><div style="width:152px" ></div></td> 
+                              	</tr>
+                          </table>
+                      </td>
+                 </tr>
+          </table>
+ </apex:pageBlock>                          
+</apex:form>
+</apex:page>

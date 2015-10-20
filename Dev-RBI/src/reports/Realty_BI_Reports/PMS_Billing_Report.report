@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <block>
+        <blockInfo>
+            <blockId>B1</blockId>
+            <joinTable>fkx</joinTable>
+        </blockInfo>
+        <columns>
+            <field>CUST_NAME</field>
+        </columns>
+        <columns>
+            <field>FK_$Project__c.City__c</field>
+        </columns>
+        <columns>
+            <field>Visit__c.Closed_Date__c</field>
+        </columns>
+        <columns>
+            <field>FK_$Project__c.Actual_No_of_Towers__c</field>
+        </columns>
+        <filter>
+            <criteriaItems>
+                <column>Visit__c.Visit_Report__c</column>
+                <operator>equals</operator>
+                <value>Followup Report</value>
+            </criteriaItems>
+        </filter>
+        <format>Summary</format>
+        <name>PMS Visits for Project</name>
+        <params>
+            <name>co</name>
+            <value>1</value>
+        </params>
+        <reportType>CustomEntity$Visit__c@Visit__c.Project__c</reportType>
+        <scope>organization</scope>
+        <timeFrameFilter>
+            <dateColumn>Visit__c.Closed_Date__c</dateColumn>
+            <interval>INTERVAL_CUSTOM</interval>
+        </timeFrameFilter>
+    </block>
+    <block>
+        <blockInfo>
+            <blockId>B0</blockId>
+            <joinTable>Project__c</joinTable>
+        </blockInfo>
+        <columns>
+            <field>Project__c.Customer_Projects__r$Customer_Name__c</field>
+        </columns>
+        <columns>
+            <field>Project__c.Customer_Projects__r.Customer_Package__r$List_of_Values__c</field>
+        </columns>
+        <filter>
+            <criteriaItems>
+                <column>Project__c.Customer_Projects__r.Customer_Package__r$LOV_Name__c</column>
+                <operator>equals</operator>
+                <value>PMS</value>
+            </criteriaItems>
+        </filter>
+        <format>Summary</format>
+        <name>Related Customers</name>
+        <params>
+            <name>co</name>
+            <value>1</value>
+        </params>
+        <reportType>Project_with_Customer_Package__c</reportType>
+        <scope>organization</scope>
+        <timeFrameFilter>
+            <dateColumn>Project__c$Completion_Date__c</dateColumn>
+            <interval>INTERVAL_CUSTOM</interval>
+        </timeFrameFilter>
+    </block>
+    <blockInfo>
+        <blockId xsi:nil="true"/>
+        <joinTable>fkx</joinTable>
+    </blockInfo>
+    <description>PMS Billing Report</description>
+    <format>MultiBlock</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>FK_NAME</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>PMS Billing Report</name>
+    <reportType>CustomEntity$Visit__c@Visit__c.Project__c</reportType>
+    <showDetails>true</showDetails>
+</Report>

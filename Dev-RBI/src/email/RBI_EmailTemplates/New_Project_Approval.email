@@ -1,0 +1,6 @@
+Hello {!Contact.FirstName} , 
+
+The {!Project__c.Project_Name__c} project created by you, has been approved. Please go ahead and choose the services for the project.
+ 
+Thanks & Regards. 
+Realty BI Team

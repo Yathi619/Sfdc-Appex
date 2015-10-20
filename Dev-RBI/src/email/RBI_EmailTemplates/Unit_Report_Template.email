@@ -1,0 +1,6 @@
+Hello,
+
+Please find attached unit report for {!Project__c.Project_Name__c} project.
+
+Thanks and Regards,
+{!Contact.FirstName} {!Contact.LastName}

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>This template is used to send email when the Surveyor or Technical Head is changed in Visit</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>Visit Technical Head or surveyor Change</name>
+    <style>none</style>
+    <subject>Allocation of Visit</subject>
+    <type>text</type>
+</EmailTemplate>

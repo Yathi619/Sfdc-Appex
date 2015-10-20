@@ -1,0 +1,404 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <enableActivities>false</enableActivities>
+    <enableEnhancedLookup>true</enableEnhancedLookup>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableReports>false</enableReports>
+    <fields>
+        <fullName>Bank_Name__c</fullName>
+        <description>This field is used for Loan details for a Developer</description>
+        <externalId>false</externalId>
+        <label>Bank Name</label>
+        <length>100</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Completion_Year__c</fullName>
+        <externalId>false</externalId>
+        <label>Completion Year</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Customer__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Used for Unit Report generation</description>
+        <externalId>false</externalId>
+        <label>Customer</label>
+        <referenceTo>Account</referenceTo>
+        <relationshipLabel>Unit Report Details</relationshipLabel>
+        <relationshipName>UnitReport</relationshipName>
+        <required>false</required>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Dev_Project_Address__c</fullName>
+        <description>This will hold the address for the other projects by Developer</description>
+        <externalId>false</externalId>
+        <label>Project Address</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Dev_Project_Name__c</fullName>
+        <externalId>false</externalId>
+        <label>Project Name</label>
+        <length>100</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Developer__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Stores the reference to the Account(developer) for other ongoing projects</description>
+        <externalId>false</externalId>
+        <label>Developer</label>
+        <referenceTo>Account</referenceTo>
+        <relationshipLabel>Ongoing and Completed Projects</relationshipLabel>
+        <relationshipName>OnGoingProjects</relationshipName>
+        <required>false</required>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Document_Description__c</fullName>
+        <externalId>false</externalId>
+        <label>Document Description</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Document_Type__c</fullName>
+        <externalId>false</externalId>
+        <label>Document Type</label>
+        <length>100</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Dwelling_Units__c</fullName>
+        <externalId>false</externalId>
+        <label>Dwelling Units</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Entity_Name__c</fullName>
+        <externalId>false</externalId>
+        <label>Entity Name</label>
+        <length>50</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Entity_Type__c</fullName>
+        <externalId>false</externalId>
+        <label>Entity Type</label>
+        <length>50</length>
+        <required>true</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Key__c</fullName>
+        <externalId>false</externalId>
+        <label>Key</label>
+        <length>100</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Land_Area_in_Acres__c</fullName>
+        <externalId>false</externalId>
+        <label>Land Area In Acres</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Loan_Amount__c</fullName>
+        <description>This field is used for Loan details for a Developer</description>
+        <externalId>false</externalId>
+        <label>Loan Amount (in Crs)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Project_Id_Const_Loan__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Project Id for the Construction Loan taken by Developer</description>
+        <externalId>false</externalId>
+        <label>Construction Loan for Project</label>
+        <referenceTo>Project__c</referenceTo>
+        <relationshipLabel>Construction Loan Details</relationshipLabel>
+        <relationshipName>ConstructionLoan</relationshipName>
+        <required>false</required>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Project_Id__c</fullName>
+        <externalId>false</externalId>
+        <formula>Unit__r.Tower_Id__r.Project__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Project Id</label>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Project_Type__c</fullName>
+        <externalId>false</externalId>
+        <label>Project Type</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Ongoing</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Completed</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Sort_Order__c</fullName>
+        <externalId>false</externalId>
+        <label>Sort Order</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Total_BUA__c</fullName>
+        <externalId>false</externalId>
+        <label>Total BUA</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Tower_Id__c</fullName>
+        <externalId>false</externalId>
+        <formula>Unit__r.Tower_Id__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Tower Id</label>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Unit_Report_Gen_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Unit Report Generated Date</label>
+        <required>false</required>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Unit__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Used for Unit Report generation</description>
+        <externalId>false</externalId>
+        <label>Unit</label>
+        <referenceTo>Unit__c</referenceTo>
+        <relationshipLabel>Unit Report Details</relationshipLabel>
+        <relationshipName>UnitReport</relationshipName>
+        <required>false</required>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Value__c</fullName>
+        <externalId>false</externalId>
+        <label>Value</label>
+        <length>100</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>List of Values</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>Entity_Name__c</columns>
+        <columns>Entity_Type__c</columns>
+        <columns>Key__c</columns>
+        <columns>Value__c</columns>
+        <columns>Sort_Order__c</columns>
+        <columns>Document_Type__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <nameField>
+        <label>List of Values Name</label>
+        <type>Text</type>
+    </nameField>
+    <namedFilters>
+        <fullName>nf_01I90000000kCTDEA2_00N900000059ENjEAM</fullName>
+        <active>true</active>
+        <field>Project_Cust_Packages__c.List_of_Values__c</field>
+        <filterItems>
+            <field>List_of_Values__c.Entity_Type__c</field>
+            <operation>equals</operation>
+            <value>Package</value>
+        </filterItems>
+        <isOptional>false</isOptional>
+        <name>Customer Package_List of Values</name>
+    </namedFilters>
+    <namedFilters>
+        <fullName>nf_01I90000000nxDsEAI_00N90000004wfzFEAQ</fullName>
+        <active>true</active>
+        <field>Infrastructure_Near_Project__c.Infrastructure_Near_Project__c</field>
+        <filterItems>
+            <field>List_of_Values__c.Entity_Type__c</field>
+            <operation>equals</operation>
+            <value>Public Convenience</value>
+        </filterItems>
+        <filterItems>
+            <field>List_of_Values__c.Entity_Name__c</field>
+            <operation>equals</operation>
+            <value>Infrastructure Near Project Site</value>
+        </filterItems>
+        <isOptional>false</isOptional>
+        <name>Infrastructure Near Project_Infrastructu</name>
+    </namedFilters>
+    <namedFilters>
+        <fullName>nf_01IO0000000917YMAQ_00NO0000000rjlgMAA</fullName>
+        <active>true</active>
+        <field>Project_Document_Status__c.Project_Document__c</field>
+        <filterItems>
+            <field>List_of_Values__c.Entity_Type__c</field>
+            <operation>equals</operation>
+            <value>Document</value>
+        </filterItems>
+        <isOptional>false</isOptional>
+        <name>Project Document_Project Document</name>
+    </namedFilters>
+    <namedFilters>
+        <fullName>nf_01IO0000000917ZMAQ_00NO0000000rjlqMAA</fullName>
+        <active>true</active>
+        <booleanFilter>1 OR 2</booleanFilter>
+        <field>Project_Feedback__c.List_of_Values_Id__c</field>
+        <filterItems>
+            <field>List_of_Values__c.Entity_Type__c</field>
+            <operation>equals</operation>
+            <value>Remark</value>
+        </filterItems>
+        <filterItems>
+            <field>List_of_Values__c.Entity_Name__c</field>
+            <operation>equals</operation>
+            <value>Statutory Approval</value>
+        </filterItems>
+        <isOptional>false</isOptional>
+        <name>Project Feedback_Feedback</name>
+    </namedFilters>
+    <namedFilters>
+        <fullName>nf_01IO0000000D6QEMA0_00NO0000000gxEcMAI</fullName>
+        <active>true</active>
+        <field>Payment_Plan__c.Plan_Type__c</field>
+        <filterItems>
+            <field>List_of_Values__c.Entity_Type__c</field>
+            <operation>equals</operation>
+            <value>Payment Plan</value>
+        </filterItems>
+        <isOptional>false</isOptional>
+        <name>Payment Plan_Plan Type</name>
+    </namedFilters>
+    <pluralLabel>List of Values</pluralLabel>
+    <searchLayouts>
+        <customTabListAdditionalFields>Entity_Name__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Entity_Type__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Key__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Value__c</customTabListAdditionalFields>
+        <lookupDialogsAdditionalFields>Entity_Name__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Entity_Type__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Key__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Value__c</lookupDialogsAdditionalFields>
+        <searchFilterFields>Entity_Name__c</searchFilterFields>
+        <searchFilterFields>Entity_Type__c</searchFilterFields>
+        <searchFilterFields>Key__c</searchFilterFields>
+        <searchFilterFields>Value__c</searchFilterFields>
+    </searchLayouts>
+    <sharingModel>ReadWrite</sharingModel>
+    <webLinks>
+        <fullName>New</fullName>
+        <availability>online</availability>
+        <description>Button to display Construction Loan details for a project</description>
+        <displayType>massActionButton</displayType>
+        <linkType>url</linkType>
+        <masterLabel>New</masterLabel>
+        <openType>replace</openType>
+        <protected>false</protected>
+        <requireRowSelection>true</requireRowSelection>
+        <url>\apex\RBI_ConstructionLoanDetails?ProjId={! Project__c.Id}</url>
+    </webLinks>
+    <webLinks>
+        <fullName>New_Projects</fullName>
+        <availability>online</availability>
+        <description>Used for Ongoing and Completed projects for a Developer Account</description>
+        <displayType>massActionButton</displayType>
+        <linkType>url</linkType>
+        <masterLabel>New Projects</masterLabel>
+        <openType>replace</openType>
+        <protected>false</protected>
+        <requireRowSelection>false</requireRowSelection>
+        <url>\apex\RBI_OtherOngoingCompletedProjects?AccId={!Account.Id}</url>
+    </webLinks>
+</CustomObject>

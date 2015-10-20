@@ -1,0 +1,9 @@
+Hello {!Query__c.PAS_Manager_Name__c},
+
+A  new exception record has been created by {!Query__c.Customer_Name__c}
+
+The details are as mentioned below:
+Project Name: {!Query__c.Project_Name_Customer__c}
+
+Thanks & Regards. 
+Realty BI Team

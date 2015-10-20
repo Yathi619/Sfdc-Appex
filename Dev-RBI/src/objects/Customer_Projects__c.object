@@ -1,0 +1,358 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <enableActivities>false</enableActivities>
+    <enableEnhancedLookup>true</enableEnhancedLookup>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableReports>true</enableReports>
+    <fields>
+        <fullName>AccountId__c</fullName>
+        <externalId>false</externalId>
+        <label>Customer Id</label>
+        <referenceTo>Account</referenceTo>
+        <relationshipLabel>Customer</relationshipLabel>
+        <relationshipName>Customer_Projects</relationshipName>
+        <relationshipOrder>1</relationshipOrder>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>Customer_Contact_Id__c</fullName>
+        <externalId>false</externalId>
+        <formula>Customer_User_Id__r.ContactId</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Customer Contact Id</label>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Customer_Hyperlink__c</fullName>
+        <description>This field is used in the related list of the project for the hyperlink</description>
+        <externalId>false</externalId>
+        <formula>HYPERLINK(&quot;/&quot; + Id,  AccountId__r.Name,  &quot;_blank&quot;)</formula>
+        <label>Customer Name</label>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Customer_Name__c</fullName>
+        <externalId>false</externalId>
+        <formula>AccountId__r.Name</formula>
+        <label>Customer Name</label>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Customer_User_Email__c</fullName>
+        <externalId>false</externalId>
+        <formula>Customer_User_Id__r.Contact.Email</formula>
+        <label>Customer User Email</label>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Customer_User_Id__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Stores the User Id of the Customer Manager Id</description>
+        <externalId>false</externalId>
+        <label>Customer User Id</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Customer_Projects</relationshipName>
+        <required>false</required>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Exception__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Stores the value to indicate Exceptions for an approval from Customer</description>
+        <externalId>false</externalId>
+        <label>Exception</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>FTR_File_Path__c</fullName>
+        <description>Used to store FTR file path of s3</description>
+        <externalId>false</externalId>
+        <label>FTR File Path</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Project_Approval_Status__c</fullName>
+        <description>Used to store the customers approval for the project. Set by customer from customer portal</description>
+        <externalId>false</externalId>
+        <label>Project Approval Status</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Approved</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Reject</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Hold</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>In Progress</fullName>
+                <default>true</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Project_Id__c</fullName>
+        <externalId>false</externalId>
+        <label>Project Id</label>
+        <referenceTo>Project__c</referenceTo>
+        <relationshipLabel>Customer</relationshipLabel>
+        <relationshipName>Customer_Projects</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>Project_Name__c</fullName>
+        <externalId>false</externalId>
+        <formula>Project_Id__r.Project_Name__c</formula>
+        <label>Project Name</label>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Project_Region__c</fullName>
+        <externalId>false</externalId>
+        <formula>TEXT(Project_Id__r.Project_Region__c)</formula>
+        <label>Project Region</label>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Project_Status__c</fullName>
+        <externalId>false</externalId>
+        <formula>TEXT(Project_Id__r.Status__c )</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Project Status</label>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Remarks__c</fullName>
+        <description>Stores the comments from the Customer while approving/rejecting a project</description>
+        <externalId>false</externalId>
+        <label>Remarks</label>
+        <required>false</required>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Site_Address_City__c</fullName>
+        <externalId>false</externalId>
+        <formula>TEXT(Project_Id__r.Site_Address_City__c)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Site Address City</label>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Technical_Head_Email__c</fullName>
+        <externalId>false</externalId>
+        <label>Technical Head Email</label>
+        <required>false</required>
+        <type>Email</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Total_Weights__c</fullName>
+        <externalId>false</externalId>
+        <formula>Weightage_Basement__c +  Weightage_Electrification_Sanitation__c  +  Weightage_Excavaton_of_Footings__c  +  Weightage_Finishing__c  +  Weightage_Masonary__c  +  Weightage_RCC_Slab_Casting__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Total Weights</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Weightage_Basement__c</fullName>
+        <externalId>false</externalId>
+        <label>Weightage - Basement(%)</label>
+        <precision>5</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Weightage_Electrification_Sanitation__c</fullName>
+        <externalId>false</externalId>
+        <label>Weightage-Electrification &amp; Sanitation %</label>
+        <precision>5</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Weightage_Excavaton_of_Footings__c</fullName>
+        <externalId>false</externalId>
+        <label>Weightage - Excavaton of Footings(%)</label>
+        <precision>5</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Weightage_Finishing__c</fullName>
+        <externalId>false</externalId>
+        <label>Weightage - Finishing (%)</label>
+        <precision>5</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Weightage_Masonary__c</fullName>
+        <description>Weightage for Masonary ( Brickwork, Doors and Window Frames)</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Weightage for Masonary ( Brickwork, Doors and Window Frames)</inlineHelpText>
+        <label>Weightage - Masonary(%)</label>
+        <precision>5</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Weightage_RCC_Slab_Casting__c</fullName>
+        <externalId>false</externalId>
+        <label>Weightage - RCC Slab Casting (%)</label>
+        <precision>5</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Weightage_Type__c</fullName>
+        <description>This field deterimes the weightage reference values.</description>
+        <externalId>false</externalId>
+        <label>Weightage Type</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Realty BI</fullName>
+                <default>true</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Customer</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <type>Picklist</type>
+    </fields>
+    <label>Customer Project</label>
+    <listViews>
+        <fullName>All</fullName>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <nameField>
+        <displayFormat>CUSPROJ-{0000000000}</displayFormat>
+        <label>Customer Projects Id</label>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Customer Projects</pluralLabel>
+    <searchLayouts>
+        <customTabListAdditionalFields>Project_Name__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Customer_Name__c</customTabListAdditionalFields>
+        <lookupDialogsAdditionalFields>Customer_Name__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Project_Name__c</lookupDialogsAdditionalFields>
+        <searchResultsAdditionalFields>Project_Name__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Customer_Name__c</searchResultsAdditionalFields>
+    </searchLayouts>
+    <sharingModel>ControlledByParent</sharingModel>
+    <validationRules>
+        <fullName>Weights_Rule</fullName>
+        <active>true</active>
+        <description>Sum of weights should not be greater than 100%</description>
+        <errorConditionFormula>Total_Weights__c  &gt; 1.00</errorConditionFormula>
+        <errorMessage>Sum of weights should not be greater than 100%</errorMessage>
+    </validationRules>
+    <webLinks>
+        <fullName>Copy_From_Customer</fullName>
+        <availability>online</availability>
+        <displayType>button</displayType>
+        <linkType>javascript</linkType>
+        <masterLabel>Copy From Customer</masterLabel>
+        <openType>onClickJavaScript</openType>
+        <protected>false</protected>
+        <url>{!REQUIRESCRIPT(&quot;/soap/ajax/10.0/connection.js&quot;)}
+{!REQUIRESCRIPT(&quot;/soap/ajax/10.0/apex.js&quot;)}
+var url = parent.location.href;
+var sflg = &quot;C&quot;
+sforce.apex.execute(&quot;CopyController&quot;,&quot;myMethod&quot;, {id:&quot;{!Customer_Projects__c.Id}&quot;,strflg:sflg});
+parent.location.href = url;</url>
+    </webLinks>
+    <webLinks>
+        <fullName>Copy_From_RBI</fullName>
+        <availability>online</availability>
+        <displayType>button</displayType>
+        <linkType>javascript</linkType>
+        <masterLabel>Copy From RBI</masterLabel>
+        <openType>onClickJavaScript</openType>
+        <protected>false</protected>
+        <url>{!REQUIRESCRIPT(&quot;/soap/ajax/10.0/connection.js&quot;)}
+{!REQUIRESCRIPT(&quot;/soap/ajax/10.0/apex.js&quot;)}
+var url = parent.location.href;
+var sflg = &quot;R&quot;
+sforce.apex.execute(&quot;CopyController&quot;,&quot;myMethod&quot;, {id:&quot;{!Customer_Projects__c.Id}&quot;,strflg:sflg});
+parent.location.href = url;</url>
+    </webLinks>
+</CustomObject>

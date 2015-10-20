@@ -1,0 +1,584 @@
+<!-- 
+    Type:       VF Page
+    Purpose:    Used to generate the Unit Report in PDF Format for a Customer in Customer Portal. 
+    			This can be accessed in Customer Portal under My Projects tab - Reports subtab and after entering the inputs like
+    			Tower, Unit and Payment Plan and clicking on the Generate PDF button.          
+
+    ---------------------------------------------------------------------------------------------------------------
+    History:
+    
+    25-Apr-2013     Created		Tugboat Info Solutions Pvt. Ltd
+
+-->
+<apex:page controller="RBI_ProjectUnitPDFClass" renderAs="pdf">
+	<html>
+    	<head>
+    		<style type="text/css">
+				div.header {        
+				padding: 10px;        
+  				position: running(header);
+                               
+				}
+			</style>
+    		<apex:stylesheet value="{!URLFOR($Resource.RBI_PDFHeaderFooter, 'PDFDocumentStyle.css')}"/>
+    		<c:PDFHeaderFooterComponent type="header" position="center">
+    			<apex:image id="theImage1" value="{!$Resource.LogoforPDF}"/>
+    		</c:PDFHeaderFooterComponent>
+    		<c:PDFHeaderFooterComponent type="footer" position="left">www.realtybi.in</c:PDFHeaderFooterComponent>
+    		<c:PDFHeaderFooterComponent type="footer" position="center" showPageNumbers="true"></c:PDFHeaderFooterComponent>
+    	</head>
+		<center>
+        	<h1>Unit Report</h1>
+        	<h2>FOR : {!prjweights[0].Customer_Name__c}</h2>
+    	</center>
+    	<table width="100%" align="center">
+	    	<tr>
+				<td width="45%" align="right"><apex:outputlabel value="Report Generation Date" /></td>
+				<td width="2%" align="left"><apex:outputlabel value=":" /></td>
+				<td  width="45%"  align="left">
+					<apex:outputText value="{0,date,dd/MM/yyyy}">
+  						<apex:param value="{!TODAY()}"  />
+  					</apex:outputText>
+				</td>
+			</tr>
+	    	<tr>
+				<td  width="45%" align="right"><apex:outputlabel value="Borrower Name" rendered="{!(BorrowerName != null)}"/></td>
+				<td width="2%" align="left"><apex:outputlabel value=":" rendered="{!(BorrowerName != null)}"/></td>
+				<td width="45%"  align="left"><apex:outputText value="{!BorrowerName}" /></td>
+			</tr>
+			<tr>
+				<td width="45%" align="right"><apex:outputlabel value="Project Name" /></td>
+				<td width="2%" align="left"><apex:outputlabel value=":" /></td>
+				<td  width="45%"  align="left"><apex:outputText value="{!ProjectRec.Project_Name__c}" /></td>
+			</tr>
+			<tr>
+				<td  width="45%" align="right"><apex:outputlabel value="Project Address" /></td>
+				<td width="2%" align="left"><apex:outputlabel value=":" /></td>
+				<td width="45%"  align="left"><apex:outputText value="{!ProjectRec.Site_Address_Actual__c}"/></td>
+			</tr>
+		</table><br><br></br></br>
+		
+		<table cellspacing="0" border="2" height="100%" width="100%" align="center">
+			<tr>
+				<th colspan="2" align="center" bgcolor="#99CCFF"><b>General Details</b></th>
+			</tr>
+			<tr>
+				<td width="50%">Site Visit Date</td>
+				<td>
+					<apex:outputField value="{!ProjectRec.Site_Visit_Date__c}" rendered="{!!ISBLANK(ProjectRec.Site_Visit_Date__c)}" />
+                    <apex:outputText value="-" rendered="{!ISBLANK(ProjectRec.Site_Visit_Date__c)}" />
+				</td>
+		 	</tr>
+			<tr>
+		 		<td style="width:50%;">Name of the Person Contacted on Site</td>
+				<td>
+					<apex:outputText value="{!ProjectRec.Site_Contact_NameDesg__c}" rendered="{!!ISBLANK(ProjectRec.Site_Contact_NameDesg__c)}" />
+                    <apex:outputtext value=" - " rendered="{!ISBLANK(ProjectRec.Site_Contact_NameDesg__c)}" />
+				</td>
+			</tr>
+			<tr>
+		 		<td style="width:50%;">Developer Name</td>
+				<td>
+					<apex:outputText value="{!ProjectRec.Developer_Name__c}" rendered="{!!ISBLANK(ProjectRec.Developer_Name__c)}" />
+                    <apex:outputtext value=" - " rendered="{!ISBLANK(ProjectRec.Developer_Name__c)}" />
+				</td>
+		    </tr>
+		 	<tr>
+				<td style="width:50%;">Developer Address</td>
+				<td>
+					<apex:outputText value="{!ProjectRec.Developer_Address__c}" rendered="{!!ISBLANK(ProjectRec.Developer_Address__c)}" />
+                    <apex:outputtext value=" - " rendered="{!ISBLANK(ProjectRec.Developer_Address__c)}" />
+				</td> 
+		    </tr>
+			<tr> 
+				<td style="width:50%">Name of Municipal Corporation</td>
+				<td>
+					<apex:outputText value="{!ProjectRec.Name_of_the_Municipal_Corporation__c}" rendered="{!!ISBLANK(ProjectRec.Name_of_the_Municipal_Corporation__c)}" />
+                    <apex:outputtext value=" - " rendered="{!ISBLANK(ProjectRec.Name_of_the_Municipal_Corporation__c)}" />
+				</td>
+		    </tr>
+			<tr>
+				<td style="width:50%;">Construction Status</td>
+				<td>
+					<apex:outputText value="{!ProjectRec.construction_Status__c}" rendered="{!!ISBLANK(ProjectRec.construction_Status__c)}" />
+                    <apex:outputtext value=" - " rendered="{!ISBLANK(ProjectRec.construction_Status__c)}" />
+				</td>
+			</tr>
+			<tr>
+				<td style="width:50%;">Project Launch Date</td>
+				<td>
+					<apex:outputField value="{!ProjectRec.Launch_Date__c}" rendered="{!!ISBLANK(ProjectRec.Launch_Date__c)}" />
+                    <apex:outputtext value=" - " rendered="{!ISBLANK(ProjectRec.Launch_Date__c)}" />
+				</td>
+		     </tr>
+			<tr>
+				<td style="width:50%;">Project Construction Start Date</td>
+				<td>
+					<apex:outputField value="{!ProjectRec.Construction_Start_Date__c}" rendered="{!!ISBLANK(ProjectRec.Construction_Start_Date__c)}" />
+                    <apex:outputtext value=" -  " rendered="{!ISBLANK(ProjectRec.Construction_Start_Date__c)}" />
+				</td>
+		     </tr>
+		</table><br><br></br></br>
+		<table cellspacing="0" border="2" height="100%" width="100%" align="center">
+			<tr>
+				<th colspan="2" align="center" bgcolor="#99CCFF"><b>STATUTORY APPROVALS</b></th>
+			</tr>
+			<apex:repeat value="{!feedStatApp}" var="stapp">
+	            <tr>
+	            	<td valign="top" align="center" style="border-collapse: collapse; font-size: 10pt; white-space: nowrap;width:50%;">
+	            		<apex:outputField value="{!stapp.List_of_Values_Id__r.Name}" rendered="{!!ISBLANK(stapp.List_of_Values_Id__r.Name)}" />
+                    	<apex:outputtext value=" - " rendered="{!ISBLANK(stapp.List_of_Values_Id__r.Name)}" />
+	            	</td>
+	            	<td valign="top" align="center" style="border-collapse: collapse; font-size: 10pt; white-space: nowrap;width:50%;">
+	            		<apex:outputField value="{!stapp.Comments__c}" rendered="{!!ISBLANK(stapp.Comments__c)}" />
+                    	<apex:outputtext value=" - " rendered="{!ISBLANK(stapp.Comments__c)}" />
+	            	</td>
+	            </tr>
+	        </apex:repeat>	
+		</table>
+		<br><br></br></br>
+		<div style="page-break-before: always"></div>
+		<table cellspacing="0" border="2" height="100%" width="100%" align="center">
+			<tr>
+				<th colspan="2" align="center" bgcolor="#99CCFF"><b>DEFINITIONS</b></th>
+			</tr>
+ 			<tr>
+	 			<td> 
+	 				<table>
+ 						<tr>
+     						<td width="50%">C-Completed</td>
+     						<td width="50%">B- Basement</td>
+     					</tr>
+ 						<tr>
+     						<td width="50%" align="left">N- Not Started</td>
+     						<td width="50%" align="right">P- Parking Floors(Including Stilt)</td>
+    					</tr>
+						<tr>
+     						<td width="50%" align="left">UC-Underconstruction</td>
+ 						</tr>
+ 					</table>
+   				</td>
+   			</tr>
+ 		</table><br/><br/>
+ 		
+    	<br><br></br></br>
+    
+     	<table cellspacing="0" border="2" height="100%" width="100%"> 
+			<tr>
+				<th colspan="11" align="center" bgcolor="#99CCFF"><b>TOWER STRUCTURE </b></th>
+			</tr>
+			<tr>
+	        	<td style="border-collapse: collapse; font-size: 8pt;" colspan="1"></td>
+	            <td valign="middle" align="center" style="border-collapse: collapse; font-size: 8pt;" colspan="2"><b>Tower Structure as Per</b></td>
+	            <td style="border-collapse: collapse; font-size: 8pt;" colspan="1"></td>
+	            <td valign="middle" align="center" style="border-collapse: collapse; font-size: 8pt;" colspan="3"><b>Units</b><br></br></td>
+	            <td valign="middle" align="center" style="border-collapse: collapse; font-size: 8pt;" colspan="3"><b>Dates</b></td>
+	        </tr>
+			<tr>
+				<td valign="middle" align="center" style="border-collapse: collapse; font-size: 8pt;">Tower</td>
+	            <td valign="middle" align="center" style="border-collapse: collapse; font-size: 8pt;">Plan</td>
+	            <td valign="middle" align="center" style="border-collapse: collapse; font-size: 8pt; white-space: nowrap;">Site(as proposed)</td>
+	            <td valign="middle" align="center" style="border-collapse: collapse; font-size: 8pt;">Deviation</td>
+	            <td valign="middle" align="center" style="border-collapse: collapse; font-size: 8pt;">Total</td>
+	            <td valign="middle" align="center" style="border-collapse: collapse; font-size: 8pt; white-space: nowrap;">Launched</td>
+	            <td valign="middle" align="center" style="border-collapse: collapse; font-size: 8pt; white-space: nowrap;">Sold</td>
+	            <td valign="middle" align="center" style="border-collapse: collapse; font-size: 8pt; white-space: nowrap;">Launch </td>
+	            <td valign="middle" align="center" style="border-collapse: collapse; font-size: 8pt; white-space: nowrap;">Construction<br></br> Start</td>
+	            <td valign="middle" align="center" style="border-collapse: collapse; font-size: 8pt; white-space: nowrap;">Proposed<br></br> Completion</td>
+	        </tr>
+	        <tr>
+	        	<td valign="top" align="center" style="border-collapse: collapse; font-size: 8pt; white-space: nowrap;"><apex:outputField value="{!TowerRec.Name}"/></td>
+	        	<td valign="top" align="center" style="border-collapse: collapse; font-size: 8pt; white-space: nowrap;"><apex:outputField value="{!TowerRec.Planned_Basement_Floors__c}" rendered="{!!ISBLANK(TowerRec.Planned_Basement_Floors__c)}" />
+                    																									<apex:outputtext value=" 0 " rendered="{!ISBLANK(TowerRec.Planned_Basement_Floors__c)}" />B
+	            																										+ <apex:outputField value="{!TowerRec.Planned_Parking_Floors__c}" rendered="{!!ISBLANK(TowerRec.Planned_Parking_Floors__c)}" />
+                    																									<apex:outputtext value=" 0 " rendered="{!ISBLANK(TowerRec.Planned_Parking_Floors__c)}" />P
+	            																										+ <apex:outputField value="{!TowerRec.Planned_ResCom_Floors__c}" rendered="{!!ISBLANK(TowerRec.Planned_ResCom_Floors__c)}" />
+                    																									<apex:outputtext value=" 0 " rendered="{!ISBLANK(TowerRec.Planned_ResCom_Floors__c)}" /></td>
+	            <td valign="top" align="center" style="border-collapse: collapse; font-size: 8pt; white-space: nowrap;"><apex:outputField value="{!TowerRec.Actual_Basement_Floors__c}" rendered="{!!ISBLANK(TowerRec.Actual_Basement_Floors__c)}" />
+                    																									<apex:outputtext value=" 0 " rendered="{!ISBLANK(TowerRec.Actual_Basement_Floors__c)}" />B
+	            																										+ <apex:outputField value="{!TowerRec.Actual_Parking_Floors__c}" rendered="{!!ISBLANK(TowerRec.Actual_Parking_Floors__c)}" />
+                    																									<apex:outputtext value=" 0 " rendered="{!ISBLANK(TowerRec.Actual_Parking_Floors__c)}" />P
+	            																										+ <apex:outputField value="{!TowerRec.Actual_ResCom_Floors__c}" rendered="{!!ISBLANK(TowerRec.Actual_ResCom_Floors__c)}" />
+                    																									<apex:outputtext value=" 0 " rendered="{!ISBLANK(TowerRec.Actual_ResCom_Floors__c)}" /></td>
+	            <td valign="top" align="center" style="border-collapse: collapse; font-size: 8pt; white-space: nowrap;"><apex:outputField value="{!TowerRec.Deviation__c}" rendered="{!!ISBLANK(TowerRec.Deviation__c)}" />
+                    																									<apex:outputtext value=" - " rendered="{!ISBLANK(TowerRec.Deviation__c)}" /></td>
+	            <td valign="top" align="center" style="border-collapse: collapse; font-size: 8pt; white-space: nowrap;"><apex:outputField value="{!TowerRec.Total_Units__c}" rendered="{!!ISBLANK(TowerRec.Total_Units__c)}" />
+                    																									<apex:outputtext value=" - " rendered="{!ISBLANK(TowerRec.Total_Units__c)}" /></td>
+	            <td valign="top" align="center" style="border-collapse: collapse; font-size: 8pt; white-space: nowrap;"><apex:outputField value="{!TowerRec.Launched_Units__c}" rendered="{!!ISBLANK(TowerRec.Launched_Units__c)}" />
+                    																									<apex:outputtext value=" - " rendered="{!ISBLANK(TowerRec.Launched_Units__c)}" /></td>
+	            <td valign="top" align="center" style="border-collapse: collapse; font-size: 8pt; white-space: nowrap;"><apex:outputField value="{!TowerRec.Sold_Units__c}" rendered="{!!ISBLANK(TowerRec.Sold_Units__c)}" />
+                    																									<apex:outputtext value=" - " rendered="{!ISBLANK(TowerRec.Sold_Units__c)}" /></td>
+	            <td valign="top" align="center" style="border-collapse: collapse; font-size: 8pt; white-space: nowrap;"><apex:outputField value="{!TowerRec.Launch_Date__c}" rendered="{!!ISBLANK(TowerRec.Launch_Date__c)}" />
+                    																									<apex:outputtext value=" - " rendered="{!ISBLANK(TowerRec.Launch_Date__c)}" /></td>
+	            <td valign="top" align="center" style="border-collapse: collapse; font-size: 8pt; white-space: nowrap;"><apex:outputField value="{!TowerRec.Construction_Start_Date__c}" rendered="{!!ISBLANK(TowerRec.Construction_Start_Date__c)}" />
+                    																									<apex:outputtext value=" - " rendered="{!ISBLANK(TowerRec.Construction_Start_Date__c)}" /></td>
+	            <td valign="top" align="center" style="border-collapse: collapse; font-size: 8pt; white-space: nowrap;"><apex:outputField value="{!TowerRec.Proposed_Completion_Date__c}" rendered="{!!ISBLANK(TowerRec.Proposed_Completion_Date__c)}" />
+                    																									<apex:outputtext value=" - " rendered="{!ISBLANK(TowerRec.Proposed_Completion_Date__c)}" />
+	            																										</td>
+	        </tr>
+		</table><br><br></br></br>
+		
+		<table cellspacing="0" border="2" height="100%" width="100%">
+			<tr>
+				<th colspan="15" align="center" bgcolor="#99CCFF"><b>FLOOR STRUCTURE</b></th>
+			</tr>
+			<tr>
+				<td valign="middle" align="center" style="border-collapse: collapse; font-size: 8pt;">Floor</td>
+	            <td valign="middle" align="center" style="border-collapse: collapse; font-size: 8pt;">Unit Type</td>
+	            <td valign="middle" align="center" style="border-collapse: collapse; font-size: 8pt;">Carpet Area<br></br>(SqFt)</td>
+	            <td valign="middle" align="center" style="border-collapse: collapse; font-size: 8pt;">Saleable Built up area<br></br>(SqFt)</td>
+	            <td valign="middle" align="center" style="border-collapse: collapse; font-size: 8pt;">No of Units</td>
+			</tr>
+			<apex:repeat value="{!floorWrapForPDF}" var="fs">
+			<tr>
+	            <td valign="top" align="center" style="border-collapse: collapse; font-size: 8pt; white-space: nowrap;">
+	            	<apex:outputText value="{!fs.floor}" rendered="{!!ISBLANK(fs.floor)}" />
+                    <apex:outputtext value=" - " rendered="{!ISBLANK(fs.floor)}" />
+	            </td>
+	            <td valign="top" align="center" style="border-collapse: collapse; font-size: 8pt; white-space: nowrap;">
+	           		<apex:outputText value="{!fs.unitType}" rendered="{!!ISBLANK(fs.unitType)}" />
+                    <apex:outputtext value=" - " rendered="{!ISBLANK(fs.unitType)}" />
+	            </td>
+	            <td valign="top" align="center" style="border-collapse: collapse; font-size: 8pt; white-space: nowrap;">
+	            	<apex:outputText value="{!fs.carpetarea}" rendered="{!!ISBLANK(fs.carpetarea)}" />
+                    <apex:outputtext value=" - " rendered="{!ISBLANK(fs.carpetarea)}" />
+	            </td>
+	            <td valign="top" align="center" style="border-collapse: collapse; font-size: 8pt; white-space: nowrap;">
+	            	<apex:outputText value="{!fs.superbuiltuparea}" rendered="{!!ISBLANK(fs.superbuiltuparea)}" />
+                    <apex:outputtext value=" - " rendered="{!ISBLANK(fs.superbuiltuparea)}" />
+	            </td>
+	            <td valign="top" align="center" style="border-collapse: collapse; font-size: 8pt; white-space: nowrap;">
+	            	<apex:outputText value="{!fs.noOfUnits}" rendered="{!!ISBLANK(fs.noOfUnits)}" />
+                    <apex:outputtext value=" - " rendered="{!ISBLANK(fs.noOfUnits)}" />
+	            </td>
+            </tr>
+          	</apex:repeat>
+		</table><br><br></br></br>
+		
+		<br><br></br></br>
+	    <table cellspacing="0" border="2" height="100%" width="100%">
+			<tr>
+				<th colspan="15" align="center" bgcolor="#99CCFF"><b>TOWER CONSTRUCTION STATUS</b></th>
+			</tr>
+			<tr>
+	        	<td valign="middle" align="center" style="border-collapse: collapse; font-size: 8pt;">Tower Name</td>
+	            <td valign="middle" align="center" style="border-collapse: collapse; font-size: 8pt;">Excavation of  Footings</td>
+	            <td valign="middle" align="center" style="border-collapse: collapse; font-size: 8pt; white-space: nowrap;">Basement(Footings, Retaining
+	            																											<br></br>Walls and Water<br></br> Proofing)
+	            																											</td>
+	            <td valign="middle" align="center" style="border-collapse: collapse; font-size: 8pt;">RCC Slab Casting</td>
+	            <td valign="middle" align="center" style="border-collapse: collapse; font-size: 8pt;">Masonary(Brickwork
+	            																					  Doors and Window<br></br>Frames)</td>
+	            <td valign="middle" align="center" style="border-collapse: collapse; font-size: 8pt; white-space: nowrap;">Electrification <br></br>
+	            																											and Sanitation</td>
+	            <td valign="middle" align="center" style="border-collapse: collapse; font-size: 8pt; white-space: nowrap;">Finishing<br></br>
+	            																											(Titles, Doors<br></br>
+	            																											QC)</td>
+	            <td valign="middle" align="center" style="border-collapse: collapse; font-size: 8pt;"><b>Tower Construction Stage</b></td>
+				<td valign="middle" align="center" style="border-collapse: collapse; font-size: 8pt;">Remarks</td> 
+	         </tr>
+	         <tr>
+	            <td valign="middle" align="center" style="border-collapse: collapse; background-color:#CCCCCC; font-size: 8pt;">Weights</td>
+	            <apex:repeat value="{!prjweights}" var="pw" rows="1">
+	            	<td valign="top" align="center" style="border-collapse: collapse; font-size: 8pt; background-color:#CCCCCC; white-space: nowrap;"><apex:outputField value="{!pw.Weightage_Excavaton_of_Footings__c}" /></td>
+	                <td valign="top" align="center" style="border-collapse: collapse; font-size: 8pt; background-color:#CCCCCC; white-space: nowrap;"><apex:outputField value="{!pw.Weightage_Basement__c}" /></td>
+	                <td valign="top" align="center" style="border-collapse: collapse; font-size: 8pt; background-color:#CCCCCC; white-space: nowrap;"><apex:outputField value="{!pw.Weightage_RCC_Slab_Casting__c}" /></td>
+	                <td valign="top" align="center" style="border-collapse: collapse; font-size: 8pt; background-color:#CCCCCC; white-space: nowrap;"><apex:outputField value="{!pw.Weightage_Masonary__c}" /></td>
+	                <td valign="top" align="center" style="border-collapse: collapse; font-size: 8pt; background-color:#CCCCCC; white-space: nowrap;"><apex:outputField value="{!pw.Weightage_Electrification_Sanitation__c}" /></td>
+	                <td valign="top" align="center" style="border-collapse: collapse; font-size: 8pt; background-color:#CCCCCC; white-space: nowrap;"><apex:outputField value="{!pw.Weightage_Finishing__c}" /></td>
+	            	<td valign="top" align="center" style="border-collapse: collapse; font-size: 8pt; background-color:#CCCCCC; white-space: nowrap;"><apex:outputtext value="" /></td> 
+	            	<td valign="top" align="center" style="border-collapse: collapse; font-size: 8pt; background-color:#CCCCCC; white-space: nowrap;"><apex:outputtext value="" /></td>
+	            </apex:repeat>
+            </tr>
+            <apex:repeat value="{!WrapperCSList}" var="wtcs">  
+	            <tr>
+	            	<td valign="top" align="center" style="border-collapse: collapse; font-size: 8pt; white-space: nowrap;"><apex:outputField value="{!wtcs.CStatus.Tower_Name__c}" /></td>
+	                <td valign="top" align="center" style="border-collapse: collapse; font-size: 8pt; white-space: nowrap;"><apex:outputField value="{!wtcs.CStatus.Excavation_of_Footings__c}" /></td>
+	                <td valign="top" align="center" style="border-collapse: collapse; font-size: 8pt; white-space: nowrap;"><apex:outputField value="{!wtcs.CStatus.Basement__c}" /></td>
+	                <td valign="top" align="center" style="border-collapse: collapse; font-size: 8pt; white-space: nowrap;"><apex:outputField value="{!wtcs.CStatus.RCC_Slab_Casting__c}" /></td>
+	                <td valign="top" align="center" style="border-collapse: collapse; font-size: 8pt; white-space: nowrap;"><apex:outputField value="{!wtcs.CStatus.Masonary__c}" /></td>
+	                <td valign="top" align="center" style="border-collapse: collapse; font-size: 8pt; white-space: nowrap;"><apex:outputField value="{!wtcs.CStatus.Electrification_and_Sanitation__c}" /></td>
+	                <td valign="top" align="center" style="border-collapse: collapse; font-size: 8pt; white-space: nowrap;"><apex:outputField value="{!wtcs.CStatus.Finishing__c}" /></td>
+	            	<td valign="top" align="center" style="border-collapse: collapse; font-size: 8pt; white-space: nowrap;"><b><apex:outputtext value="{!wtcs.TotConstStatus}"/>&nbsp;%</b></td>
+	                <td valign="top" align="center" style="border-collapse: collapse; font-size: 8pt; white-space: wrap;">
+	                	<apex:outputText value="{!TowerRec.Remarks__c}" rendered="{!!ISBLANK(TowerRec.Remarks__c)}" />
+                    	<apex:outputtext value=" - " rendered="{!ISBLANK(TowerRec.Remarks__c)}" />
+	                </td>
+	               </tr>
+	            </apex:repeat>
+		</table>
+		<div style="page-break-before: always"></div>
+		<table cellspacing="0" border="0" height="100%" width="100%">
+   			<tr>
+				<th colspan="2" align="center" bgcolor="#99CCFF"><b>Projection</b></th>
+			</tr><br/>
+			<tr>
+				<td valign="center" align="center" style="border-collapse: collapse; font-size: 9pt; white-space: nowrap; width:5%">Construction<br></br> Stage %</td>
+				<td valign="top" align="center" style="border-collapse: collapse; font-size: 9pt; white-space: nowrap; width:90%">
+					<apex:image url="{!LineChartData}"></apex:image>
+				</td>
+			</tr>
+			<tr>
+				<td valign="center" align="center" style="border-collapse: collapse; font-size: 9pt; white-space: nowrap; width:5%"></td>
+				<td valign="center" align="center" style="border-collapse: collapse; font-size: 9pt; white-space: nowrap; width:90%">Duration (Months)</td>
+			</tr>
+		</table><br><br></br></br><br></br><br></br>
+		<table cellspacing="0" border="2" height="100%" width="100%" align="center">
+			<tr>
+				<th colspan="2" height="20px" align="center" bgcolor="#99CCFF"></th>
+			</tr>
+			<apex:repeat value="{!tableitems}" var="dts">
+		    	<tr>
+			<td valign="top" align="center" style="border-collapse: collapse; font-size: 10pt; white-space: nowrap;width:50%;"><apex:outputText value="{!dts.sLabel}"/></td>
+			<td valign="top" align="center" style="border-collapse: collapse; font-size: 10pt; white-space: nowrap;width:50%;">
+	        <apex:outputText value="{!dts.strDateValue}">     
+	           <apex:param value="{!dts.DateValue}"  />
+	        </apex:outputText>	</td>
+		   	 </tr>
+			</apex:repeat>	
+		</table>
+		<div style="page-break-before: always"></div>				
+		<table cellspacing="0" border="2" height="100%" width="100%" align="center">
+			<tr>
+				<th colspan="2" align="center" bgcolor="#99CCFF"><b>UNIT DETAILS</b></th>
+			</tr>
+			<tr>
+				<td>Tower</td>
+				<td>
+					<apex:outputtext value="{!UnitRecord.Tower_Id__r.name}" rendered="{!!ISBLANK(UnitRecord.Tower_Id__r.name)}" />
+                    <apex:outputtext value=" - " rendered="{!ISBLANK(UnitRecord.Tower_Id__r.name)}" />
+				</td>
+		  	</tr> 
+			<tr>
+		 		<td>Floor</td>
+				<td>
+					<apex:outputtext value="{!UnitRecord.Floor__c}" rendered="{!!ISBLANK(UnitRecord.Floor__c)}" />
+                    <apex:outputtext value=" - " rendered="{!ISBLANK(UnitRecord.Floor__c)}" />
+				</td>
+			</tr>
+			<tr>
+		 		<td>Unit Number</td>
+				<td>
+					<apex:outputtext value="{!UnitRecord.name}" rendered="{!!ISBLANK(UnitRecord.name)}" />
+                    <apex:outputtext value=" - " rendered="{!ISBLANK(UnitRecord.name)}" />
+				</td>
+		    </tr>
+		 	<tr>
+				<td>Unit Type</td>
+				<td><apex:outputtext value="{!UnitRecord.Unit_Type__c}"/></td>
+		    </tr>
+			<tr> 
+				<td>Carpet Area (Sqft)</td>
+				<td>
+					<apex:outputfield value="{!UnitRecord.Carpet_Area_Sq_Ft__c}" rendered="{!!ISBLANK(UnitRecord.Carpet_Area_Sq_Ft__c)}" />
+                    <apex:outputtext value=" - " rendered="{!ISBLANK(UnitRecord.Carpet_Area_Sq_Ft__c)}" />
+				</td>
+		    </tr>
+			<tr> 
+				<td>Saleable Area (Sqft)</td>
+				<td>
+					<apex:outputfield value="{!UnitRecord.Super_Area_Sq_Ft__c}" rendered="{!!ISBLANK(UnitRecord.Super_Area_Sq_Ft__c)}" />
+                    <apex:outputtext value=" - " rendered="{!ISBLANK(UnitRecord.Super_Area_Sq_Ft__c)}" />
+				</td>
+		    </tr>
+			<tr>
+				<td>Type of Payment Plan</td>
+				<td>
+					<apex:outputfield value="{!paymTypeRecord.Plan_Type__r.name}" rendered="{!!ISBLANK(paymTypeRecord.Plan_Type__r.name)}" />
+                    <apex:outputtext value=" - " rendered="{!ISBLANK(paymTypeRecord.Plan_Type__r.name)}" />
+				</td>
+		    </tr>
+			<tr>
+				<td>Developer BSP (Rs. Per Sqft)</td>
+				<td>
+					<apex:outputText value="{0,number,##,##,##,##0} ">
+						<apex:param value="{!DeveloperBSP}" />
+					</apex:outputText>
+				</td>
+			</tr>
+			<tr>
+				<td>Discount (as per latest information)</td>
+				<td>
+					<apex:outputfield value="{!paymTypeRecord.Discount__c}" rendered="{!!ISBLANK(paymTypeRecord.Discount__c)}" />
+                    <apex:outputtext value=" - " rendered="{!ISBLANK(paymTypeRecord.Discount__c)}" />
+				</td>
+		    </tr>
+			<tr>
+				<td>Discounted Developer BSP (Rs. Per Sqft)</td>
+				<td>
+					<apex:outputText value="{0,number,##,##,##,##0} ">
+						<apex:param value="{!DiscountedDeveloperBSP}" />
+					</apex:outputText>
+				</td>
+		    </tr>
+			<tr>
+				<td style="width:60%;">Resale BSP (Rs. Per Sqft)</td>
+				<td>
+					<apex:outputText value="{0,number,##,##,##,##0} ">
+						<apex:param value="{!TowerRec.Min_Avg_Resale_Price_Per_Sqft__c}" />
+					</apex:outputText>
+					<apex:outputText value=" - " />
+					<apex:outputText value="{0,number,##,##,##,##0} ">
+						<apex:param value="{!TowerRec.Max_Avg_Resale_Price_Per_Sqft__c}" />
+					</apex:outputText>
+				</td>
+		    </tr>
+		    <tr>
+				<td style="width:60%;">Cost of Flat as per Developer (In Rs.)</td>
+				<td>
+				<apex:outputText value="{0,number,##,##,##,##0} ">
+					<apex:param value="{!CostOfFlat}" />
+				</apex:outputText>
+				</td>
+		    </tr>
+		    <tr>
+				<td style="width:60%;">Resale Cost Range (In Rs.)</td>
+				<td>
+					<apex:outputText value="{0,number,##,##,##,##0}">
+						<apex:param value="{!MinAvgResalePricePerSqft}"/>
+					</apex:outputText>
+					<apex:outputText value=" - " />
+					<apex:outputText value="{0,number,##,##,##,##0}" > 
+						<apex:param value="{!MaxAvgResalePricePerSqft}"/>
+					</apex:outputText>
+				</td>
+		    </tr>
+	    </table>
+	    <table cellspacing="0" border="2" height="100%" width="100%" align="center">
+			<tr>
+				<th colspan="8" align="left" bgcolor="#99CCFF"><b>Additional Charges</b></th>
+			</tr>
+		    <tr>
+		    	<td valign="middle" align="center" style="border-collapse: collapse; font-size: 8pt;"><b>Charge Type</b></td>
+	            <td valign="middle" align="center" style="border-collapse: collapse; font-size: 8pt;"><b>Charge Detail</b></td>
+	            <td valign="middle" align="center" style="border-collapse: collapse; font-size: 8pt;"><b>Charge(Per Sqft)</b></td>
+	            <td valign="middle" align="center" style="border-collapse: collapse; font-size: 8pt;"><b>From Floor</b></td>
+	            <td valign="middle" align="center" style="border-collapse: collapse; font-size: 8pt;"><b>To Floor</b></td>
+	            <td valign="middle" align="center" style="border-collapse: collapse; font-size: 8pt;"><b>Mandatory</b></td>
+	            <td valign="middle" align="center" style="border-collapse: collapse; font-size: 8pt;"><b>Resale Value</b></td>
+	            <td valign="middle" align="center" style="border-collapse: collapse; font-size: 8pt;"><b>Remarks</b></td>
+		    </tr>
+		    <apex:repeat value="{!AddChg}" var="ac">
+		    <tr>
+		    	<td valign="top" align="center" style="border-collapse: collapse; font-size: 8pt; white-space: nowrap;">
+		    		<apex:outputField value="{!ac.Charge_Type__c}" rendered="{!!ISBLANK(ac.Charge_Type__c)}" />
+	                <apex:outputtext value=" - " rendered="{!ISBLANK(ac.Charge_Type__c)}" />
+		    	</td>
+		    	<td valign="top" align="center" style="border-collapse: collapse; font-size: 8pt; white-space: nowrap;">
+		    		<apex:outputField value="{!ac.Charge_Detail__c}" rendered="{!!ISBLANK(ac.Charge_Detail__c)}" />
+	                <apex:outputtext value=" - " rendered="{!ISBLANK(ac.Charge_Detail__c)}" />
+		    	</td>
+	            <td valign="top" align="center" style="border-collapse: collapse; font-size: 8pt; white-space: nowrap;">
+	            	<apex:outputField value="{!ac.Charge_Per_Sqft__c}" rendered="{!!ISBLANK(ac.Charge_Per_Sqft__c)}" />
+	                <apex:outputtext value=" - " rendered="{!ISBLANK(ac.Charge_Per_Sqft__c)}" />
+	            </td>
+	            <td valign="top" align="center" style="border-collapse: collapse; font-size: 8pt; white-space: nowrap;">
+	            	<apex:outputField value="{!ac.From_Floor__c}" rendered="{!!ISBLANK(ac.From_Floor__c)}" />
+	                <apex:outputtext value=" - " rendered="{!ISBLANK(ac.From_Floor__c)}" />
+	            </td>
+	            <td valign="top" align="center" style="border-collapse: collapse; font-size: 8pt; white-space: nowrap;">
+	            	<apex:outputField value="{!ac.To_Floor__c}" rendered="{!!ISBLANK(ac.To_Floor__c)}" />
+	                <apex:outputtext value=" - " rendered="{!ISBLANK(ac.To_Floor__c)}" />
+	            </td>
+	            <td valign="top" align="center" style="border-collapse: collapse; font-size: 8pt; white-space: nowrap;">
+	           		<apex:outputField value="{!ac.Mandatory__c}" />
+	            </td>
+	            <td valign="top" align="center" style="border-collapse: collapse; font-size: 8pt; white-space: nowrap;">
+	           		<apex:outputField value="{!ac.Resale_Value__c}" rendered="{!!ISBLANK(ac.Resale_Value__c)}" />
+	                <apex:outputtext value=" - " rendered="{!ISBLANK(ac.Resale_Value__c)}" />
+	            </td>
+	            <td valign="top" align="center" style="border-collapse: collapse; font-size: 8pt; white-space: wrap;">
+	            	<apex:outputField value="{!ac.Remarks__c}" rendered="{!!ISBLANK(ac.Remarks__c)}" />
+	                <apex:outputtext value=" - " rendered="{!ISBLANK(ac.Remarks__c)}" />
+	            </td>
+		    </tr>	
+		    </apex:repeat>
+    	</table>
+		<br><br></br></br>
+	    <table cellspacing="0" border="2" height="100%" width="100%">
+			<tr>
+				<th colspan="2" align="center" bgcolor="#99CCFF"><b>REMARKS</b></th>
+			</tr>
+	           <apex:repeat value="{!feedRemark}" var="fr">
+	            <tr>
+	            	<td valign="top" align="center" style="border-collapse: collapse; font-size: 10pt; white-space: nowrap;width:50%;">
+	            		<apex:outputField value="{!fr.List_of_Values_Id__r.Name}" rendered="{!!ISBLANK(fr.List_of_Values_Id__r.Name)}" />
+                		<apex:outputtext value=" - " rendered="{!ISBLANK(fr.List_of_Values_Id__r.Name)}" />
+	            	</td>
+	            	<td valign="top" align="center" style="border-collapse: collapse; font-size: 10pt; white-space: wrap;width:50%;">
+	            		<apex:outputField value="{!fr.Comments__c}" rendered="{!!ISBLANK(fr.Comments__c)}" />
+                		<apex:outputtext value=" - " rendered="{!ISBLANK(fr.Comments__c)}" />
+	            	</td>
+	            </tr>
+	            </apex:repeat>
+    	</table> 
+    	<div style="page-break-before: always"></div>
+     	<table width="100%" cellpadding="3" cellspacing="0" class="noborder" style="font-size: 10pt; line-height: 1.3em;">
+     		<tr>
+	     		<td colspan="2" align="center">
+	                <h1>PHOTOGRAPHS</h1>
+	            </td>
+     		</tr>
+<!--      		<apex:repeat value="{!imgList}" var="im"> -->
+		   		<apex:repeat value="{!imgurlList}" var="im">
+		        <tr>
+		     		<td align="center">
+						<apex:image id="theImage2" url="{!im.docurl}" width="250" height="150"/>     		
+		     		</td>
+		         </tr>
+		        <tr>
+		     		<td align="center">
+						<apex:outputText value="{!im.towername}"/>     		
+		     		</td>
+		         </tr>		         
+			</apex:repeat>
+     	</table>
+     	<br><br><br></br></br></br>
+     	<table cellspacing="0" border="2" height="100%" width="100%">
+     		<tr>
+				<th colspan="2" align="center" bgcolor="#99CCFF"><b>Project Latlong</b></th>
+			</tr>
+			<tr>
+				<td colspan="1" align="center" style="border-collapse: collapse; font-size: 10pt; white-space: nowrap;"><b>Latitude</b></td>
+				<td colspan="1" align="center" style="border-collapse: collapse; font-size: 10pt; white-space: nowrap;"><b>Longitude</b></td>	
+			</tr>
+			<tr>
+				<td valign="top" align="center" style="border-collapse: collapse; font-size: 10pt; white-space: nowrap;"><apex:outputField value="{!ProjectRec.Project_LatLong__Latitude__s}" rendered="{!!ISBLANK(ProjectRec.Project_LatLong__Latitude__s)}" />
+                    																									<apex:outputtext value=" - " rendered="{!ISBLANK(ProjectRec.Project_LatLong__Latitude__s)}" /></td>
+				<td valign="top" align="center" style="border-collapse: collapse; font-size: 10pt; white-space: nowrap;"><apex:outputField value="{!ProjectRec.Project_LatLong__Longitude__s}" rendered="{!!ISBLANK(ProjectRec.Project_LatLong__Longitude__s)}" />
+                    																									<apex:outputtext value=" - " rendered="{!ISBLANK(ProjectRec.Project_LatLong__Longitude__s)}" /></td>
+			</tr>
+     	</table>
+     	<div style="page-break-before: always"></div>
+		<table width="100%" cellpadding="3" cellspacing="0" class="noborder" style="font-size: 12pt; line-height: 1.3em;">
+			<tr>
+		    	<tr>
+		        	<td valign="top">Authorized Signatory:<font style="color: #FFFFFF;">\s1\</font></td>
+		        </tr>
+		        <br></br>
+	     <tr>
+		       	<td valign="top"><apex:image id="theImage2" value="{!$Resource.RBI_eSign}" width="150" height="75"/></td>
+		     </tr>
+		        <tr>
+		        	<td valign="top">Reality Intelligence Pvt Ltd<font style="color: #FFFFFF;">\s1\</font></td>
+		        </tr>
+		        <tr>
+		        	<td  width="45%" align="left">
+			     		<apex:outputText value="{0,date,dd/MM/yyyy}">
+	  						<apex:param value="{!TODAY()}"  /><font style="color: #FFFFFF;">\s1\</font>
+	  					</apex:outputText>
+	  				</td>
+		        </tr>
+		        <br><br></br></br>
+		     	<td colspan="2" align="left">
+		                <h1><b>Caveats and Assumptions:</b></h1>
+		        </td>
+		        <br></br>
+		        <td align="left">For Caveats and Assumptions refer to link :
+		        	<apex:outputLink value="/apex/RBI_DisclaimersPage" rendered="{!IsPorEnabled != true}">Click here</apex:outputLink>
+		            <apex:outputLink value="{!$Site.CurrentSiteUrl}apex/RBI_DisclaimersPage" rendered="{!IsPorEnabled = true}">Click here</apex:outputLink> 
+		        </td>
+		     </tr>	
+	     </table>
+	</html>
+</apex:page>

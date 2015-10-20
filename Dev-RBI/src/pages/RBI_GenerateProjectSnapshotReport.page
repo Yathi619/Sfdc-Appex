@@ -1,0 +1,375 @@
+<!-- 
+    Type:       VF Page
+    Purpose:    Used to generate the Project Snapshot Report for a Customer from Customer Portal.           
+
+    ---------------------------------------------------------------------------------------------------------------
+    History:
+    
+    26-Apr-2013     Created		Tugboat Info Solutions Pvt. Ltd
+
+-->
+<apex:page standardController="Project__c"  renderAs="pdf" extensions="RBI_ProjectSnapshot">
+	<html>
+		<head>
+			<apex:stylesheet value="{!URLFOR($Resource.PDFDocumentStyle, 'PDFDocumentStyle.css')}"/>
+		  		<c:PDFHeaderFooterComponent type="footer" position="left">www.realtybi.in </c:PDFHeaderFooterComponent>
+	    		<c:PDFHeaderFooterComponent type="footer" position="right" showPageNumbers="true"/>
+	    		<c:PDFHeaderFooterComponent type="header" position="center"> <apex:image id="theImage1" value="{!$Resource.LogoforPDF}"/></c:PDFHeaderFooterComponent>
+	    </head> 
+    <center>
+        <h1>Project Snapshot</h1> 
+        <h2>FOR : {!AcctName}</h2>  
+		<table width="80%" align="center"> 
+		<tr>
+			<td width="45%" align="right"> 
+				<apex:outputlabel value="Report Generation Date" />
+			</td>
+			<td width="2%" align="left">
+				<apex:outputlabel value=":" />
+			</td>
+			<td  width="45%"  align="left">
+			<apex:outputText value="{!dateStr}" />  
+			</td>
+		</tr> 
+		
+		<tr>
+			<td width="45%" align="right">
+				<apex:outputlabel value="Project Name" />
+			</td>
+			<td width="2%" align="left">
+				<apex:outputlabel value=":" />
+			</td>
+			<td  width="45%"  align="left">
+			<apex:outputText value="{!Project__c.Project_Name__c}" /> 
+			</td>
+		</tr>
+		
+		</table>
+		</center><br/><br/>
+		<table cellspacing="0" border="2" height="100%" width="100%" align="center">
+			<tr>
+				<th colspan="2" align="center" bgcolor="#99CCFF"><b>Details of the Project</b></th>	
+			</tr>
+			<tr>
+				<td style="width:40%;">Name Of the Project</td>
+				<td><apex:outputField value="{!Project__c.Project_Name__c}"/></td>
+   			</tr>
+			<tr>
+				<td style="width:40%;">Address of the Project</td>
+				<td><apex:outputField value="{!Project__c.Site_Address_Actual__c}"/></td>
+			</tr>
+			<tr>
+				<td style="width:40%;">Plot Area(in Acres) </td>
+				<td>
+					<apex:outputField value="{!Project__c.Plot_Area__c}" rendered="{!!ISBLANK(Project__c.Plot_Area__c)}" />
+                    <apex:outputtext value=" - " rendered="{!ISBLANK(Project__c.Plot_Area__c)}" />
+				</td>
+  			</tr>
+  		  	<tr>
+				<td style="width:40%;">Type</td>
+				<td>
+					<apex:outputField value="{!Project__c.Project_Type__c}" rendered="{!!ISBLANK(Project__c.Project_Type__c)}" />
+                	<apex:outputtext value=" - " rendered="{!ISBLANK(Project__c.Project_Type__c)}" />
+				</td>
+   		 	</tr>
+			<tr>
+				<td style="width:40%;">Number of the Towers</td>
+				<td>
+					<apex:outputField value="{!Project__c.Actual_No_of_Towers__c}" rendered="{!!ISBLANK(Project__c.Actual_No_of_Towers__c)}" />
+	                <apex:outputtext value=" - " rendered="{!ISBLANK(Project__c.Actual_No_of_Towers__c)}" />
+				</td> 
+	  		</tr>
+	  		 <tr>
+	   			<td style="width:40%;">Number of Dwelling units</td>
+				<td>
+					<apex:outputField value="{!Project__c.Total_Units__c}" rendered="{!!ISBLANK(Project__c.Total_Units__c)}" />
+	                <apex:outputtext value=" - " rendered="{!ISBLANK(Project__c.Total_Units__c)}" />
+				</td> 
+	  		</tr>
+	   		<tr>
+				<td style="width:40%;">Proposed/actual start date of construction</td>
+				<td>
+					<apex:outputField value="{!Project__c.Construction_Start_Date__c}" rendered="{!!ISBLANK(Project__c.Construction_Start_Date__c)}" />
+	            	<apex:outputtext value=" - " rendered="{!ISBLANK(Project__c.Construction_Start_Date__c)}" />
+				</td>
+	   		</tr>	
+	     	<tr>
+				<td style="width:40%;">Land Status</td>
+				<td>
+					<apex:outputField value="{!Project__c.construction_Status__c}" rendered="{!!ISBLANK(Project__c.construction_Status__c)}" />
+	            	<apex:outputtext value=" - " rendered="{!ISBLANK(Project__c.construction_Status__c)}" />
+				</td>
+	     	</tr>
+		</table>
+		<br/><br/><br/>
+		<table cellspacing="0" border="2" height="100%" width="100%" align="center">
+			<tr>
+				<th colspan="2" align="center" bgcolor="#99CCFF"><b>Details of the Developer</b></th>	
+			</tr>
+			<tr>
+				<td>Developer Name</td>
+				<td>
+					<apex:outputField value="{!Project__c.Developer_Id__r.Name}" rendered="{!!ISBLANK(Project__c.Developer_Id__r.Name)}" />
+            		<apex:outputtext value=" - " rendered="{!ISBLANK(Project__c.Developer_Id__r.Name)}" />
+				</td>
+   			</tr>
+			<tr>
+				<td>Registered Address/Head Office of Developer</td>
+				<td>
+					<apex:outputText value="{!Project__c.Developer_Address__c}" rendered="{!!ISBLANK(Project__c.Developer_Address__c)}" />
+                    <apex:outputtext value=" - " rendered="{!ISBLANK(Project__c.Developer_Address__c)}" />
+				</td>
+			</tr>
+			<tr>
+ 				<td>Address for Correspondence </td>
+				<td>
+					<apex:outputText value="{!Project__c.Developer_Correspondence_Address__c}" rendered="{!!ISBLANK(Project__c.Developer_Correspondence_Address__c)}" />
+                    <apex:outputtext value=" - " rendered="{!ISBLANK(Project__c.Developer_Correspondence_Address__c)}" />
+				</td>
+  			</tr>
+  		 	 <tr>
+				<td>Email Id</td>
+				<td>
+					<apex:outputText value="{!Project__c.Developer_Id__r.Email_Id__c}" rendered="{!!ISBLANK(Project__c.Developer_Id__r.Email_Id__c)}" />
+                    <apex:outputtext value=" - " rendered="{!ISBLANK(Project__c.Developer_Id__r.Email_Id__c)}" />
+				</td>
+   		 	</tr>
+			<tr>
+				<td>Website</td>
+				<td>
+					<apex:outputText value="{!Project__c.Developer_Id__r.Website}" rendered="{!!ISBLANK(Project__c.Developer_Id__r.Website)}" />
+                	<apex:outputtext value=" - " rendered="{!ISBLANK(Project__c.Developer_Id__r.Website)}" />
+				</td> 
+  			</tr>
+  		 	<tr>
+   				<td>Constitution</td>
+				<td>
+					<apex:outputText value="{!Project__c.Developer_Id__r.Constitution__c}" rendered="{!!ISBLANK(Project__c.Developer_Id__r.Constitution__c)}" />
+                	<apex:outputtext value=" - " rendered="{!ISBLANK(Project__c.Developer_Id__r.Constitution__c)}" />
+				</td> 
+  			</tr>
+  			<!-- Added on 12.08.2013 for Phase 2B -->
+  			<tr>
+   				<td>General Background of Promoters</td>
+				<td>
+					<apex:outputText value="{!Project__c.Developer_Id__r.General_Background_of_promoters__c}" rendered="{!!ISBLANK(Project__c.Developer_Id__r.General_Background_of_promoters__c)}" />
+                	<apex:outputtext value=" - " rendered="{!ISBLANK(Project__c.Developer_Id__r.General_Background_of_promoters__c)}" />
+				</td> 
+  			</tr>
+  			<tr>
+   				<td>Remarks/Market Feedback</td>
+				<td>
+					<apex:outputText escape="false" value="{!Project__c.Developer_Id__r.Remarks_market_Feedback__c}" rendered="{!!ISBLANK(Project__c.Developer_Id__r.Remarks_market_Feedback__c)}" />
+                	<apex:outputtext value=" - " rendered="{!ISBLANK(Project__c.Developer_Id__r.Remarks_market_Feedback__c)}" />
+				</td> 
+  			</tr>
+  			<!-- Adding End on 12.08.2013 -->
+        </table>
+        <br/><br/><br/>
+	    <table cellspacing="0" border="2" height="100%" width="100%" align="center">
+			<tr>
+				<th colspan="4" align="center" bgcolor="#99CCFF"><b>Details of Promoters/Directors</b></th>
+			</tr>
+			<tr>
+				<td colspan="1" align="center" > Name </td>
+				<td colspan="1" align="center" > Age </td>
+				<td colspan="1" align="center" > Qualification </td>
+				<td colspan="1" align="center" > Details of Experience </td>
+			</tr>
+			<apex:repeat value="{!conlst}" var="cn">
+				<tr>
+            		<td valign="top" align="center" style="border-collapse: collapse; font-size: 8pt; white-space: nowrap;width:25%;">
+            			<apex:outputField value="{!cn.name}" rendered="{!!ISBLANK(cn.name)}" />
+                		<apex:outputtext value=" - " rendered="{!ISBLANK(cn.name)}" />
+            		</td> 
+            		<td valign="top" align="center" style="border-collapse: collapse; font-size: 8pt; white-space: nowrap;width:25%;">
+            			<apex:outputField value="{!cn.Age__c}" rendered="{!!ISBLANK(cn.Age__c)}" />
+                		<apex:outputtext value=" - " rendered="{!ISBLANK(cn.Age__c)}" />
+            		</td>
+            		<td valign="top" align="center" style="border-collapse: collapse; font-size: 8pt; white-space: nowrap;width:25%;">
+            			<apex:outputField value="{!cn.Qualifications__c}" rendered="{!!ISBLANK(cn.Qualifications__c)}" />
+                		<apex:outputtext value=" - " rendered="{!ISBLANK(cn.Qualifications__c)}" />
+            		</td>
+            		<td valign="top" align="center" style="border-collapse: collapse; font-size: 8pt; white-space: nowrap;width:25%;">
+            			<apex:outputField value="{!cn.Details_of_Experience__c}" rendered="{!!ISBLANK(cn.Details_of_Experience__c)}" />
+                		<apex:outputtext value=" - " rendered="{!ISBLANK(cn.Details_of_Experience__c)}" />
+            		</td> 
+          		</tr>
+          		</apex:repeat>
+           	</table>
+            <div style="page-break-before: always"></div>
+            <table cellspacing="0" border="2" height="100%" width="100%" align="center">
+				<tr>
+					<th colspan="6" align="center" bgcolor="#99CCFF"><b>Other Projects Completed</b></th>
+				</tr>
+				<tr>
+					<td colspan="1" align="center" > Name </td>
+					<td colspan="1" align="center" > Address </td>
+					<td colspan="1" align="center" > Land Area </td>
+					<td colspan="1" align="center" > Dwelling Units </td>
+					<td colspan="1" align="center" > TotalBUA </td>
+					<td colspan="1" align="center" > Completion Year </td>
+				</tr>
+				<apex:repeat value="{!lvcomplete}" var="pl">
+				<tr>
+            		<td valign="top" align="center" style="border-collapse: collapse; font-size: 8pt; white-space: nowrap;width:25%;">
+            			<apex:outputField value="{!pl.Dev_Project_Name__c}" rendered="{!!ISBLANK(pl.Dev_Project_Name__c)}" />
+                		<apex:outputtext value=" - " rendered="{!ISBLANK(pl.Dev_Project_Name__c)}" />
+            		</td>
+            		<td valign="top" align="center" style="border-collapse: collapse; font-size: 8pt; white-space: nowrap;width:25%;">
+            			<apex:outputField value="{!pl.Dev_Project_Address__c}" rendered="{!!ISBLANK(pl.Dev_Project_Address__c)}" />
+                		<apex:outputtext value=" - " rendered="{!ISBLANK(pl.Dev_Project_Address__c)}" />
+            		</td>
+            		<td valign="top" align="center" style="border-collapse: collapse; font-size: 8pt; white-space: nowrap;width:25%;">
+            			<apex:outputField value="{!pl.Land_Area_in_Acres__c}" rendered="{!!ISBLANK(pl.Land_Area_in_Acres__c)}" />
+                		<apex:outputtext value=" - " rendered="{!ISBLANK(pl.Land_Area_in_Acres__c)}" />
+            		</td>
+            		<td valign="top" align="center" style="border-collapse: collapse; font-size: 8pt; white-space: nowrap;width:25%;">
+            			<apex:outputField value="{!pl.Dwelling_Units__c}" rendered="{!!ISBLANK(pl.Dwelling_Units__c)}" />
+                		<apex:outputtext value=" - " rendered="{!ISBLANK(pl.Dwelling_Units__c)}" />
+            		</td>
+            		<td valign="top" align="center" style="border-collapse: collapse; font-size: 8pt; white-space: nowrap;width:25%;">
+            			<apex:outputField value="{!pl.Total_BUA__c}" rendered="{!!ISBLANK(pl.Total_BUA__c)}" />
+                		<apex:outputtext value=" - " rendered="{!ISBLANK(pl.Total_BUA__c)}" />
+            		</td>
+            		<td valign="top" align="center" style="border-collapse: collapse; font-size: 8pt; white-space: nowrap;width:25%;">
+            			<apex:outputField value="{!pl.Completion_Year__c}" rendered="{!!ISBLANK(pl.Completion_Year__c)}" />
+                		<apex:outputtext value=" - " rendered="{!ISBLANK(pl.Completion_Year__c)}" />
+            		</td>
+          		</tr>
+           		</apex:repeat>
+           
+            </table><br/><br/><br/>
+            <table cellspacing="0" border="2" height="100%" width="100%" align="center">
+				<tr>
+					<th colspan="6" align="center" bgcolor="#99CCFF"><b>Other Ongoing Projects</b></th>
+				</tr>
+				<tr>
+					<td colspan="1" align="center" > Name </td>
+					<td colspan="1" align="center" > Address </td>
+					<td colspan="1" align="center" > Land Area </td>
+					<td colspan="1" align="center" > Dwelling Units </td>
+					<td colspan="1" align="center" > TotalBUA </td>
+					<!-- <td colspan="1" align="center" > Completion Year </td> -->
+				</tr>
+				<apex:repeat value="{!lvongoinglist}" var="pg">
+				<tr>
+					<td valign="top" align="center" style="border-collapse: collapse; font-size: 8pt; white-space: nowrap;width:25%;">
+            			<apex:outputField value="{!pg.Dev_Project_Name__c}" rendered="{!!ISBLANK(pg.Dev_Project_Name__c)}" />
+                		<apex:outputtext value=" - " rendered="{!ISBLANK(pg.Dev_Project_Name__c)}" />
+            		</td>
+	            	<td valign="top" align="center" style="border-collapse: collapse; font-size: 8pt; white-space: nowrap;width:25%;">
+	            		<apex:outputField value="{!pg.Dev_Project_Address__c}" rendered="{!!ISBLANK(pg.Dev_Project_Address__c)}" />
+	                	<apex:outputtext value=" - " rendered="{!ISBLANK(pg.Dev_Project_Address__c)}" />
+	            	</td>
+	            	<td valign="top" align="center" style="border-collapse: collapse; font-size: 8pt; white-space: nowrap;width:25%;">
+	            		<apex:outputField value="{!pg.Land_Area_in_Acres__c}" rendered="{!!ISBLANK(pg.Land_Area_in_Acres__c)}" />
+	                	<apex:outputtext value=" - " rendered="{!ISBLANK(pg.Land_Area_in_Acres__c)}" />
+	            	</td>
+	            	<td valign="top" align="center" style="border-collapse: collapse; font-size: 8pt; white-space: nowrap;width:25%;">
+	            		<apex:outputField value="{!pg.Dwelling_Units__c}" rendered="{!!ISBLANK(pg.Dwelling_Units__c)}" />
+	                	<apex:outputtext value=" - " rendered="{!ISBLANK(pg.Dwelling_Units__c)}" />
+	            	</td>
+	            	<td valign="top" align="center" style="border-collapse: collapse; font-size: 8pt; white-space: nowrap;width:25%;">
+	            		<apex:outputField value="{!pg.Total_BUA__c}" rendered="{!!ISBLANK(pg.Total_BUA__c)}" />
+	                	<apex:outputtext value=" - " rendered="{!ISBLANK(pg.Total_BUA__c)}" />
+	            	</td>
+	            	<!-- <td valign="top" align="center" style="border-collapse: collapse; font-size: 8pt; white-space: nowrap;width:25%;">
+	            		<apex:outputField value="{!pg.Completion_Year__c}" rendered="{!!ISBLANK(pg.Completion_Year__c)}" />
+	                	<apex:outputtext value=" - " rendered="{!ISBLANK(pg.Completion_Year__c)}" />
+	            	</td> -->
+            	</tr>
+           		</apex:repeat>
+           
+			</table> <br/><br/><br/>
+          	<table cellspacing="0" border="2" height="100%" width="100%" align="center">
+				<tr>
+					<th colspan="2" align="center" bgcolor="#99CCFF"><b>Other Details</b></th>
+				</tr>
+				<tr>
+        			<th valign="middle" align="center"  colspan="2"  bgcolor="#CCCCCC" >Construction Loan</th>  
+       			</tr>
+       			<tr>
+	          		<td valign="middle" align="center" style="border-collapse: collapse; font-size: 10pt; white-space: nowrap;"><b>Quantum(in Crores)</b></td>
+	          		<td valign="middle" align="center" style="border-collapse: collapse; font-size: 10pt; white-space: nowrap;"><b>From</b></td>
+	     		</tr> 
+     		 	<apex:repeat value="{!Quantlist}" var="l">
+	     		<tr>
+	     		 	<td  width="50%" valign="top" align="center" style="border-collapse: collapse; font-size: 10pt; ">
+	     		     	<apex:outputText value="{!l.Loan_Amount__c}" rendered="{!!ISBLANK(l.Loan_Amount__c)}" />
+	                	<apex:outputtext value=" - " rendered="{!ISBLANK(l.Loan_Amount__c)}" />
+	     		    </td>
+	               	<td  width="50%" valign="top" align="center" style="border-collapse: collapse; font-size: 10pt; ">
+	               	 	<apex:outputText value="{!l.Bank_Name__c}" rendered="{!!ISBLANK(l.Bank_Name__c)}" />
+	                	<apex:outputtext value=" - " rendered="{!ISBLANK(l.Bank_Name__c)}" />
+	               	</td> 
+	     		</tr>
+     		 	</apex:repeat>
+     		 	<tr>
+					<th colspan="2" align="center"  bgcolor="#CCCCCC"><b>Other Bank Financing on the Project</b></th>
+				</tr>
+				<tr>
+					<td valign="top" align="center" style="border-collapse: collapse; font-size: 10pt; white-space: nowrap;">Bank Name</td>
+					<td valign="top" align="center" style="border-collapse: collapse; font-size: 10pt; white-space: nowrap;">
+						<apex:outputField value="{!Project__c.Other_Banks_Prov_Loan_1__c}" rendered="{!!ISBLANK(Project__c.Other_Banks_Prov_Loan_1__c)}" />
+                		<apex:outputtext value=" - " rendered="{!ISBLANK(Project__c.Other_Banks_Prov_Loan_1__c)}" />
+					</td>
+   				</tr>
+				<tr>
+					<td valign="top" align="center" style="border-collapse: collapse; font-size: 10pt; white-space: nowrap;">Bank Name</td>
+					<td valign="top" align="center" style="border-collapse: collapse; font-size: 10pt; white-space: nowrap;">
+						<apex:outputField value="{!Project__c.Other_Banks_Prov_Loan_2__c}" rendered="{!!ISBLANK(Project__c.Other_Banks_Prov_Loan_2__c)}" />
+	                	<apex:outputtext value=" - " rendered="{!ISBLANK(Project__c.Other_Banks_Prov_Loan_2__c)}" />
+					</td>
+				</tr>
+				<tr>
+ 					<td valign="top" align="center" style="border-collapse: collapse; font-size: 10pt; white-space: nowrap;">Bank Name</td>
+					<td valign="top" align="center" style="border-collapse: collapse; font-size: 10pt; white-space: nowrap;">
+						<apex:outputField value="{!Project__c.Other_Banks_Prov_Loan_3__c}" rendered="{!!ISBLANK(Project__c.Other_Banks_Prov_Loan_3__c)}" />
+                		<apex:outputtext value=" - " rendered="{!ISBLANK(Project__c.Other_Banks_Prov_Loan_3__c)}" />
+					</td>
+  				</tr>
+  				<tr>
+ 					<td valign="top" align="center" style="border-collapse: collapse; font-size: 10pt; white-space: nowrap;">Bank Name</td>
+					<td valign="top" align="center" style="border-collapse: collapse; font-size: 10pt; white-space: nowrap;">
+						<apex:outputField value="{!Project__c.Other_Banks_Prov_Loan_4__c}" rendered="{!!ISBLANK(Project__c.Other_Banks_Prov_Loan_4__c)}" />
+                		<apex:outputtext value=" - " rendered="{!ISBLANK(Project__c.Other_Banks_Prov_Loan_4__c)}" />
+					</td>
+  				</tr>
+  				<tr>
+ 					<td valign="top" align="center" style="border-collapse: collapse; font-size: 10pt; white-space: nowrap;">Bank Name</td>
+					<td valign="top" align="center" style="border-collapse: collapse; font-size: 10pt; white-space: nowrap;">
+						<apex:outputField value="{!Project__c.Other_Banks_Prov_Loan_5__c}" rendered="{!!ISBLANK(Project__c.Other_Banks_Prov_Loan_5__c)}" />
+                		<apex:outputtext value=" - " rendered="{!ISBLANK(Project__c.Other_Banks_Prov_Loan_5__c)}" />
+					</td>
+  				</tr>
+     			<tr>
+					<th colspan="6" align="center" bgcolor="#CCCCCC" ><b>TSR Details</b></th> 
+				</tr>
+				<tr>
+					<td valign="middle" align="center" style="border-collapse: collapse; font-size: 10pt; white-space: nowrap;">Legal Report done By</td>
+					<td valign="middle" align="center" style="border-collapse: collapse; font-size: 10pt; white-space: nowrap;">
+						<apex:outputText value="{!visittsr.Legal_Agency__r.Name}" rendered="{!!ISBLANK(visittsr.Legal_Agency__r.Name)}" />
+               			<apex:outputtext value=" - " rendered="{!ISBLANK(visittsr.Legal_Agency__r.Name)}" />
+					</td>
+  				</tr>
+			 	<tr>
+					<td valign="middle" align="center" style="border-collapse: collapse; font-size: 10pt; white-space: nowrap;">Legal Opinion</td>
+					<td valign="middle" align="center" style="border-collapse: collapse; font-size: 10pt; white-space: nowrap;">
+						<apex:outputText value="{!visittsr.Status__c}" rendered="{!!ISBLANK(visittsr.Status__c)}" />
+               			<apex:outputtext value=" - " rendered="{!ISBLANK(visittsr.Status__c)}" />
+					</td>
+				</tr>
+				<tr>
+					<th colspan="6" align="center" bgcolor="#CCCCCC" ><b>DVU Status </b></th>
+				</tr>
+		    	<tr>
+	        		<td valign="middle" align="center" style="border-collapse: collapse; font-size: 10pt; white-space: nowrap;" >DVU Status</td>
+	        		<td valign="middle" align="center" style="border-collapse: collapse; font-size: 10pt; white-space: nowrap;">
+	        			<apex:outputText value="{!visit.Status__c}" rendered="{!!ISBLANK(visit.Status__c)}" />
+               			<apex:outputtext value=" - " rendered="{!ISBLANK(visit.Status__c)}" />
+	        		</td>
+				</tr>
+			</table>
+		</html>
+</apex:page>

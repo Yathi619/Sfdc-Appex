@@ -1,0 +1,45 @@
+<!-- 
+    Type:       VF Page
+    Purpose:    Used to create Construction status for a Tower.Invoked through
+    			Add button on the Project-Construction Status related list, in Employee application.           
+
+    ---------------------------------------------------------------------------------------------------------------
+    History:
+    
+    25-May-2013     Created		Tugboat Info Solutions Pvt. Ltd
+
+-->
+<apex:page standardController="Construction_Status__c" extensions="RBI_CreateConstructionStage" standardStylesheets="true" showHeader="true" sidebar="true" action="{!goToStandard}">
+	<apex:sectionHeader title="Construction Status Edit" subtitle="New Construction Status"/>
+    <apex:pageMessages />
+    <apex:form id="theForm">
+		<apex:pageBlock mode="edit" id="thePageBlock" title="Construction Status Edit">
+			<apex:pageBlockButtons >
+				<apex:commandButton value="Save" action="{!doSave}" />
+				<apex:commandButton value="Save & New" action="{!doSaveandNew}" />
+				<apex:commandButton value="Cancel" action="{!docancel}" immediate="true"/>
+			</apex:pageBlockButtons>
+			<apex:PageBlockSection id="lovdtl" columns="2" title="Information">
+		
+				<apex:outputText value="{!ProjectName}" label="Project" />
+				<apex:pageBlockSectionItem >
+					<apex:outputLabel value="Tower" />
+						<apex:selectList value="{!selectedTower}" style="width:150px;" multiselect="false" size="1"> 
+		     				<apex:selectOptions value="{!TowerOptions}"/>             
+						</apex:selectList>
+				</apex:pageBlockSectionItem>
+			</apex:PageBlockSection>
+			<apex:PageBlockSection >
+				<apex:inputField value="{!Construction_Status__c.Basement__c}" />
+				<apex:inputHidden rendered="false" required="true" value="{!Construction_Status__c.Project__c}"/>
+				<apex:inputHidden rendered="false" required="true" value="{!Construction_Status__c.Tower__c}"/>
+				<apex:inputField value="{!Construction_Status__c.Excavation_of_Footings__c}" />
+				<apex:inputField value="{!Construction_Status__c.RCC_Slab_Casting__c}" />
+				<apex:inputField value="{!Construction_Status__c.Electrification_and_Sanitation__c}" />
+				<apex:inputField value="{!Construction_Status__c.Masonary__c}" />
+				<apex:inputField value="{!Construction_Status__c.Finishing__c}" />
+						
+			</apex:PageBlockSection>
+		</apex:pageBlock>
+	</apex:form>			
+</apex:page>

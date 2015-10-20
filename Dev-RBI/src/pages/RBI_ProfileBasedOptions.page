@@ -1,0 +1,95 @@
+<apex:page id="pg" standardStylesheets="true" showHeader="false" sidebar="false">
+	<apex:stylesheet value="{!$Resource.RBI_RealtyCss}"/>
+	<!--  <link href="/resource/1362994629000/TISRealtyCss" rel="stylesheet" type="text/css" /> -->
+	 
+	 	<body id="sfapage" class="en IN full-100pct rwd rwd" >
+	 		<apex:outputpanel id="mgr" rendered="{!if($Profile.Name ='RBI Customer Portal Manager', true, false)}">
+	 			<div id="header" class="clearfix " style="height: 72px;">
+	 				<table border="0">
+	 					<tr>
+	 						<td valign="top" width="30%">
+	 							<div class="logo"><img src="/resource/1365412959000/RBI_Logo" style="background: none;"/></div>
+	 						</td>
+	 						<td height="81px" width="50%">
+	 							<div id="nav" class="challenger-a clearfix">	 
+		   							<ul class="horizontal Clearfix" style="list-style: none;">
+		 								<!-- Customer Tab -->
+		     							<li class="menu-customers"> <span class="lwrap"><span class="rwrap">
+		     								<span class="wrap"><a href="http://crms-developer-edition.ap1.force.com/home/home.jsp">Home</a></span></span></span>
+		     							</li>
+		 								<!-- Events Tab -->
+									    <li class="menu-customers">
+									    	<span class="lwrap">
+									    		<span class="rwrap">
+									    			<span class="wrap"><a href="/apex/RBI_MyProjects" target="_self" >My Projects</a></span>
+									    		</span>
+									    	</span>
+									     </li>
+		     							<li class="menu-services">
+										     <span class="lwrap">
+										     	<span class="rwrap">
+										     		<span class="wrap"><a href = "/in/events/">Select Projects</a></span>
+										     	</span>
+										     </span>
+		        							<ul class="horizontal clearfix submenu-1col">
+		 	   									<li >
+		 		   									<ul class="vertical">
+										 			   <li class="catheader">Search Existing</li>
+										 			   <li class="menu-support"><a href="/apex/RBI_UpcomingLaunchedProjects" target="_self" onclick=""><span class="title">Upcoming Projects</span></a></li>
+										 			   <li class="menu-support"><a href="/apex/RBI_LaunchedProjects" target="_self" onclick=""><span class="title">Launched Projects</span></a></li>
+										 			   
+										 		   	</ul>
+		 	   									</li>
+		        								<li class="menu-training">
+		            								<ul class="vertical">
+										 			   <li class="catheader">New Project</li>
+										 			   <li class="menu-support"><a href="/apex/RBI_CreateNewProject" target="_self" onclick=""><span class="title">Create New</span></a></li>
+										 		   	</ul>
+		 	   	 								</li>
+		 	   	   							</ul>
+		     							</li>
+		 
+		 								<!-- About Us Tab -->
+		     							<li class="menu-company"> <span class="lwrap"><span class="rwrap"><span class="wrap"><a href="/apex/RBI_MyTasks" target="_self" >My Tasks</a></span></span></span>
+		     							</li>
+		 
+		   							</ul>
+		 						</div>
+	 						</td>
+	 						<td valign="center" height="81px" width="10%" >
+	 	 						<a href="http://crms-developer-edition.ap1.force.com/apex/RBI_logout" target="_self"><img src="/resource/1363084811000/TISLogout" title="Logout"/></a>
+	 	 					</td>
+	 					</tr>
+	 				</table>
+	 			</div>
+			</apex:outputpanel>
+			<apex:outputpanel id="usr" rendered="{!if($Profile.Name !='RBI Customer Portal Manager', true, false)}">
+	 			<div id="header" class="clearfix " style="height: 72px;">
+	 				<table border="0">
+	 					<tr>
+	 						<td valign="top" width="30%">
+	 							<div class="logo"><img src="/resource/1365412959000/RBI_Logo" style="background: none;"/></div>
+	 						</td>
+	 						<td height="81px" width="50%">
+	 							<div id="nav" class="challenger-a clearfix">	 
+		   							<ul class="horizontal Clearfix" style="list-style: none;">
+		 								<!-- Events Tab -->
+									    <li class="menu-customers">
+									    	<span class="lwrap">
+									    		<span class="rwrap">
+									    			<span class="wrap"><a href="/apex/RBI_MyProjects" target="_self" >My Projects</a></span>
+									    		</span>
+									    	</span>
+									     </li>
+		     						</ul>
+		 						</div>
+	 						</td>
+	 						<td valign="center" height="81px" width="10%" >
+	 	 						<a href="http://crms-developer-edition.ap1.force.com/apex/RBI_logout" target="_self"><img src="/resource/1363084811000/TISLogout" title="Logout"/></a>
+	 	 					</td>
+	 					</tr>
+	 				</table>
+	 			</div>
+			</apex:outputpanel>
+		</body>
+</apex:page>

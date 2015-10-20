@@ -1,0 +1,6 @@
+Hello {!Customer_Projects__c.Customer_Name__c},
+
+Please find attached the data for the projects you have selected on Customer Portal.
+
+Thanks and Regards, 
+Realty BI Team

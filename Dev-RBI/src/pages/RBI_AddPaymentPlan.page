@@ -1,0 +1,66 @@
+<!-- 
+    Type:       VF Page
+    Purpose:    Used to add Infrastructure Near for a Project in Employee Portal. Invoked through
+    			Add button on the Project-Payment Plan related list           
+
+    ---------------------------------------------------------------------------------------------------------------
+    History:
+    
+    03-May-2013     Created		Tugboat Info Solutions Pvt. Ltd
+
+-->
+<apex:page controller="RBI_AddPaymentPlan" standardStylesheets="true" showHeader="true" sidebar="true">
+	<apex:form id="theForm"> 
+		<apex:pageBlock id="PPblock" title=" Add Payment Plan" mode="edit">            
+    		<apex:pageBlockButtons location="bottom">
+        		<apex:commandButton value="Add" action="{!dosave}" />                
+            	<apex:commandButton value="Cancel" action="{!doCancel}"/>
+        	</apex:pageBlockButtons> 
+        <apex:pageMessages />
+           	<apex:PageBlockSection id="ppdtl" columns="2" title="List of Payment Plans"/> 
+        	   
+        	<apex:pageblocktable id="ppList" value="{!ListofValues}" var="a" cellpadding="6" border="1">
+                <apex:column >
+                     <apex:facet name="header"> <apex:inputCheckbox onclick="checkAll(this)">
+                    <apex:actionSupport event="onclick" /> 
+                     </apex:inputCheckbox></apex:facet>
+                     <apex:inputCheckbox id="checkedone" value="{!a.selected}">
+                     </apex:inputCheckbox>
+               </apex:column>
+               
+                <apex:column headervalue="Name">
+	                <apex:outputfield value="{!a.listofval.Name}"></apex:outputfield> 
+                </apex:column>
+                
+                <apex:column headervalue="Entity Name">
+               		<apex:outputfield value="{!a.listofval.Entity_Name__c}"></apex:outputfield> 
+                </apex:column>
+                                
+                <apex:column headervalue="Entity Type"> 
+                	<apex:outputfield value="{!a.listofval.Entity_Type__c}"></apex:outputfield>  
+                </apex:column>
+                     
+                <apex:column headervalue="Value"> 
+                	<apex:outputfield value="{!a.listofval.Key__c}"></apex:outputfield>  
+                </apex:column>
+                     
+               	<apex:column headervalue="Key"> 
+               		<apex:outputfield value="{!a.listofval.Value__c}"></apex:outputfield>  
+                </apex:column>
+			</apex:pageblocktable>         
+		</apex:pageBlock>
+	</apex:form>
+
+    <script>
+        function checkAll(cb)
+        {
+            var inputElem = document.getElementsByTagName("input");
+            for(var i=0; i<inputElem.length; i++)
+            {
+                if(inputElem[i].id.indexOf("checkedone")!=-1)
+                inputElem[i].checked = cb.checked;
+            }
+        }  
+    </script>
+
+</apex:page>

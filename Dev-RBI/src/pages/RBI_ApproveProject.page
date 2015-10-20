@@ -1,0 +1,250 @@
+<!-- 
+    Type:       VF Page
+    Purpose:    Used to approve the projects created by customers (through Customer Portal).Invoked through
+    			Approve button on the Projects for Approval VF Tab, in Employee application.           
+
+    ---------------------------------------------------------------------------------------------------------------
+    History:
+    
+    07-May-2013     Created		Tugboat Info Solutions Pvt. Ltd
+
+-->
+<apex:page standardController="Project__c" tabStyle="Projects_for_Approval__tab" extensions="RBI_ApproveProject" standardStylesheets="true" showHeader="true" sidebar="true">
+
+<style type="text/css">
+	#notbl table{
+	border:0;
+	border-spacing:0;
+	border-right:0;
+	border-left:0;
+	border-top:0;
+	border-bottom:0;
+
+	}
+	#srchresults{
+	background-color: #e3f3ff;
+	}
+	
+	.btntd{
+	text-align:center;
+	}
+	.btnpanel{
+	width:100%;
+	}
+	.alphabet .alphatd {
+	
+	
+	border-right:1px solid #CFCECE;
+	padding-right:8px;
+	}
+	.alphabet .alphatd a {
+	color: #015ba7;
+	font-weight:normal;
+	font-size:91%;
+	text-align:right;
+	}
+	#showdata table{
+	border:0;
+	border-spacing:0;
+	border-right:1px solid #A8BBCA;
+	border-left:1px solid #A8BBCA;
+	border-top:2px solid #EC1F71;
+	}
+	#showdata table tr.dataRow.highlight td, #showdata table tr.dataRow.highlight th {
+	background-color: #e3f3ff;
+	}
+	/*body .pbBody table.list tr.dataRow.highlight td, body .pbBody table.list tr.dataRow.highlight th {
+	background-color: #e3f3ff;
+	}*/
+	#showdata table td, #showdata table th
+	{
+	border-bottom: 1px solid #A8BBCA;
+	
+	}
+	
+	 .headerRow th{white-space:nowrap;background-color:#ccc;padding:3px;margin:1px;font-weight:bold;border:none}
+	.list .headerRow th{border-bottom:2px solid #ccc;white-space:nowrap} 
+	body .pbBody table.list tr.headerRow td,
+	body .pbBody table.list tr.headerRow th {
+	background: #f2f3f3;
+	border-width: 0 0 1px 1px;
+	border-color: #e0e3e5;
+	color: #000;
+	font-size: .9em;
+	font-weight: bold;
+	padding: 5px 2px 4px 5px;
+	border: 1px solid #ededed;
+	}
+	body .apexp .pbBody table.list {
+	border: 1px solid #e0e3e5;
+	}
+	.heading {
+	  text-align:left;
+	  color:#FFFFFF;
+	 
+	}
+	.heading h1 {
+	  /*display:inline-block;*/
+	  font-family:Georgia, "Times New Roman", Times, serif;
+	  font-weight:100;
+	  font-size:22px;
+	  font-color:#FFF;
+	  position:relative;
+	  top:10px;
+	  background:#036CA5;
+	  padding:5px 0px;
+	  }
+	</style>
+    	<apex:form id="theform">
+        	<apex:outputPanel id="userDetails">
+        		<apex:pageBlock title="Project Details"  >
+            		<apex:pageBlockButtons location="top">
+                       	<apex:commandButton value="Approve" action="{!AprovPrj}" />
+                       	<apex:commandButton value="Reject" action="{!showPopup}" />
+                		<apex:commandButton value="Cancel" action="{!doCancel}" immediate="true" />
+       				</apex:pageBlockButtons> 
+       				<apex:pageBlockSection columns="3">
+            			
+            			<apex:pageBlockSectionItem dataStyle="width:15%" labelStyle="width:18%">
+            				<apex:outputLabel value="Project Id" />            		
+                			<!-- <apex:outputField value="{!Project__c.Name}" /> -->
+                			<apex:outputLink value="/{!Project__c.Id}" target="_blank">{!Project__c.Name}</apex:outputLink>
+                		</apex:pageBlockSectionItem>
+                		
+            			<apex:pageBlockSectionItem dataStyle="width:15%" labelStyle="width:18%">
+            				<apex:outputLabel value="Project Name" />            		
+                			<apex:outputField value="{!Project__c.Project_Name__c}" />
+                		</apex:pageBlockSectionItem>
+                		<apex:inputHidden rendered="false" required="true" value="{!Project__c.To_Be_Approved__c}"/>
+                		<apex:pageBlockSectionItem dataStyle="width:15%" labelStyle="width:18%">
+            				<apex:outputLabel value="Project Region" />
+                   			<apex:outputField value="{!Project__c.Project_Region__c}"/>
+                 		</apex:pageBlockSectionItem>
+                 	
+                 		<apex:pageBlockSectionItem dataStyle="width:15%" labelStyle="width:18%">
+            				<apex:outputLabel value="Phone" />    
+                   			<apex:outputField value="{!Project__c.Phone__c}"  />
+                 		</apex:pageBlockSectionItem>
+                 		
+                 		<apex:pageBlockSectionItem dataStyle="width:15%" labelStyle="width:18%">
+            				<apex:outputLabel value="Expected Launch Date" />    
+                   			<apex:outputField value="{!Project__c.Launch_Date__c}" />
+                 		</apex:pageBlockSectionItem>
+                 		
+                 		<apex:pageBlockSectionItem dataStyle="width:15%" labelStyle="width:18%">
+            				<apex:outputLabel value="Plot Area (in Acres)" />    
+                   			<apex:outputField value="{!Project__c.Plot_Area__c}"  />
+                 		</apex:pageBlockSectionItem>
+                 
+                 		<apex:pageBlockSectionItem dataStyle="width:15%" labelStyle="width:18%">
+            				<apex:outputLabel value="Assigned to City" />    
+                   			<apex:outputField value="{!Project__c.Assigned_to_city__c}" />
+                 		</apex:pageBlockSectionItem>
+                 
+                 		<apex:pageBlockSectionItem dataStyle="width:15%" labelStyle="width:18%">
+            				<apex:outputLabel value="Developer Name (Cust Provided)" />    
+                   			<apex:outputField value="{!Project__c.Developer_Name_Cust_Provided__c}" />
+                 		</apex:pageBlockSectionItem>
+                 		
+                 		<apex:pageBlockSectionItem dataStyle="width:15%" labelStyle="width:18%">
+            				<apex:outputLabel value="Developer Phone (Cust Provided)"  />    
+                   			<apex:outputField value="{!Project__c.Developer_Phone_Cust_Provided__c}" />
+                 		</apex:pageBlockSectionItem>
+                        
+                        <!-- <apex:pageBlockSectionItem dataStyle="width:15%" labelStyle="width:18%">
+            				<apex:outputLabel value="Developer Name" rendered="false"/>    
+                   			<apex:outputField value="{!Project__c.Developer_Id__c}" rendered="false" />
+                 		</apex:pageBlockSectionItem> -->
+                 		
+  					</apex:pageBlockSection>
+			
+            		<apex:pageBlockSection title="Project Site Address" columns="3" >
+            			
+            			<apex:pageBlockSectionItem dataStyle="width:15%" labelStyle="width:18%">
+            				<apex:outputLabel value="Landmark" />
+            				<apex:outputfield value="{!Project__c.Site_Address_Landmark__c}"  />
+            			</apex:pageBlockSectionItem>
+            			
+            			<apex:pageBlockSectionItem dataStyle="width:15%" labelStyle="width:18%">
+            				<apex:outputLabel value="Address Line1" />
+            				<apex:outputfield value="{!Project__c.Site_Address_Line_1__c }" />
+            			</apex:pageBlockSectionItem>
+            			
+            			<apex:pageBlockSectionItem dataStyle="width:15%" labelStyle="width:18%">
+            				<apex:outputLabel value="Address Line2" />
+            				<apex:outputfield value="{!Project__c.Site_Address_Line_2__c }" />
+            			</apex:pageBlockSectionItem>
+            			
+            			<apex:pageBlockSectionItem dataStyle="width:15%" labelStyle="width:18%">
+            				<apex:outputLabel value="State" />
+            				<apex:outputfield value="{!Project__c.Site_Address_State__c}"  />
+            			</apex:pageBlockSectionItem>
+            	
+            			<apex:pageBlockSectionItem dataStyle="width:15%" labelStyle="width:18%">
+            				<apex:outputLabel value="City" />
+            				<apex:outputfield value="{!Project__c.Site_Address_City__c}"  />
+            			</apex:pageBlockSectionItem>
+            	
+            			<apex:pageBlockSectionItem dataStyle="width:15%" labelStyle="width:18%">
+            				<apex:outputLabel value="Postal Code" />
+            				<apex:outputfield value="{!Project__c.Site_Address_zipcode__c}"  />
+            			</apex:pageBlockSectionItem>
+            			
+            		</apex:pageBlockSection>	
+            		<apex:inputHidden value="{!Project__c.Surveyor__c}" id="theHiddenInput"/>
+            		<apex:inputHidden value="{!Project__c.ownerId}" id="OwnertheHiddenInput"/>
+            		
+            </apex:pageBlock>
+       		</apex:outputPanel>
+       		<!-- Added for Phase 2B on 13.08.2013 -->
+				<apex:outputPanel id="tstpopup">
+					<apex:outputPanel styleClass="popupBackground" layout="block" rendered="{!displayPopup}"/>
+					<apex:outputPanel styleClass="custPopup" layout="block" rendered="{!displayPopup}">
+						<apex:pageBlock title="Hello" mode="edit">
+						<apex:pageMessages />
+							<!-- <apex:pageBlockSection columns="1"> -->
+								<apex:PageBlockButtons location="top">
+									<!-- <apex:commandButton value="Hide" action="{!closePopup}" rerender="userDetails, popup"/> -->
+									<apex:commandButton value="Save" action="{!RejectPrj}" rerender="userDetails, tstpopup"/>
+									<apex:commandButton value="Cancel" action="{!closePopup}" rerender="userDetails, tstpopup"/>
+								</apex:PageBlockButtons>	
+							<!-- </apex:pageBlockSection> -->
+							<apex:pageBlockSection columns="1">	
+								<apex:inputtextarea value="{!Project__c.Rejection_Remark__c}" label="Remarks" rows="5" style="width:300px;"/>
+							</apex:pageBlockSection>
+						</apex:pageBlock>
+					</apex:outputPanel>
+				</apex:outputPanel>
+            <!-- Adding end -->
+       	</apex:form>
+<!-- Added for Phase 2B on 13.08.2013 -->
+<style type = "text/css">
+		.custPopup
+		{
+			background-color:white;
+			border-width:2px;
+			border-style:solid;
+			z-index:9999;
+			left:50%;
+			padding:10px;
+			position:absolute;
+			width:50%;
+			margin-left:-250px;
+			top:100px;
+		}
+		.popupBackground
+		{
+			background-color:black;  
+			opacity:0.20;
+			filter:alpha(opacity = 20);
+			position:absolute;
+			width:100%;
+			height:100%;
+			top:0;
+			left:0;
+			z-index:9998;
+		}
+		     		
+	</style>
+<!-- End -->	
+</apex:page>

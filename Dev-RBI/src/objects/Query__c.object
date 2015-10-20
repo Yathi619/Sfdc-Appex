@@ -1,0 +1,357 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>Stores the Document Queries</description>
+    <enableActivities>false</enableActivities>
+    <enableEnhancedLookup>true</enableEnhancedLookup>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableReports>false</enableReports>
+    <fields>
+        <fullName>Assigned_To__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>used to Assign a user.</description>
+        <externalId>false</externalId>
+        <label>Assigned To</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Queries_Exceptions</relationshipName>
+        <required>false</required>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Closure_Remarks__c</fullName>
+        <description>Used to hold  Closure Remarks for Exception.</description>
+        <externalId>false</externalId>
+        <label>Closure Remarks</label>
+        <required>false</required>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>CustProjAccountId__c</fullName>
+        <externalId>false</externalId>
+        <formula>Customer_Project__r.AccountId__r.Id</formula>
+        <label>CustProjAccountId</label>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Customer_Name__c</fullName>
+        <externalId>false</externalId>
+        <formula>Customer_Project__r.AccountId__r.Name</formula>
+        <label>Customer Name</label>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Customer_Project__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Stores Relationship between Queries/Exception and Customer_Project</description>
+        <externalId>false</externalId>
+        <label>Customer Project</label>
+        <referenceTo>Customer_Projects__c</referenceTo>
+        <relationshipLabel>Queries/Exceptions</relationshipLabel>
+        <relationshipName>Queries_Exceptions</relationshipName>
+        <required>false</required>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Exception_Status__c</fullName>
+        <description>Used to hold status of exception as closed or open</description>
+        <externalId>false</externalId>
+        <label>Exception Status</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Open</fullName>
+                <default>true</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Closed</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Expected_Closure_Date__c</fullName>
+        <description>Used as  Expected Closure Date for Exception</description>
+        <externalId>false</externalId>
+        <label>Expected Closure Date</label>
+        <required>false</required>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Expected_Closure_Email_Date__c</fullName>
+        <description>Used to give one day before date of expected closure date(Used in ExceptionAlertBatch class).</description>
+        <externalId>false</externalId>
+        <formula>Expected_Closure_Date__c - 1</formula>
+        <label>Expected Closure Email Date</label>
+        <required>false</required>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Other_Remarks__c</fullName>
+        <description>Used as  Other_Remarks in exception</description>
+        <externalId>false</externalId>
+        <label>Other Remarks</label>
+        <required>false</required>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>PAS_Manager_Email__c</fullName>
+        <externalId>false</externalId>
+        <label>PAS Manager Email</label>
+        <required>false</required>
+        <type>Email</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PAS_Manager_Name__c</fullName>
+        <externalId>false</externalId>
+        <formula>Visit__r.Project__r.PAS_Manager_Name__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>PAS Manager Name</label>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Project_Document_Status__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Stores relationship between Project Document Status</description>
+        <externalId>false</externalId>
+        <label>Project Document</label>
+        <referenceTo>Project_Document_Status__c</referenceTo>
+        <relationshipLabel>Queries/Exceptions</relationshipLabel>
+        <relationshipName>Queries</relationshipName>
+        <required>false</required>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Project_Id__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(ISBLANK(Visit__c),  Customer_Project__r.Project_Id__c ,   Visit__r.Project__c )</formula>
+        <label>Project Id</label>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Project_Name_Customer__c</fullName>
+        <externalId>false</externalId>
+        <formula>Customer_Project__r.Project_Id__r.Project_Name__c</formula>
+        <label>Project Name Customer</label>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Project_Name__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF( ISBLANK(Visit__c),  Customer_Project__r.Project_Id__r.Project_Name__c, Visit__r.Project__r.Project_Name__c)</formula>
+        <label>Project Name</label>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Query_Description__c</fullName>
+        <description>used as Description field for both query and Exception.</description>
+        <externalId>false</externalId>
+        <label>Description</label>
+        <required>false</required>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Query_Initiated_Date__c</fullName>
+        <defaultValue>TODAY()</defaultValue>
+        <description>Used as  Initiation Date for both Query and Exception.</description>
+        <externalId>false</externalId>
+        <label>Initiation Date</label>
+        <required>false</required>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Query_Resolved_Date__c</fullName>
+        <description>Used as Close Date for both Query and Exception.</description>
+        <externalId>false</externalId>
+        <label>Close Date</label>
+        <required>false</required>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Record_Type_Name__c</fullName>
+        <externalId>false</externalId>
+        <formula>RecordType.Name</formula>
+        <label>Record Type Name</label>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Team_Leader_Email__c</fullName>
+        <description>Used   Visit TeamLeader email through CrossObject Formula field in Query\Exception</description>
+        <externalId>false</externalId>
+        <formula>IF( ISBLANK(Visit__c),  Customer_Project__r.Project_Id__r.Team_Lead_Email__c ,  Visit__r.Project__r.Team_Lead_Email__c )</formula>
+        <label>Team Leader Email</label>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Technical_Head_EmailId__c</fullName>
+        <description>Use to get the email id of the technical head of the project.</description>
+        <externalId>false</externalId>
+        <formula>IF( ISBLANK(Visit__c),  Customer_Project__r.Project_Id__r.Technical_Head__r.Email , Visit__r.Project__r.Technical_Head__r.Email)</formula>
+        <label>Technical Head EmailId</label>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Technical_Head_Id__c</fullName>
+        <description>This is used to get the Technical head Id.</description>
+        <externalId>false</externalId>
+        <formula>Visit__r.Project__r.Technical_Head__c</formula>
+        <label>Technical Head Id</label>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Type__c</fullName>
+        <description>Field used to indicate FTR Exception or Customer Exception</description>
+        <externalId>false</externalId>
+        <formula>IF(RecordType.DeveloperName = &apos;Exception&apos; , IF( ISBLANK(Visit__c), &apos;Customer Exception&apos;, &apos;FTR Exception&apos;), &apos;Query&apos;)</formula>
+        <label>Type</label>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Visit_Exception__c</fullName>
+        <externalId>false</externalId>
+        <formula>Visit__r.Exception__c</formula>
+        <label>Visit Exception</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Visit_Type__c</fullName>
+        <externalId>false</externalId>
+        <formula>TEXT(Visit__r.Visit_Report__c)</formula>
+        <label>Visit Type</label>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Visit__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Stores relationship  between  Visit and  Queries/Exception</description>
+        <externalId>false</externalId>
+        <label>Visit</label>
+        <referenceTo>Visit__c</referenceTo>
+        <relationshipLabel>Queries/Exceptions</relationshipLabel>
+        <relationshipName>Queries_Exceptions</relationshipName>
+        <required>false</required>
+        <type>Lookup</type>
+    </fields>
+    <label>Query/Exception</label>
+    <listViews>
+        <fullName>All</fullName>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <nameField>
+        <displayFormat>Qr-{0000}</displayFormat>
+        <label>Query Id</label>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Queries/Exceptions</pluralLabel>
+    <recordTypes>
+        <fullName>Exception</fullName>
+        <active>true</active>
+        <description>Record type for  Query/Execption object Named as Exception</description>
+        <label>Exception</label>
+        <picklistValues>
+            <picklist>Exception_Status__c</picklist>
+            <values>
+                <fullName>Closed</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Open</fullName>
+                <default>true</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>Query</fullName>
+        <active>true</active>
+        <description>Record type for  Query/Execption object</description>
+        <label>Query</label>
+        <picklistValues>
+            <picklist>Exception_Status__c</picklist>
+            <values>
+                <fullName>Closed</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Open</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <searchLayouts/>
+    <sharingModel>ReadWrite</sharingModel>
+    <validationRules>
+        <fullName>Closure_Remarks_Validation_Rule</fullName>
+        <active>true</active>
+        <description>When the exception status is closed closure remark field is mandatory.</description>
+        <errorConditionFormula>AND(
+  ISPICKVAL( Exception_Status__c , &quot;Closed&quot; ),
+   (ISBLANK( Closure_Remarks__c )) 
+)</errorConditionFormula>
+        <errorMessage>Please enter the closure remarks.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Visit_Type_Other_Than_FTR</fullName>
+        <active>true</active>
+        <errorConditionFormula>IF(ISBLANK( Visit__c ),Visit_Exception__c=true ,  NOT(AND(Visit_Type__c=&apos;First Technical Report&apos;,Visit_Exception__c=true) ))</errorConditionFormula>
+        <errorMessage>Exception records can be created only for visits of type &apos;First Technical Reports&apos;</errorMessage>
+    </validationRules>
+</CustomObject>

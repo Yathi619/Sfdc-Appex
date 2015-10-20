@@ -1,0 +1,31 @@
+<!-- 
+    Type:       VF Page
+    Purpose:    Used to add Construction loan details for a Project.Invoked through
+    			Add button on the Project-Construction Details related list, in Employee application.           
+
+    ---------------------------------------------------------------------------------------------------------------
+    History:
+    
+    07-May-2013     Created		Tugboat Info Solutions Pvt. Ltd
+
+-->
+<apex:page standardController="List_of_Values__c" extensions="RBI_ConstructionLoanDetails" standardStylesheets="true" showHeader="true" sidebar="true">
+	<apex:sectionHeader title="Construction Loan Detail" subtitle="Create"/>
+    <apex:pageMessages escape="false" />
+    <apex:form id="theForm">
+		<apex:pageBlock mode="edit" id="thePageBlock">
+			<apex:pageBlockButtons >
+				<apex:commandButton value="Save" action="{!save}" />
+				<apex:commandButton value="Save & New" action="{!SaveandNew}" />
+				<apex:commandButton value="Cancel" action="{!docancel}" immediate="true"/>
+			</apex:pageBlockButtons>
+			<apex:PageBlockSection id="lovdtl" columns="2" title="Information">
+		
+				<apex:inputField value="{!List_of_Values__c.Bank_Name__c}" />
+				<apex:inputField value="{!List_of_Values__c.Loan_Amount__c}" />
+				<apex:inputField value="{!List_of_Values__c.Project_Id_Const_Loan__c}" />
+		
+			</apex:PageBlockSection>
+		</apex:pageBlock>
+	</apex:form>			
+</apex:page>

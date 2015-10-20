@@ -1,0 +1,6 @@
+Hello  {!Contact.FirstName}, 
+
+The reports for the  {!Project__c.Project_Name__c} are complete and the  {!Project__c.Project_Name__c} is ready for review .
+
+Thanks & Regards. 
+Realty BI Team

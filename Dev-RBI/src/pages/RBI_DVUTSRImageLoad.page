@@ -1,0 +1,18 @@
+<!-- 
+    Type:       VF Page
+    Purpose:    Used to display the image for TSR and DVU. 
+
+    ---------------------------------------------------------------------------------------------------------------
+    History:
+    
+    26-Apr-2013     Created		Tugboat Info Solutions Pvt. Ltd
+-->
+<apex:page controller="RBI_DVUTSRImageLoad" showheader="false" sidebar="false">
+	<apex:form >
+	<apex:inputhidden value="{!as3l}" />
+	</apex:form>	
+	<!-- <apex:image id="theImage" url="{!reportimg.imageurl__c}{!qrystring}" width="100%" rendered="{!norecordsflg ==false}"/> -->
+	<apex:image id="theImage" url="{!qrystring}" width="100%" rendered="{!norecordsflg ==false}"/>
+	<apex:outputtext value="There is no report available for viewing. Please contact Realty BI Team.!" rendered="{!norecordsflg}" />  
+	
+</apex:page>

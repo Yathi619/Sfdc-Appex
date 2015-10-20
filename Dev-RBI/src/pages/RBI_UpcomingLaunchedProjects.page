@@ -1,0 +1,505 @@
+<!-- 
+    Type:       VF Page
+    Purpose:    Used to display Upcoming projects on the Customer Portal Home Page           
+
+    ---------------------------------------------------------------------------------------------------------------
+    History:
+    
+    02-Apr-2013     Created		Tugboat Info Solutions Pvt. Ltd
+
+-->
+<apex:page id="pg" Controller="RBI_Projects" action="{!InitialLoad}" standardStylesheets="true" showHeader="true" sidebar="true">
+<apex:stylesheet value="{!$Resource.RBI_RealtyCss}"/>
+<script>
+		var ProdCounter = 0;
+</script>
+<!-- <script language="JavaScript" type="text/javascript">
+			function CloseAndRefresh(){
+			window.location.href="/apex/RBI_UpcomingLaunchedProjects";
+		}
+</script> -->
+<!-- Added for Phase 2B on 12.08.2013 -->
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<!-- Adding end -->
+<style type="text/css">
+.custPopup{
+	background-color: white;
+    border-width: 2px;
+    border-style: solid;
+    z-index: 9999;
+    left: 30%;
+    padding:10px;
+    position: absolute;
+    /* These are the 3 css properties you will need to change so the popup 
+    displays in the center of the screen. First set the width. Then set 
+    margin-left to negative half of what the width is. You can add 
+    the height property for a fixed size pop up if you want.*/
+    width: 80%;
+    margin-left: -250px;
+    top:100px;
+}
+.popupBackground{
+	background-color:black;
+    opacity: 0.20;
+    filter: alpha(opacity = 20);
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 9998;
+}
+/*Added for Phase 2B on 14.08.2013  */
+/* .imgclass:hover{
+	background-repeat: no-repeat;
+	width: 20px;
+	height: 20px;   
+	background-position: right;
+}
+.imgclass{
+	background-repeat: no-repeat;
+	width: 20px;
+	height: 20px;
+} */
+/*Adding End  */
+#srchresults{
+	background-color: #e3f3ff;
+}
+
+.btntd{
+	text-align:center;
+}
+.btnpanel{
+	width:100%;
+}
+.alphabet .alphatd {
+	border-right:1px solid #CFCECE;
+	padding-right:8px;
+}
+.alphabet .alphatd a {
+	color: #015ba7;
+	font-weight:normal;
+	font-size:91%;
+	text-align:right;
+}
+#notbl table{
+	border:0;
+	border-spacing:0;
+	border-right:0;
+	border-left:0;
+	border-top:0;
+	border-bottom:0;
+}
+#notbl table td{
+	border-bottom:0;
+}
+#showdata > table{
+	border:0;
+	border-spacing:0;
+	border-right:1px solid #A8BBCA;
+	border-left:1px solid #A8BBCA;
+	/*border-top:2px solid #EC1F71;*/
+	/*border-top:2px solid #351792;*/
+	border-top:2px solid #45ADC8;
+}
+#showdata > table tr.dataRow.highlight td, #showdata > table tr.dataRow.highlight th {
+	background-color: #e3f3ff;
+}
+/*body .pbBody table.list tr.dataRow.highlight td, body .pbBody table.list tr.dataRow.highlight th {
+background-color: #e3f3ff;
+}*/
+#showdata>table td, #showdata > table th{
+	border-bottom: 1px solid #A8BBCA;
+}
+
+ .headerRow th{white-space:nowrap;background-color:#ccc;padding:3px;margin:1px;font-weight:bold;border:none}
+.list .headerRow th{border-bottom:2px solid #ccc;white-space:nowrap} 
+body .pbBody table.list tr.headerRow td,
+body .pbBody table.list tr.headerRow th {
+	background: #f2f3f3;
+	border-width: 0 0 1px 1px;
+	border-color: #e0e3e5;
+	color: #000;
+	font-size: .9em;
+	font-weight: bold;
+	padding: 5px 2px 4px 5px;
+	border: 1px solid #ededed;
+}
+body .apexp .pbBody table.list {
+	border: 1px solid #e0e3e5;
+}
+.heading {
+  text-align:left;
+  color:#FFFFFF;
+}
+.heading h1 {
+  /*display:inline-block;*/
+	font-family:Georgia, "Times New Roman", Times, serif;
+  	font-weight:100;
+  	font-size:22px;
+  	font-color:#FFF;
+  	position:relative;
+  	top:10px;
+  	background:#036CA5;
+  	padding:5px 0px;
+}
+.callign{
+	text-align:center;
+}
+</style>
+	<div class="sidebarModuleHeader">
+		<h2>Upcoming Projects</h2>
+	</div>
+    <apex:pageMessages id="PM" escape="false" />
+    <apex:form id="theForm">
+	<apex:pageBlock id="srchresults">
+        <apex:pageBlock mode="detail" id="mainPageBlock">
+	       	<table width="100%" border="0">
+            	<tr>
+                	<td width="200" valign="top">
+                    	<apex:pageBlockSection title="Search" columns="1"> </apex:pageBlockSection>
+                     		<table cellpadding="2" cellspacing="2" width="100%" columns="6">
+                                <tr>
+                                    <td style="font-weight: bold;" width="100px">Project Name<br /> <apex:inputText value="{!ProjectName}" style="width:200px" /></td>
+                                    
+                                    <td><br /></td>
+                                    <td style="font-weight: bold;" width="60px">City<br />
+               							<apex:selectList id="city" size="1" title="City" value="{!Projectcity}" style="width:150px"> 
+                  								<apex:selectOptions value="{!City}"></apex:selectOptions>
+               							</apex:selectList>                                     
+                                    </td>
+                                    <td><br /></td>
+                                    <td><br />
+                       					<apex:commandButton value="Search" action="{!searchProjects}" styleclass="btn" status="selectstatus" rerender="theForm, srchresults" />
+                   					</td>
+                                    <td><br /></td>
+								</tr>
+                            </table>
+                  	</td>
+                  </tr>
+        	</table>
+        </apex:pageBlock>
+        <apex:actionStatus id="selectstatus">
+				<apex:facet name="start">
+        			<c:RBI_EnhancedActionStatus BackColor="#ffffff"
+                                        borderColor="#6B6B6B"
+                                        borderSize="1"
+                                        height="50px"
+                                        width="250px"
+                                        margintop="-25px"
+                                        marginleft="-60px"
+                                        ImageUrl="{!$Resource.ajaxloader}"
+                                        Message="Loading please wait....."/>
+      			</apex:facet>
+    		</apex:actionStatus>
+        <apex:pageBlock id="srchresults"  >
+            <apex:pageBlockSection title="Upcoming Projects" columns="1"> </apex:pageBlockSection>
+            <table class="alphabet">
+				<tr>
+					<td width="80%"></td>
+						<apex:repeat value="{!SerchAlpabet}" var="nn">
+						<td class="alphatd">
+							<apex:commandLink action="{!display}"  reRender="srchresults" ><apex:param value="{!nn}" name="sss"  assignTo="{!SearchVar}"/> 
+							{!nn}</apex:commandLink>
+						</td>
+					</apex:repeat>
+				</tr>
+			</table> 
+			<div id="showdata"  rerender ="{!addflg}">
+	           	<apex:pageBlockTable id="pg" value="{!ProDetails}" var="a" >
+	                <apex:column headerValue="Project Name">
+	                    <!-- <apex:outputField value="{!a.projrecord.Project_Name__c}"  /> -->
+	                    <apex:commandLink value="{!a.projrecord.Project_Name__c}" title="Project Type : {!a.projrecord.Project_Type__c}"/>
+	                </apex:column>
+	                <apex:column headervalue="Developer Name">
+	                	<apex:commandLink value="{!a.projrecord.Developer_Name__c}" action="{!QryDevProfile}" rerender="tstpopup">
+							<apex:param name="devId" assignTo="{!devId}" value="{!a.projrecord.Developer_Id__c}" />
+							<!-- Added for Phase 2B on 23.08.2013 -->
+							<apex:param name="accountBackground" assignTo="{!accBackground}" value="{!a.projrecord.Developer_Id__r.General_Background_of_promoters__c}" />
+							<apex:param name="accountaccountRemarks" assignTo="{!accRemarks}" value="{!a.projrecord.Developer_Id__r.Remarks_market_Feedback__c}" />
+							<!-- End of Added for Phase 2B -->
+						</apex:commandLink>
+		         	</apex:column>
+	                <apex:column headerValue="City">
+	                    <apex:outputField value="{!a.projrecord.Site_Address_City__c}" />
+	                </apex:column>
+	                <apex:column headerValue="Location">
+	                    <apex:outputField value="{!a.projrecord.Project_Region__c}" />
+	                </apex:column>
+	                <apex:column headerValue="Land Area (in Acres)">
+	                    <apex:outputField value="{!a.projrecord.Plot_Area__c}" />
+	                </apex:column>  
+	                <apex:column headerValue="Expected Launch Date">
+	                    <apex:outputField value="{!a.projrecord.Launch_Date__c}" />
+	                </apex:column>
+	                <!-- Added for Phase 2B on 12.08.2013 -->
+	                 <apex:column headervalue="View Map" style="width:10px;height:10px;">
+	                 	<apex:commandButton rerender="mappopup" action="{!showPopupforPrjMap}" style="background-image:url('{!$Resource.RBI_GoogleMapIcon}');width:5px;height:15px" title="Click to view Map">
+	                	<!-- <apex:commandLink rerender="mappopup" action="{!showPopupforPrjMap}"  type="image/jpeg"> -->
+		                	<!-- <center>
+		                		<apex:image value="{!$Resource.RBI_GoogleMapIcon}" width="20" height="20" Class="imgclass" title="Click to view Map"/>
+		                		<img src="{!$Resource.RBI_GoogleMapIcon}" Class="imgclass" title="Click to view Map"/>
+		                	</center> -->
+	                		<apex:param name="StPrjNa" assignTo="{!StPrjNam}" value="{!a.projrecord.Project_Name__c}" />
+							<apex:param name="StAddl1" assignTo="{!StAddln1}" value="{!a.projrecord.Site_Address_Line_1__c}" />
+							<apex:param name="StAddl2" assignTo="{!StAddln2}" value="{!a.projrecord.Site_Address_Line_2__c}" />
+							<apex:param name="StState" assignTo="{!StAddSta}" value="{!a.projrecord.Site_Address_State__c}" />
+							<apex:param name="StCity" assignTo="{!StAddCty}" value="{!a.projrecord.Site_Address_City__c}" />
+							<!-- <apex:actionSupport event="onclick" rerender="mappopup" action="{!showPopupforPrjMap}"/> -->
+						</apex:commandButton>
+		         	</apex:column>
+		         	<!-- Adding end -->
+	                <apex:column headerValue="Approx. No. of Units">
+	                    <apex:outputField value="{!a.projrecord.Approx_No_of_Units__c}" />
+	                </apex:column>
+	                <apex:column headerValue="Category">
+	                    <apex:outputField value="{!a.projrecord.Project_Category__c}" />
+	                </apex:column>
+					<apex:column id="pckgs" headerValue="Packages" headerclass="callign">
+		            	<div id="notbl">
+		                	<apex:selectCheckboxes id="service" value="{!a.selectedids}" onChange="selectFTR(this,'{!a.projrecord.Id}');"> 
+		                		<apex:selectOptions value="{!a.servoptwrap}"></apex:selectOptions>
+		                		<apex:actionSupport event="onclick" rerender="selectstatus" status="selectstatus"/>
+		               		</apex:selectCheckboxes>  
+	            		</div>  
+                	</apex:column>
+              	</apex:pageBlockTable>
+              	<apex:actionFunction id="callApex" name="CallApexMethod" action="{!CheckFTR}" rerender="srchresults">
+		            <apex:param name="idParam" value="" />
+		            <apex:param name="selectedValue" value="" />   
+		            <apex:param name="checkedProd" value="" />
+	        	</apex:actionFunction>
+              	<!-- Added for Phase 2B on 12.08.2013 -->
+              	<apex:outputPanel id="mappopup" >
+                	<apex:outputPanel styleClass="popupBackground" layout="block" rendered="{!displayPopUpforPrjMap}"/>
+                    	<apex:outputPanel styleClass="custPopup" layout="block" rendered="{!displayPopUpforPrjMap}">
+                        	<apex:pageBlock title="Project Address">
+                            	<script type="text/javascript"> 
+                                    $(document).ready(function() {
+                                    var myOptions = {
+                                    zoom: 15,
+                                    mapTypeId: google.maps.MapTypeId.ROADMAP,
+                                    mapTypeControl: false
+                                    }
+                                    var map;
+                                    var marker;
+                                    var geocoder = new google.maps.Geocoder();
+                                    var address = "{!StAddln1}, " + "{!StAddln2}, " + "{!StAddSta}, " + "{!StAddCty}";
+                                    var infowindow = new google.maps.InfoWindow({
+                                    content: "<br>{!StPrjNam}</br><br>{!StAddln1}<br>{!StAddln2}, {!StAddSta}<br>{!StAddCty}"});
+                                    geocoder.geocode( { address: address}, function(results, status) {
+                                    if (status == google.maps.GeocoderStatus.OK && results.length) {
+                                    if (status != google.maps.GeocoderStatus.ZERO_RESULTS) {
+                                    //create map
+                                        map = new google.maps.Map(document.getElementById("map"), myOptions);
+                                    //center map
+                                        map.setCenter(results[0].geometry.location);
+                                    //create marker
+                                        marker = new google.maps.Marker({position: results[0].geometry.location,map: map,title: "{!StPrjNam}"});
+                                    //add listeners
+                                        google.maps.event.addListener(marker, 'click', function() {infowindow.open(map,marker);});
+                                        google.maps.event.addListener(infowindow, 'closeclick', function() {map.setCenter(marker.getPosition());});
+                                    }
+                                    } else {
+                                        $('#map').css({'height' : '15px'});
+                                        $('#map').html("Oops! {!StPrjNam}'s Site address could not be found, please make sure the address is correct.");
+                                        resizeIframe();
+                                    }
+                                    });
+                                    function resizeIframe() {
+                                            var me = window.name;
+                                            if (me) {
+                                            var iframes = parent.document.getElementsByName(me);
+                                            if (iframes && iframes.length == 1) {
+                                            height = document.body.offsetHeight;
+                                            iframes[0].style.height = height + "px";
+                                        }
+                                    }
+                                    }});
+                                </script>
+                                <style>
+                                    #map {
+                                    font-family: Arial;
+                                    font-size:12px;
+                                    line-height:normal !important;
+                                    height:250px;
+                                    background:transparent;
+                                    }
+                                </style>
+                                <body>
+                                    <div id="map"></div> 
+                                </body>
+                                </apex:pageBlock>
+                            <!-- <apex:commandButton value="Close" action="{!closePopupforPrjMap}"  oncomplete="CloseAndRefresh();" rerender="mappopup"/> -->
+                            <apex:commandButton value="Close" action="{!closePopupforPrjMap}" rerender="mappopup"/>
+                        </apex:outputPanel>
+                   	</apex:outputPanel>
+                   	<!-- Adding end -->
+	    		
+        	</div>
+    		<table width="100%">
+				<tr>
+					<td class="btntd" width="62%" style="float: right;padding-right:0.5en;">
+						<apex:commandButton value="Add" styleclass="btn" status="searchstatus" rerender="PM"  onclick="chkSel();"/>
+							<apex:actionStatus id="searchstatus">
+								<apex:facet name="start">
+									<apex:image value="{!$Resource.ajaxloader}"/> 
+								</apex:facet>
+	        				</apex:actionStatus>
+					</td>
+					<td width="38%">
+						<apex:outputPanel id="pagingPanel" rendered="{!(NOT(ShowPro.size == 0))}" layout="block" style="float: right;padding-right:0.5en;" >
+    		          		<c:RBI_Paginator reRenderComponent="srchresults, pagingPanel" PageManager="{!objPageManager}"   statusComponent="" id="bottom_paginator"/>
+           		        </apex:outputPanel>
+					</td>
+				</tr>
+			</table>
+			<apex:actionFunction name="callApex" action="{!saveList}" rerender="srchresults"></apex:actionFunction>
+			<div id="nodata" style = "display:none;">
+				<p><b>No record by selected letter.</b></p>
+			</div>  
+			<script>
+					var sze='{!sizee}';
+					sz=parseInt(sze);
+					//  alert(sz);
+					if(sz>0)
+					{
+						document.getElementById('showdata').style.display="block";
+						document.getElementById('nodata').style.display="none";
+					}
+					else
+					{
+						document.getElementById('showdata').style.display="none";
+						document.getElementById('nodata').style.display="block";
+					}
+				</script>
+    	</apex:pageBlock>
+    </apex:pageBlock>
+    	
+    <apex:outputPanel id="tstpopup" >
+        <apex:outputPanel styleClass="popupBackground" layout="block" rendered="{!displayPopUp}"/>
+            <apex:outputPanel styleClass="custPopup" layout="block" rendered="{!displayPopUp}"> 
+            	<apex:pageBlock title="Developer Profile">
+            		<apex:pageBlockButtons location="bottom">
+						<apex:commandButton value="Close" action="{!closePopup}" rerender="tstpopup"/>
+					</apex:pageBlockButtons> 
+				<apex:pageBlockSection title="Ongoing Projects" />
+				<apex:pageBlockTable value="{!lvongoinglist}" var="a">
+					<apex:column headerValue="Project Name">
+		            	<apex:outputField value="{!a.Dev_Project_Name__c}" />
+					</apex:column>
+					
+		        	<apex:column headervalue="Project Address">
+		        		<apex:outputField value="{!a.Dev_Project_Address__c }" />
+		        	</apex:column>
+		        		
+		        	<apex:column headerValue="Land Area (in acres)">
+		            	<apex:outputField value="{!a.Land_Area_in_Acres__c}" />
+		            </apex:column>
+		       	    
+		        	<apex:column headerValue="No. of Dwelling Units">
+		            	<apex:outputField value="{!a.Dwelling_Units__c}" />
+		            </apex:column>
+		            
+		            <apex:column headerValue="Total BUA">
+		            	<apex:outputField value="{!a.Total_BUA__c}" />
+		            </apex:column>
+		            
+		            <!-- <apex:column headerValue="Completion Year">
+		            	<apex:outputField value="{!a.Completion_Year__c}" />
+		            </apex:column> -->
+	            </apex:pageBlockTable>
+            	
+				<apex:pageBlockSection title="Completed Projects" />
+	    			<apex:pageBlockTable value="{!lvcomplete}" var="c">
+	    		
+						<apex:column headerValue="Project Name">
+			            	<apex:outputField value="{!c.Dev_Project_Name__c}" />
+						</apex:column>
+						
+			        	<apex:column headervalue="Project Address">
+			        		<apex:outputField value="{!c.Dev_Project_Address__c }" />
+			        	</apex:column>
+			        		
+			        	<apex:column headerValue="Land Area (in acres)">
+			            	<apex:outputField value="{!c.Land_Area_in_Acres__c}" />
+			            </apex:column>
+			       	    
+			        	<apex:column headerValue="No. of Dwelling Units">
+			            	<apex:outputField value="{!c.Dwelling_Units__c}" />
+			            </apex:column>
+			            
+			            <apex:column headerValue="Total BUA">
+			            	<apex:outputField value="{!c.Total_BUA__c}" />
+			            </apex:column>
+			            
+			            <apex:column headerValue="Completion Year">
+			            	<apex:outputField value="{!c.Completion_Year__c}" />
+			            </apex:column>
+	            </apex:pageBlockTable>
+	            <!-- <apex:outputPanel layout="block" style="overflow:auto;width:1050px;height:150px" rendered="{!!AND(ISBLANK(allprojlist[0].Developer__r.Remarks_market_Feedback__c),ISBLANK(allprojlist[0].Developer__r.General_Background_of_promoters__c))}"> 
+    				<apex:pageBlockTable value="{!allprojlist[0]}" var="dev" >
+    					<apex:column headerValue="General Background of promoters" style="width:250px" rendered="{!NOT(ISBLANK(allprojlist[0].Developer__r.General_Background_of_promoters__c))}">
+				        	<apex:outputText value="{!dev.Developer__r.General_Background_of_promoters__c}" />
+						</apex:column>
+   						<apex:column headervalue="Remarks / market Feedback" rendered="{!NOT(ISBLANK(allprojlist[0].Developer__r.Remarks_market_Feedback__c))}"> 
+				        	<apex:outputField value="{!dev.Developer__r.Remarks_market_Feedback__c }" /> 
+				        </apex:column>
+  					</apex:pageBlockTable>
+				</apex:outputPanel> -->
+				<!-- Added for Phase 2B on 23.08.2013 -->
+			    <apex:outputPanel layout="block" rendered="{!AND(accBackground != '', accBackground != null)}">
+					<apex:pageBlockSection columns="1" title="Promoter Background" /> 
+	    				<apex:outputText label="Hello" value="{!accBackground}"  style="width:100%;" />
+	    		</apex:outputPanel>
+	    		<apex:pageblocksection Title="Remarks / Market Feedback" rendered="{!AND(accRemarks != '', accRemarks != null)}"/>
+	    			<apex:outputPanel layout="block" style="overflow:auto;width:1050px;height:150px" rendered="{!AND(accRemarks != '', accRemarks != null)}">
+				    <!-- <apex:pageblocksection Title="Remarks / Market Feedback" / > -->
+				   	<apex:outputText escape="false" value="{!accRemarks }" style="width:100%" /> 
+				</apex:outputPanel>
+				<!-- End of Added for Phase 2B -->
+				
+			</apex:pageBlock> 
+			<!-- <apex:commandButton value="Close" action="{!closePopup}" rerender="tstpopup"/> -->
+        </apex:outputPanel>
+        </apex:outputPanel>        
+	</apex:form>
+	<script>
+        function checkAll(cb)
+        {
+            var inputElem = document.getElementsByTagName("input"); 
+            for(var i=0; i<inputElem.length; i++)
+            {
+                if(inputElem[i].id.indexOf("checkedone")!=-1)
+                inputElem[i].checked = cb.checked;
+            }
+        }
+        function selectFTR(selected, projId){
+            if(selected.checked){
+            	ProdCounter++;
+            }
+            
+            if(!selected.checked){
+            	ProdCounter--;
+            }
+            CallApexMethod(projId, selected.value, selected.checked);
+            
+        }
+        
+        function chkSel(){
+        	            
+            if(ProdCounter > 0){
+            
+	            if (confirm("Are you sure, you want to Proceed!"))
+	              {
+	              	callApex();
+	              }
+	            
+	        }
+            else{
+            	alert("Please select atleast one Product before clicking on Add!")
+            }  
+        }
+	</script>
+</apex:page>

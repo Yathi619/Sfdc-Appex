@@ -1,0 +1,8 @@
+Hi {!Contact.Account_Name__c}Team,
+
+Your project is rejected by our business head.
+Project Name           : {!Project__c.Project_Name__c}
+Rejection Remarks : {!Project__c.Rejection_Remark__c}
+
+Thanks and Regards,
+RealtyBI Team.

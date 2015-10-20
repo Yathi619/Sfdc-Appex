@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Copy of Unit report for the Borrower</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>Unit Report Template</name>
+    <style>none</style>
+    <subject>Unit report of {!Project__c.Project_Name__c}</subject>
+    <type>text</type>
+</EmailTemplate>

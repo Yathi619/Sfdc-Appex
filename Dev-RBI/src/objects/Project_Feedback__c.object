@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <enableActivities>false</enableActivities>
+    <enableEnhancedLookup>true</enableEnhancedLookup>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableReports>false</enableReports>
+    <fields>
+        <fullName>Comments__c</fullName>
+        <externalId>false</externalId>
+        <label>Comments</label>
+        <required>false</required>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Feedback_Hyperlink__c</fullName>
+        <description>This field is used in the related list of the project for the hyperlink</description>
+        <externalId>false</externalId>
+        <formula>HYPERLINK(&quot;/&quot; + Id,  List_of_Values_Id__r.Name, &quot;_blank&quot; )</formula>
+        <label>Feedback</label>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>List_of_Values_Id__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Feedback</label>
+        <referenceTo>List_of_Values__c</referenceTo>
+        <relationshipLabel>Project Feedbacks</relationshipLabel>
+        <relationshipName>Project_Feedbacks</relationshipName>
+        <required>false</required>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>ProjFeedUniqueKey__c</fullName>
+        <caseSensitive>true</caseSensitive>
+        <externalId>true</externalId>
+        <label>ProjFeedUniqueKey</label>
+        <length>80</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>true</unique>
+    </fields>
+    <fields>
+        <fullName>Project_Id__c</fullName>
+        <externalId>false</externalId>
+        <formula>Project__c</formula>
+        <label>Project Id</label>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Project_Name__c</fullName>
+        <externalId>false</externalId>
+        <formula>Project__r.Project_Name__c</formula>
+        <label>Project Name</label>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Project__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Strores relationship with Project</description>
+        <externalId>false</externalId>
+        <label>Project</label>
+        <referenceTo>Project__c</referenceTo>
+        <relationshipLabel>Feedbacks</relationshipLabel>
+        <relationshipName>Project_Feedbacks</relationshipName>
+        <required>false</required>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Remark_Type__c</fullName>
+        <externalId>false</externalId>
+        <formula>List_of_Values_Id__r.Key__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Remark Type</label>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Type__c</fullName>
+        <externalId>false</externalId>
+        <formula>List_of_Values_Id__r.Entity_Type__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Type</label>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Visit_Feedback_Unique_Key__c</fullName>
+        <externalId>false</externalId>
+        <formula>LOWER( List_of_Values_Id__r.Name  &amp;  Visit__r.Name  )</formula>
+        <label>Visit Feedback Unique Key</label>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Visit_Id__c</fullName>
+        <externalId>false</externalId>
+        <formula>Visit__c</formula>
+        <label>Visit Id</label>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Visit__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Stores relationship with visit</description>
+        <externalId>false</externalId>
+        <label>Visit</label>
+        <referenceTo>Visit__c</referenceTo>
+        <relationshipLabel>Feedbacks</relationshipLabel>
+        <relationshipName>Project_Feedbacks</relationshipName>
+        <required>false</required>
+        <type>Lookup</type>
+    </fields>
+    <label>Project Feedback</label>
+    <nameField>
+        <displayFormat>FB-{0000000000}</displayFormat>
+        <label>Feedback Id</label>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Project Feedbacks</pluralLabel>
+    <searchLayouts>
+        <lookupDialogsAdditionalFields>Project_Name__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Remark_Type__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Comments__c</lookupDialogsAdditionalFields>
+    </searchLayouts>
+    <sharingModel>ReadWrite</sharingModel>
+    <validationRules>
+        <fullName>Project_Id_Should_Not_be_blank_for_PMS_V</fullName>
+        <active>true</active>
+        <description>Project ID field should be blank for all the entities associated with PMS Visit</description>
+        <errorConditionFormula>AND( 
+  NOT(ISBLANK( Project_Id__c )),
+  NOT(ISBLANK( Visit__c))
+  
+)</errorConditionFormula>
+        <errorMessage>Please ensure that either Project Id or Visit Id is blank!</errorMessage>
+    </validationRules>
+    <webLinks>
+        <fullName>Add_Feedback</fullName>
+        <availability>online</availability>
+        <description>Button to add multiple feedbacks for a project</description>
+        <displayType>massActionButton</displayType>
+        <linkType>url</linkType>
+        <masterLabel>Add Feedback</masterLabel>
+        <openType>replace</openType>
+        <protected>false</protected>
+        <requireRowSelection>false</requireRowSelection>
+        <url>\apex\RBI_AddProjectFeedback?ProjId={!Project__c.Id}</url>
+    </webLinks>
+    <webLinks>
+        <fullName>Add_Feedback_Visit</fullName>
+        <availability>online</availability>
+        <description>Button to add multiple feedbacks for a project from Follow Up Visit</description>
+        <displayType>massActionButton</displayType>
+        <linkType>url</linkType>
+        <masterLabel>Add Feedback</masterLabel>
+        <openType>replace</openType>
+        <protected>false</protected>
+        <requireRowSelection>true</requireRowSelection>
+        <url>\apex\RBI_AddProjectFeedback?VstId={! Visit__c.Id }&amp;VstName={!Visit__c.Name}</url>
+    </webLinks>
+</CustomObject>

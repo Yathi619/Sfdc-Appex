@@ -1,0 +1,347 @@
+<apex:page Controller="RBI_ExporttoXLStarterPgHandler" action="{!InitialLoad}"  standardStylesheets="true" showHeader="true" sidebar="true">
+	<apex:stylesheet value="{!$Resource.RBI_RealtyCss}"/>
+	<script>
+	var ProdCounter = 0;
+	function selectEmail(selected){
+    	if(selected.checked){
+        	ProdCounter++;
+        }
+        if(!selected.checked){
+        	ProdCounter--;
+        }
+        if(ProdCounter > 5){
+			alert("You can not select more than 5 projects for export.");					            
+        } 
+    }	
+	</script>	
+	<style type="text/css">
+	
+	#srchresults{
+		background-color: #e3f3ff;
+	}
+
+	.btntd{
+		text-align:center;
+	}
+	.btnpanel{
+		width:100%;
+	}
+	.alphabet .alphatd {
+		border-right:1px solid #CFCECE;
+		padding-right:8px;
+	}
+	.alphabet .alphatd a {
+		color: #015ba7;
+		font-weight:normal;
+		font-size:91%;
+		text-align:right;
+	}
+	#showdata table{
+		border:0;
+		border-spacing:0;
+		border-right:1px solid #A8BBCA;
+		border-left:1px solid #A8BBCA;
+		/*border-top:2px solid #EC1F71;*/
+		/*border-top:2px solid #351792;*/
+		border-top:2px solid #45ADC8;
+	}
+	#showdata table tr.dataRow.highlight td, #showdata table tr.dataRow.highlight th {
+		background-color: #e3f3ff;
+	}
+	/*body .pbBody table.list tr.dataRow.highlight td, body .pbBody table.list tr.dataRow.highlight th {
+		background-color: #e3f3ff;
+	}*/
+	#showdata table td, #showdata table th{
+		border-bottom: 1px solid #A8BBCA;
+	}
+	.headerRow th{white-space:nowrap;background-color:#ccc;padding:3px;margin:1px;font-weight:bold;border:none}
+	.list .headerRow th{border-bottom:2px solid #ccc;white-space:nowrap} 
+	body .pbBody table.list tr.headerRow td,
+	body .pbBody table.list tr.headerRow th {
+		background: #f2f3f3;
+		border-width: 0 0 1px 1px;
+		border-color: #e0e3e5;
+		color: #000;
+		font-size: .9em;
+		font-weight: bold;
+		padding: 5px 2px 4px 5px;
+		border: 1px solid #ededed;
+	}
+	body .apexp .pbBody table.list {
+		border: 1px solid #e0e3e5;
+	}
+	.heading {
+  		text-align:left;
+  		color:#FFFFFF;
+	}
+	.heading h1 {
+  		/*display:inline-block;*/
+  		font-family:Georgia, "Times New Roman", Times, serif;
+  		font-weight:100;
+  		font-size:22px;
+  		font-color:#FFF;
+  		position:relative;
+  		top:10px;
+  		background:#036CA5;
+  		padding:5px 0px;
+  	}
+	}
+	.sidebarModuleHeader h2{
+		background-color: #036CA5;
+		color: #FFFFFF;
+		font-family: Arial, Helvetica, sans-serif;
+		font-weight: bold;
+		font-size: 91%;
+		padding: 5px 15px;
+		border-radius: 4px;
+	}
+	.callign{
+		text-align:center;
+	}
+	.imgclass:hover{
+		background-repeat: no-repeat;
+		width: 20px;
+		height: 20px;   
+		background-position: right;
+	}
+	.imgclass{
+		background-repeat: no-repeat;
+		width: 20px;
+		height: 20px;
+	} 
+	
+    .custPopup{
+    	background-color: white;
+        border-width: 2px;
+        border-style: solid;
+        z-index: 9999;
+        left: 50%;
+        padding:10px;
+        position: absolute;
+        /* These are the 3 css properties you will need to change so the popup 
+        displays in the center of the screen. First set the width. Then set 
+        margin-left to negative half of what the width is. You can add 
+        the height property for a fixed size pop up if you want.*/
+        width: 500px;
+        margin-left: -250px;
+        top:100px;
+    }
+    .popupBackground{
+    	background-color:black;
+        opacity: 0.20;
+        filter: alpha(opacity = 20);
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        z-index: 9998;
+    }
+    
+    
+	</style> 
+	<div class="sidebarModuleHeader">
+		<h2>My Projects for Export</h2>
+	</div>
+	<apex:form id="theForm">
+	<apex:pageBlock id="srchresults1">
+
+		<!-- <apex:pageMessages id="PM" escape="false" /> -->
+		
+        <apex:pageBlock mode="detail" id="mainPageBlock">
+	       	<table width="100%" border="0">
+            	<tr>
+                	<td width="200" valign="top">
+                    	<apex:pageBlockSection title="Search" columns="1"> </apex:pageBlockSection>  
+                     		<table cellpadding="2" cellspacing="2" width="100%" columns="6">
+                                <tr>
+                                    <td style="font-weight: bold;" width="100px">Project Name<br /> <apex:inputText value="{!Projectname}" style="width:200px" /></td>
+                                    <td><br /></td>
+                                    <td style="font-weight: bold;" width="60px">City<br />
+               							<apex:selectList id="city" size="1" title="City" value="{!Projectcity}" style="width:150px"> 
+                  								<apex:selectOptions value="{!City}"></apex:selectOptions>
+               							</apex:selectList>                                     
+                                    </td>
+                                    <td><br /></td>
+                                    <td><br />
+                       				<apex:commandButton value="Search" action="{!SearchProjects}" styleclass="btn" status="searchstatus" rerender="theForm, srchresults1" />
+                   						<apex:actionStatus id="searchstatus">
+											<apex:facet name="start">
+												<apex:image value="{!$Resource.ajaxloader}"/> 
+											</apex:facet>
+        								</apex:actionStatus>
+                                    </td>
+								</tr>
+                            </table>
+                  	</td>
+                  </tr>
+        	</table>
+        </apex:pageBlock>
+        <table width="100%" border="0">
+	        <tr><td>
+		        <font color="Blue">Selected Project : 
+			        <apex:outputPanel id="myScript">
+					    <script type="text/javascript">
+					      document.getElementById("j_id0:theForm:srchresults1:myScript").innerHTML=ProdCounter;
+					    </script>
+					</apex:outputPanel>
+				</font><br /></td>
+				<td>    
+					<!-- <apex:commandButton value="Send through Email" styleclass="btn" reRender="srchresults1, srchresults, theForm, mainPageBlock" onClick="sendEmail();" /> -->
+					<apex:commandButton value="Send through Email" styleclass="btn" reRender="tstpopup" status="searchstatus1" onClick="sendEmail();" />
+					<apex:actionStatus id="searchstatus1">
+						<apex:facet name="start">
+							<apex:image value="{!$Resource.ajaxloader}"/> 
+						</apex:facet>
+        			</apex:actionStatus>
+				</td>
+				<!-- <td>    
+					<apex:outputText value="Mail sent successfully " rendered="{!sendEmailflag}"/>
+				</td>
+				<td>    
+					<apex:outputText value="Mail not sent" rendered="{!sendEmailErrorflag}"/>
+				</td> -->
+			</tr>
+		</table>
+    	<apex:pageBlock id="srchresults">
+    	<!-- <apex:pageMessages escape="false"/> -->
+  			<apex:pageBlockSection title="My Projects" />
+  				<table class="alphabet">
+					<tr>
+						<td width="80%"></td>
+							<apex:repeat value="{!SerchAlpabet}" var="nn">
+								<td class="alphatd">
+									<apex:commandLink action="{!display}"  reRender="srchresults" ><apex:param value="{!nn}" name="sss"  assignTo="{!SearchVar}"/> 
+									{!nn}</apex:commandLink>
+								</td>
+							</apex:repeat>
+					</tr>
+				</table> 
+			<div id="showdata"> 
+	    		<apex:pageBlockTable value="{!ProDetails}" var="a" id="pg">
+	            	<apex:column headerValue="Project Name" >
+	        			<apex:commandLink action="{!detail}" value="{!a.custProjrecord.Project_Id__r.Project_Name__c}" target="_blank">
+	        				<apex:param name="selectedProj" assignTo="{!SelectedProjId}" value="{!a.custProjrecord.Project_Id__c}"/>
+	        			</apex:commandLink>	
+	         		</apex:column>
+	        		<apex:column headerValue="Developer Name">
+	                    <apex:outputField value="{!a.custProjrecord.Project_Id__r.Developer_Name__c}" />
+	                </apex:column>
+	        		<apex:column headervalue="Project City" value="{!a.custProjrecord.Project_Id__r.Site_Address_City__c }" />
+	        		<!-- <apex:column headerValue="Project Location">
+	                    <apex:outputField value="{!a.custProjrecord.Project_Id__r.Project_Region__c}" />
+	                </apex:column> -->
+	       	       	<apex:column value="{!a.custProjrecord.Project_Id__r.Project_Type__c}" />
+	        		<apex:column headerValue="Launch Date">
+	                    <apex:outputField value="{!a.custProjrecord.Project_Id__r.Launch_Date__c}" />
+	                </apex:column>
+	                <!-- <apex:column headerValue="Land Area (in Acres)">
+	                    <apex:outputField value="{!a.custProjrecord.Project_Id__r.Plot_Area__c}" />
+	                </apex:column> -->
+	                <apex:column headervalue="Download Project" style="width:10px;height:10px;">
+	                	<center>
+		                	<apex:outputLink value="/apex/RBI_ProjectExport?ProjId={!a.custProjrecord.Project_Id__c}" target="_blank">
+		                		<apex:image url="{!$Resource.RBI_XL_Icon}" styleClass="imgclass" title="Click to Download" ></apex:image>
+							</apex:outputLink>
+						</center>
+		         	</apex:column>
+	                
+		        	<apex:column id="Email" headerValue="Email" headerclass="callign">
+		        		<center>
+				        	<apex:inputCheckbox id="EmailService" value="{!a.emailCust}" onChange="selectEmail(this);">
+				            	<apex:actionSupport event="onclick" rerender="myScript" status="searchstatus1"/>
+				            </apex:inputCheckbox>  
+				        </center>
+	                </apex:column> 
+                	<!-- <apex:column id="Emailed1" headerValue="Emailed" headerclass="callign">
+                		<center>
+			            	<div id="notbl1">
+			                	<apex:inputCheckbox id="Emailed" value="{!a.emailed}" disabled="true">
+			               		</apex:inputCheckbox>  
+		            		</div>  
+		            	</center>	
+                	</apex:column>  -->
+	        	</apex:pageBlockTable>
+	        	<apex:actionFunction name="callEmail" action="{!sendMail}" reRender="srchresults"/>
+	        	<apex:actionFunction name="downloadProject" action="{!downloadProj}"/>
+	        	<apex:actionStatus id="selectstatus"> 
+					<apex:facet name="start">
+	        			<c:RBI_EnhancedActionStatus BackColor="#ffffff"
+	                                        borderColor="#6B6B6B"
+	                                        borderSize="1"
+	                                        height="50px"
+	                                        width="250px"
+	                                        margintop="-25px"
+	                                        marginleft="-60px"
+	                                        ImageUrl="{!$Resource.ajaxloader}"
+	                                        Message="Loading please wait....."/>
+	      			</apex:facet>
+	    		</apex:actionStatus>
+        	</div>
+         	<table width="100%">
+				<tr>
+					<td width="62%" style="float: right;padding-right:0.5en;"> </td>
+					<td width="38%">
+						<apex:outputPanel id="pagingPanel" rendered="{!(NOT(ShowPro.size == 0))}" layout="block" style="float: right;padding-right:0.5en;" >
+    		          		<c:RBI_Paginator reRenderComponent="srchresults, pagingPanel" PageManager="{!objPageManager}"   statusComponent="" id="bottom_paginator"/>
+           		        </apex:outputPanel>
+					</td>
+				</tr>
+			</table>
+			<!-- This code is for popUp -->
+			<apex:outputPanel id="tstpopup">
+		        <apex:outputPanel styleClass="popupBackground" layout="block" rendered="{!displayPopUp}"/>
+		        <apex:outputPanel styleClass="custPopup" layout="block" rendered="{!displayPopUp}">
+		        <apex:pageMessages escape="false"/>
+		            <apex:outputText value="Mail sent successfully with Attachments." rendered="{!sendEmailflag}"/><br/><br/><br/>
+		        	<!-- <apex:commandButton value="Ok" action="{!closePopup}" rerender="tstpopup" rendered="{!sendEmailflag}"/> -->
+		        	<apex:commandButton value="Close" action="{!closePopup}" rerender="tstpopup" />
+		        </apex:outputPanel>
+	        </apex:outputPanel>
+			
+           	<div id="nodata" style = "display:none;">
+				<p><b>No record by selected letter.</b></p>
+			</div>  
+			<script>
+					var sze='{!sizee}';
+					sz=parseInt(sze);
+					//  alert(sz);
+					if(sz>0)
+					{
+						document.getElementById('showdata').style.display="block";
+						document.getElementById('nodata').style.display="none";
+					}
+					else
+					{
+						document.getElementById('showdata').style.display="none";
+						document.getElementById('nodata').style.display="block";
+					}
+					
+					/*function selectEmail(selected){
+			            if(selected.checked){
+			            	ProdCounter++;
+			            }
+			            
+			            if(!selected.checked){
+			            	ProdCounter--;
+			            }
+			            if(ProdCounter > 10){
+							alert("You can not select more than ten project for export.");					            
+			            }
+			        }*/
+			        function sendEmail(){
+			        	if(ProdCounter <= 05 && ProdCounter != 0){
+			        		callEmail();
+			        	}
+			        	else if(ProdCounter > 05){
+			        		alert("You can not select more than 5 projects for export.");
+			        	}
+			        	else if(ProdCounter == 0){
+			        		alert("You have to select atleast one project to send email.");
+			        	}
+			        }
+			</script>
+    	</apex:pageBlock>
+   	</apex:pageBlock>
+   </apex:form>
+</apex:page>

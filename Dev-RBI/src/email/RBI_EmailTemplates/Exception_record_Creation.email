@@ -1,0 +1,8 @@
+Hello {!Query__c.PAS_Manager_Name__c},
+
+A  new exception record has been created. The details are as mentioned below:
+Project Name: {!Query__c.Project_Name__c}
+Visit Type : {!Query__c.Visit_Type__c}
+
+Thanks & Regards. 
+Realty BI Team

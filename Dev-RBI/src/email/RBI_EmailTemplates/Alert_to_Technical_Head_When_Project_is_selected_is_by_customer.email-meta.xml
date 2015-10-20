@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>This template is used in workflow which sends email alert to Technical Head when the customer selects the Project</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>Alert to Technical Head When Project is selected is by customer</name>
+    <style>none</style>
+    <subject>Customer has selected the Project Services</subject>
+    <type>text</type>
+</EmailTemplate>

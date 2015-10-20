@@ -1,0 +1,5 @@
+<apex:page >
+<apex:stylesheet value="{!URLFOR($Resource.RBI_RealtyCss)}"/>  
+<apex:stylesheet value="{!URLFOR($Resource.RBI_Seperator)}"/>  
+<apex:stylesheet value="{!URLFOR($Resource.RBI_Logoutimg)}"/>  
+</apex:page>

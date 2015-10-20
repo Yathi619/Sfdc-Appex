@@ -1,0 +1,42 @@
+<!-- 
+    Type:       VF Page
+    Purpose:    Used to create multiple units for a Tower.Invoked through
+    			Add Units button on the Tower-Units Related List, in Employee application.           
+
+    ---------------------------------------------------------------------------------------------------------------
+    History:
+    
+    08-May-2013     Created		Tugboat Info Solutions Pvt. Ltd
+
+-->
+<apex:page Controller="RBI_CreateUnits" standardStylesheets="true" showHeader="true" sidebar="true" tabstyle="Project__c">
+	<apex:sectionHeader title="Units Creation" subtitle="Create Units"/>
+    <apex:pageMessages escape="false" />
+    <apex:form id="theForm">
+    	
+		<apex:pageBlock mode="edit" id="thePageBlock">
+			<apex:pageBlockButtons >
+				<apex:commandButton value="Save" action="{!doCreate}" />
+				<apex:commandButton value="Save & New" action="{!doCreateandNew}" />
+				<apex:commandButton value="Cancel" action="{!doCancel}" immediate="true"/>
+			</apex:pageBlockButtons>
+			<apex:PageBlockSection id="unitdtl" columns="2" title="Information">
+				<apex:outputtext value="{!TowerName}" label="Tower Name"/>
+				<apex:inputField value="{!objunit.Floor__c}" style="width:150px;"/>
+			</apex:PageBlockSection>
+			<apex:PageBlockSection >	
+				<apex:pageBlockSectionItem >
+					<apex:outputLabel value="Unit Type" />
+						<apex:selectList value="{!selectedUnitType}" style="width:150px;" multiselect="false" size="1" onchange="populateSuperArea()"> 
+	     					<apex:selectOptions value="{!uTypeOptions}"/>             
+						</apex:selectList>
+				</apex:pageBlockSectionItem>
+				<apex:inputText value="{!unitCount}" label="No. of Units" style="width:150px;" /> 
+			</apex:PageBlockSection>
+			<apex:actionFunction name="populateSuperArea" action="{!populateSuperArea}"> </apex:actionFunction>
+			<!--<apex:PageBlockSection >
+				<apex:outputText value="{!SuperArea}" label="Saleable Area" style="width:150px;"/>
+			</apex:PageBlockSection> -->
+		</apex:pageBlock>
+	</apex:form>			
+</apex:page>

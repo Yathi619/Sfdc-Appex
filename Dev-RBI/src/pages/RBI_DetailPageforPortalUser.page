@@ -1,0 +1,441 @@
+<!-- 
+    Type:       VF Page
+    Purpose:    Used to display the Details of a Project. This page can be accessed by clicking on the Project Name field in
+    			My Projects tab, in Customer Portal.This page also displays 4 subtabs which are Services/Status/Reports/Approval.
+
+    ---------------------------------------------------------------------------------------------------------------
+    History:
+    
+    21-May-2013     Created		Tugboat Info Solutions Pvt. Ltd
+
+-->
+<apex:page standardController="Project__c"  extensions="RBI_ProjectDetail" standardStylesheets="true" showHeader="true" sidebar="true">
+	<apex:stylesheet value="{!$Resource.RBI_RealtyCss}"/>
+		<script language="JavaScript" type="text/javascript">
+			function CloseAndRefresh(){
+			window.location.href="/RBI_ProjectDetail?id={!$CurrentPage.parameters.id}";
+		}
+    	</script>
+    	<style type="text/css">
+    		#notbl table{
+			    border:0;
+			    border-spacing:0;
+			    border-right:0;
+			    border-left:0;
+			    border-top:0;
+			    border-bottom:0;
+			}
+    		#srchresults{
+    			background-color: #e3f3ff;
+    		}
+			.btntd{
+			    text-align:center;
+			}
+			.btnpanel{
+			    width:100%;
+			}
+			.alphabet .alphatd {
+			    border-right:1px solid #CFCECE;
+			    padding-right:8px;
+			}
+			.alphabet .alphatd a {
+			    color: #015ba7;
+			    font-weight:normal;
+			    font-size:91%;
+			    text-align:right;
+			}
+			#showdata table{
+			    border:0;
+			    border-spacing:0;
+			    border-right:1px solid #A8BBCA;
+			    border-left:1px solid #A8BBCA;
+			    border-top:2px solid #EC1F71;
+			}
+			#showdata table tr.dataRow.highlight td, #showdata table tr.dataRow.highlight th {
+			    background-color: #e3f3ff;
+			}
+		    #showdata table td, #showdata table the{
+			    border-bottom: 1px solid #A8BBCA;
+		    }
+	        .headerRow th{white-space:nowrap;background-color:#ccc;padding:3px;margin:1px;font-weight:bold;border:none}
+		    .list .headerRow th{border-bottom:2px solid #ccc;white-space:nowrap} 
+		    body .pbBody table.list tr.headerRow td,
+		    body .pbBody table.list tr.headerRow th {
+			    background: #f2f3f3;
+			    border-width: 0 0 1px 1px;
+			    border-color: #e0e3e5;
+			    color: #000;
+			    font-size: .9em;
+			    font-weight: bold;
+			    padding: 5px 2px 4px 5px;
+			    border: 1px solid #ededed;
+		    }
+		    body .apexp .pbBody table.list {
+			    border: 1px solid #e0e3e5;
+		    }
+		    .heading {
+			    text-align:left;
+			    color:#FFFFFF;
+			}
+			.heading h1 {
+			    font-family:Georgia, "Times New Roman", Times, serif;
+			    font-weight:100;
+			    font-size:22px;
+			    font-color:#FFF;
+			    position:relative;
+			    top:10px;
+			    background:#036CA5;
+			    padding:5px 0px;
+			 }
+      .activeTab {background-color: #048cda; color:white; 
+         background-image:none}
+      .inactiveTab { background-color: lightgrey; color:black; 
+         background-image:none}
+    </style>
+        <apex:form id="theform">
+            <apex:outputPanel id="userDetails">
+                <apex:pageBlock title="Project Details" mode="detail"  >
+                    <apex:pageBlockSection columns="3">
+                        <apex:pageBlockSectionItem dataStyle="width:15%" labelStyle="width:18%">
+                            <apex:outputLabel value="Project Name" />                   
+                            <apex:outputField value="{!Project__c.Project_Name__c}" />
+                        </apex:pageBlockSectionItem>
+                        <apex:pageBlockSectionItem dataStyle="width:15%" labelStyle="width:18%">
+                            <apex:outputLabel value="Project Region" />
+                            <apex:outputField value="{!Project__c.Project_Region__c}"/>
+                        </apex:pageBlockSectionItem>
+                        <apex:pageBlockSectionItem dataStyle="width:15%" labelStyle="width:18%">
+                            <apex:outputLabel value="Phone" />    
+                            <apex:outputField value="{!Project__c.Phone__c}"  />
+                        </apex:pageBlockSectionItem>
+                        <apex:pageBlockSectionItem dataStyle="width:15%" labelStyle="width:18%">
+                            <apex:outputLabel value="Expected Launch Date" />    
+                            <apex:outputField value="{!Project__c.Launch_Date__c}" />
+                        </apex:pageBlockSectionItem>
+                        <apex:pageBlockSectionItem dataStyle="width:15%" labelStyle="width:18%">
+                            <apex:outputLabel value="Land Area (in Acres)" />    
+                            <apex:outputField value="{!Project__c.Plot_Area__c}"  />
+                        </apex:pageBlockSectionItem>
+                        <apex:pageBlockSectionItem dataStyle="width:15%" labelStyle="width:18%">
+                            <apex:outputLabel value="Developer Name" />    
+                            <apex:outputField value="{!Project__c.Developer_Id__c}" />
+                        </apex:pageBlockSectionItem>
+                        <apex:pageBlockSectionItem dataStyle="width:15%" labelStyle="width:18%">
+                            <apex:outputLabel value="Surveyor" />    
+                            <apex:outputField value="{!Project__c.Surveyor__c}" />
+                        </apex:pageBlockSectionItem>
+                        <apex:pageBlockSectionItem dataStyle="width:15%" labelStyle="width:18%">
+                            <apex:outputLabel value="Team Leader" />    
+                            <apex:outputField value="{!Project__c.Team_Leader__c}" />
+                        </apex:pageBlockSectionItem>
+                        <apex:pageBlockSectionItem dataStyle="width:15%" labelStyle="width:18%">
+                            <apex:outputLabel value="Developer Name" rendered="false"/>    
+                            <apex:outputField value="{!Project__c.Developer_Id__c}" rendered="false" />
+                        </apex:pageBlockSectionItem>
+                    </apex:pageBlockSection>
+                    <apex:pageBlockSection title="Project Site Address" columns="3" >
+                        <apex:pageBlockSectionItem dataStyle="width:15%" labelStyle="width:18%">
+                            <apex:outputLabel />
+                            <apex:outputtext />
+                        </apex:pageBlockSectionItem>
+                        <apex:pageBlockSectionItem dataStyle="width:15%" labelStyle="width:18%">
+                            <apex:outputLabel />
+                            <apex:commandlink style="color:#3399FF;" value="View Map" action="{!showPopup}" ></apex:commandlink>
+                        </apex:pageBlockSectionItem>
+                        <apex:pageBlockSectionItem dataStyle="width:15%" labelStyle="width:18%">
+                            <apex:outputlabel />
+                            <apex:outputText />
+                        </apex:pageBlockSectionItem>
+                    </apex:pageBlockSection>
+                    <apex:outputPanel id="tstpopup" >
+                        <apex:outputPanel styleClass="popupBackground" layout="block" rendered="{!displayPopUp}"/>
+                            <apex:outputPanel styleClass="custPopup" layout="block" rendered="{!displayPopUp}">
+                                <apex:pageBlock title="Project Address">
+                                <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+                                <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+                                <script type="text/javascript"> 
+                                    $(document).ready(function() {
+                                    var myOptions = {
+                                    zoom: 15,
+                                    mapTypeId: google.maps.MapTypeId.ROADMAP,
+                                    mapTypeControl: false
+                                    }
+                                    var map;
+                                    var marker;
+                                    var geocoder = new google.maps.Geocoder();
+                                    var address = "{!Project__c.Site_Address_Line_1__c}, " + "{!Project__c.Site_Address_Line_2__c}, " + "{!Project__c.Site_Address_State__c}, " + "{!Project__c.Site_Address_City__c}";
+                                    var infowindow = new google.maps.InfoWindow({
+                                    content: "<b>{!Project__c.Project_Name__c}</b><br>{!Project__c.Site_Address_Line_1__c}<br>{!Project__c.Site_Address_Line_2__c}, {!Project__c.Site_Address_State__c}<br>{!Project__c.Site_Address_City__c}"});
+                                    geocoder.geocode( { address: address}, function(results, status) {
+                                    if (status == google.maps.GeocoderStatus.OK && results.length) {
+                                    if (status != google.maps.GeocoderStatus.ZERO_RESULTS) {
+                                    //create map
+                                        map = new google.maps.Map(document.getElementById("map"), myOptions);
+                                    //center map
+                                        map.setCenter(results[0].geometry.location);
+                                    //create marker
+                                        marker = new google.maps.Marker({position: results[0].geometry.location,map: map,title: "{!Project__c.Project_Name__c}"});
+                                    //add listeners
+                                        google.maps.event.addListener(marker, 'click', function() {infowindow.open(map,marker);});
+                                        google.maps.event.addListener(infowindow, 'closeclick', function() {map.setCenter(marker.getPosition());});
+                                    }
+                                    } else {
+                                        $('#map').css({'height' : '15px'});
+                                        $('#map').html("Oops! {!Project__c.Project_Name__c}'s Site address could not be found, please make sure the address is correct.");
+                                        resizeIframe();
+                                    }
+                                    });
+                                    function resizeIframe() {
+                                            var me = window.name;
+                                            if (me) {
+                                            var iframes = parent.document.getElementsByName(me);
+                                            if (iframes && iframes.length == 1) {
+                                            height = document.body.offsetHeight;
+                                            iframes[0].style.height = height + "px";
+                                        }
+                                    }
+                                    }});
+                                </script>
+                                <style>
+                                    #map {
+                                    font-family: Arial;
+                                    font-size:12px;
+                                    line-height:normal !important;
+                                    height:250px;
+                                    background:transparent;
+                                    }
+                                </style>
+                                <body>
+                                    <div id="map"></div> 
+                                </body>
+                                </apex:pageBlock>
+                            <apex:commandButton value="Close" action="{!closePopup}"  oncomplete="CloseAndRefresh();" rerender="tstpopup"/>
+                        </apex:outputPanel>
+                    </apex:outputPanel> 
+                    <apex:pageBlockSection columns="3" >
+                        <apex:pageBlockSectionItem dataStyle="width:15%" labelStyle="width:18%">
+                            <apex:outputLabel value="Landmark" />
+                            <apex:outputfield value="{!Project__c.Site_Address_Landmark__c}"  />
+                        </apex:pageBlockSectionItem>
+                        <apex:pageBlockSectionItem dataStyle="width:15%" labelStyle="width:18%">
+                            <apex:outputLabel value="Address Line1" />
+                            <apex:outputfield value="{!Project__c.Site_Address_Line_1__c }" />
+                        </apex:pageBlockSectionItem>
+                        <apex:pageBlockSectionItem dataStyle="width:15%" labelStyle="width:18%">
+                            <apex:outputLabel value="Address Line2" />
+                            <apex:outputfield value="{!Project__c.Site_Address_Line_2__c }" />
+                        </apex:pageBlockSectionItem>
+                        <apex:pageBlockSectionItem dataStyle="width:15%" labelStyle="width:18%">
+                            <apex:outputLabel value="State" />
+                            <apex:outputfield value="{!Project__c.Site_Address_State__c}"  />
+                        </apex:pageBlockSectionItem>
+                        <apex:pageBlockSectionItem dataStyle="width:15%" labelStyle="width:18%">
+                            <apex:outputLabel value="City" />
+                            <apex:outputfield value="{!Project__c.Site_Address_City__c}"  />
+                        </apex:pageBlockSectionItem>
+                        <apex:pageBlockSectionItem dataStyle="width:15%" labelStyle="width:18%">
+                            <apex:outputLabel value="Postal Code" />
+                            <apex:outputfield value="{!Project__c.Site_Address_zipcode__c}"  />
+                        </apex:pageBlockSectionItem>
+                    </apex:pageBlockSection>    
+                    <apex:pageBlockSection id="sec1" title="Devloper Address" columns="3">
+                        <apex:pageBlockSectionItem dataStyle="width:15%" labelStyle="width:18%">
+                            <apex:outputLabel value="Street Address" />
+                            <apex:outputfield value="{!acc.BillingStreet}" />
+                        </apex:pageBlockSectionItem>
+                        <apex:pageBlockSectionItem dataStyle="width:15%" labelStyle="width:18%">
+                            <apex:outputLabel value="State" />  
+                            <apex:outputfield value="{!acc.BillingState}" />
+                        </apex:pageBlockSectionItem>
+                        <apex:pageBlockSectionItem dataStyle="width:15%" labelStyle="width:18%" >
+                            <apex:outputLabel value="City" />
+                            <apex:outputfield value="{!acc.BillingCity}" />
+                        </apex:pageBlockSectionItem>
+                        <apex:pageBlockSectionItem dataStyle="width:15%" labelStyle="width:18%">
+                            <apex:outputLabel value="Country" />
+                            <apex:outputfield value="{!acc.BillingCountry}"/>
+                        </apex:pageBlockSectionItem>
+                        <apex:pageBlockSectionItem dataStyle="width:15%" labelStyle="width:18%">
+                            <apex:outputLabel value="Postal Code" />
+                            <apex:outputfield value="{!acc.BillingPostalCode}" />
+                        </apex:pageBlockSectionItem>
+                        <apex:pageBlockSectionItem dataStyle="width:15%" labelStyle="width:18%" >
+                            <apex:outputLabel value="Postal Code"  rendered="false"/>
+                            <apex:outputfield value="{!acc.BillingPostalCode}" rendered="false" />
+                        </apex:pageBlockSectionItem>
+                    </apex:pageBlockSection>    
+                </apex:pageBlock>
+            </apex:outputPanel>
+        </apex:form>
+            <apex:tabPanel switchType="client" selectedTab="tabdetails" id="ProjectTabPanel" tabClass="activeTab" inactiveTabClass="inactiveTab">   
+                <apex:tab label="Services" name="Services" id="tabSrvcs">
+                    <apex:form >
+	                    <apex:pageBlock >
+	                        <!-- <apex:pageBlockButtons location="bottom"> 
+	                        	<apex:commandButton value="Save" action="{!saveServices}" rerender="theform, ProjectTabPanel"/>
+	                            <apex:commandButton value="Cancel" action="{!doCancel}" immediate="true" />     
+	                        </apex:pageBlockButtons>   -->     
+	                    	<apex:pageblocktable id="ServiceList" value="{!WrapperPackageList}" var="ser" border="0">
+		                        <apex:column headervalue="Action" style="width:2px;">
+		                            <apex:inputCheckbox value="{!ser.selectedflg}" disabled="true" ></apex:inputCheckbox>
+		                            <!-- <apex:inputCheckbox value="{!ser.selectedflg}" disabled="false" rendered="{!ser.renderflg = false}" onchange="selProd(this);"></apex:inputCheckbox> -->
+		                        </apex:column>
+		                        <apex:column headervalue="Package" style="width:50px;">
+		                            <apex:outputfield value="{!ser.packgrecord.Name}"></apex:outputfield>
+		                        </apex:column>
+		                        <apex:column headervalue="Description" style="width:100px;">
+		                            <apex:outputfield value="{!ser.packgrecord.Entity_Name__c}"></apex:outputfield>
+		                        </apex:column>
+		                        <apex:column headervalue="Requested Date" style="width:100px;">
+		                            <apex:outputText value="{0,date,dd/MM/yyyy}">
+		                                <apex:param value="{!ser.reqdate}"  />
+		                            </apex:outputText>
+		                        </apex:column>
+		                        <apex:column headervalue="End Date" style="width:100px;">
+		                            <apex:outputText value="{0,date,dd/MM/yyyy}">
+		                                <apex:param value="{!ser.enddate}"  />
+		                            </apex:outputText>
+		                        </apex:column>                                              
+	                    	</apex:pageblocktable> 
+	                    	<apex:actionFunction id="callApex" name="CallApexMethod" action="{!CheckFTR}" rerender="ProjectTabPanel">
+	                        	<apex:param name="checkedProd" value="" />
+	                    	</apex:actionFunction>                                          
+	                    </apex:pageBlock>
+                    </apex:form>
+                </apex:tab>
+                <apex:tab label="Status" name="Visits" id="tabVisits">
+	                <apex:pageBlock >      
+	                    <apex:pageblocktable id="visitsList" value="{!visitlist}" var="v" cellpadding="3" border="0">
+	                        <apex:column headervalue="Visit Name">
+	                            <apex:outputLink value="/apex/RBI_VisitDetails?id={!v.Id}" target="_blank">{!v.Visit_Report__c}</apex:outputLink>
+	                        </apex:column>
+	                        <apex:column headervalue="Status">
+	                            <apex:outputfield value="{!v.Status__c}"></apex:outputfield>
+	                        </apex:column>
+	                        <apex:column headervalue="Start Date">
+	                            <apex:outputfield value="{!v.Start_Date__c}"></apex:outputfield>
+	                        </apex:column>
+	                        <apex:column headervalue="Closed Date">
+	                            <apex:outputfield value="{!v.Closed_Date__c}"></apex:outputfield>
+	                        </apex:column>
+	                        <!-- <apex:column headervalue="Surveyor">
+	                            <apex:outputfield value="{!v.Surveyor__c}"></apex:outputfield>
+	                        </apex:column> -->
+	                    </apex:pageblocktable>
+	                </apex:pageBlock>
+                </apex:tab>
+                <apex:tab label="Reports" name="Reports" id="tabReports">
+                    <apex:pageBlock >
+                    	<apex:pageBlockSection columns="1" title="Project Documents" rendered="{!OR(rptPASlistflg,rptPMSlistflg)}" />
+		                        <apex:outputpanel id="oPanel1" rendered="{!OR(rptPASlistflg,rptPMSlistflg)}">
+			                        <table width="20%" cellpadding="3" cellspacing="0" style="border-collapse: collapse; font-size: 10pt; ">
+			                        	<tr>
+			                            	<td valign="top" align="left" style="border: 0px solid #CCCCCC; background-color:#f2f3f3; border-collapse: collapse; font-size: 8pt; white-space: nowrap;width:20%;">
+			                                	<!-- <apex:outputLink value="/apex/RBI_ViewKleetoDocs?id={!Project__c.Id}" target="_blank" rendered="{!rptPASlistflg}"><font color="#99CCFF">View Documents</font></apex:outputLink> -->
+			                                	<apex:outputLink value="/apex/RBI_ViewKleetoDocs?id={!Project__c.Id}" target="_blank" rendered="{!OR(rptPASlistflg,rptPMSlistflg)}"><font color="#99CCFF">View Documents</font></apex:outputLink>
+			                                </td>
+			                            </tr>
+			                        </table>
+		                        </apex:outputpanel>        
+                        <apex:pageBlockSection columns="4" title="PAS Reports" rendered="{!rptPASlistflg}" />
+                        <apex:pageblocktable id="reportsList" value="{!RPTPASList}" var="rpt"  rendered="{!rptPASlistflg}" cellpadding="3" border="0">
+                            <apex:column headervalue="Name" style="width:200px;">
+                                <apex:outputtext value="{!rpt.Report_Name__r.Name}"></apex:outputtext>
+                            </apex:column>
+                            <apex:column headervalue="Status" style="width:150px;">
+                                <apex:outputfield value="{!rpt.Status__c}"></apex:outputfield>
+                            </apex:column>
+                            <!-- <apex:column headervalue="File Path" style="width:200px;">
+                                <apex:outputfield value="{!rpt.FilePath__c}"></apex:outputfield>
+                            </apex:column> -->
+                            <apex:column style="width:200px;" rendered="{!AND(rpt.Report_Name__r.Name != 'Title Search Report',rpt.Report_Name__r.Name != 'DVU Report')}">
+                                <apex:outputLink value="{!rpt.Which_Report__c}{!Project__c.Id}&Name={!Project__c.Name}&custProjectId={!custProjId}&path={!FilePath}" target="_blank">Generate Report</apex:outputLink>
+                            </apex:column>
+                            <apex:column style="width:200px;" rendered="{!OR(rpt.Report_Name__r.Name='Title Search Report',rpt.Report_Name__r.Name='DVU Report',rpt.Report_Name__r.Name='Title Search Report')}">
+                                <apex:outputLink value="{!rpt.Which_Report__c}{!Project__c.Id}&rptName={!rpt.Report_Name__r.Name}" target="_blank">Generate Report</apex:outputLink>
+                            </apex:column>
+                        </apex:pageblocktable>
+                        <apex:pageBlockSection title="PMS Reports" rendered="{!rptPMSlistflg}" / >
+                        <apex:pageblocktable id="reportsPMSList" value="{!RPTPMSList}" var="PMS" rendered="{!rptPMSlistflg}" cellpadding="3" border="0">
+                            <apex:column headervalue="Name" style="width:200px;">
+                                <apex:outputtext value="{!PMS.Report_Name__r.Name}"></apex:outputtext>
+                            </apex:column>
+                            <apex:column headervalue="Status" style="width:150px;" >
+                                <apex:outputfield value="{!PMS.Status__c}"></apex:outputfield>
+                            </apex:column>
+                            <!-- <apex:column headervalue="File Path" style="width:200px;">
+                                <apex:outputfield value="{!PMS.FilePath__c}"></apex:outputfield>
+                            </apex:column> -->
+                            <apex:column style="width:200px;" rendered="{!AND(PMS.Report_Name__r.Name != 'Title Search Report',PMS.Report_Name__r.Name != 'DVU Report')}">
+                            	<apex:outputLink value="{!PMS.Which_Report__c}{!Project__c.Id}&Name={!Project__c.Name}&custProjectId={!custProjId}&path={!FilePath}" target="_blank">Generate Report</apex:outputLink>
+                                <!-- <apex:outputLink value="{!PMS.Which_Report__c}{!Project__c.Id}" target="_blank">Generate Report</apex:outputLink> -->
+                            </apex:column>
+                            <apex:column style="width:200px;" rendered="{!OR(PMS.Report_Name__r.Name='Title Search Report',PMS.Report_Name__r.Name='DVU Report')}">
+                                <apex:outputLink value="{!PMS.Which_Report__c}" target="_blank">Generate Report</apex:outputLink>
+                            </apex:column>
+                        </apex:pageblocktable>
+                        <br></br>
+                        <table width="20%" cellpadding="3" cellspacing="0" style="border-collapse: collapse; font-size: 10pt; ">
+                        	<tr>
+                            	<td valign="top" align="left" style="border: 0px solid #CCCCCC; background-color:#f2f3f3; border-collapse: collapse; font-size: 8pt; white-space: nowrap;width:20%;">
+                                	<apex:outputLink value="/apex/RBI_DisclaimersPage" target="_blank"><font color="#99CCFF">Click here for Caveats and Assumptions</font></apex:outputLink>
+                                </td>
+                            </tr>
+                        </table>
+                	</apex:pageBlock>
+                </apex:tab>
+                <apex:tab label="Follow-up Reports" name="FollowupReports" id="tabFollowupReports">
+                    <apex:pageBlock >      
+                        <apex:pageblocktable id="reportsPMSList" value="{!Visitrptlist}" var="FRPMS" cellpadding="3" border="0">
+                            <apex:column headervalue="Name" style="width:200px;">
+                                <apex:outputtext value="{!FRPMS.Report_Name__r.Name}"></apex:outputtext>
+                            </apex:column>
+                            <apex:column headervalue="Status" style="width:150px;" >
+                                <apex:outputfield value="{!FRPMS.Status__c}"></apex:outputfield>
+                            </apex:column>
+                            <apex:column headervalue="Report Date" style="width:150px;">
+                                <apex:outputfield value="{!FRPMS.CreatedDate}"></apex:outputfield>
+                            </apex:column> -->
+                            <apex:column style="width:200px;">
+                            	<!-- <apex:outputLink value="{!FRPMS.Which_Report__c}{!Project__c.Id}&Name={!Project__c.Name}&custProjectId={!custProjId}&path={!FilePath}" target="_blank">Generate Report</apex:outputLink> -->
+                                <apex:outputLink value="{!FRPMS.Which_Report__c}{!FRPMS.Visit__c}" target="_blank">Generate Report</apex:outputLink>
+                            </apex:column>
+                            
+                        </apex:pageblocktable>
+                        <br></br>
+                        <table width="20%" cellpadding="3" cellspacing="0" style="border-collapse: collapse; font-size: 10pt; ">
+                        	<tr>
+                            	<td valign="top" align="left" style="border: 0px solid #CCCCCC; background-color:#f2f3f3; border-collapse: collapse; font-size: 8pt; white-space: nowrap;width:20%;">
+                                	<apex:outputLink value="/apex/RBI_DisclaimersPage" target="_blank"><font color="#99CCFF">Click here for Caveats and Assumptions</font></apex:outputLink>
+                                </td>
+                            </tr>
+                        </table>
+                	</apex:pageBlock>
+                </apex:tab>
+                <apex:tab label="Approval" name="Approval" id="tabApp" rendered="{!rptPASlistflg}">
+                    <apex:form >
+                    	<apex:pageBlock id="appblk">
+	                        <!-- <apex:pageBlockButtons location="bottom"> 
+	                            <apex:commandButton value="Save" action="{!savAppStatus}" rerender="theform, ProjectTabPanel" />
+	                            <apex:commandButton value="Cancel" action="{!doCancel}" immediate="true" />     
+	                        </apex:pageBlockButtons> --> 
+	                        <apex:pageblocktable id="appList" value="{!approvallist}" var="app" cellpadding="3" border="0">
+	                            <apex:column headervalue="Status">
+	                                <!-- <apex:inputfield value="{!app.Project_Approval_Status__c}"  style="width:150px;" rendered="{!appStatus = 'In Progress'}"></apex:inputfield> -->
+	                                <apex:outputfield value="{!app.Project_Approval_Status__c}"  style="width:150px;"></apex:outputfield>
+	                            </apex:column>
+	                            <apex:column headervalue="Remarks">
+	                                <!-- <apex:inputfield value="{!app.Remarks__c}" style="width:375px;height:50px" rendered="{!appStatus = 'In Progress'}"></apex:inputfield> -->
+	                                <apex:outputfield value="{!app.Remarks__c}" style="width:375px;height:50px"></apex:outputfield>
+	                            </apex:column>
+	                        </apex:pageblocktable>
+                    	</apex:pageBlock>
+                    </apex:form>
+                </apex:tab>
+            </apex:tabPanel>      
+            <script>
+            function selProd(selected){
+                CallApexMethod(selected.checked);
+            }
+            </script>         
+</apex:page>

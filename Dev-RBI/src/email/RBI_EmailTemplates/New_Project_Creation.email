@@ -1,0 +1,10 @@
+Hello {!Receiving_User.FirstName}, 
+
+A new project {!Project__c.Project_Name__c} has been created by the Customer. Please review the project and approve it.
+ 
+Company: {!User.CompanyName} 
+Contact: {!User.FirstName} {!User.LastName} 
+Project Name: {!Project__c.Project_Name__c} 
+
+Thanks & Regards. 
+Realty BI Team

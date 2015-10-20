@@ -1,0 +1,88 @@
+<apex:page Controller="RBI_MassEditCustomUnits" action="{!InitialLoad}" tabStyle="Unit__c" standardStylesheets="true" showHeader="true" sidebar="true">
+
+<style type="text/css">
+	#srchresults{
+		background-color: #e3f3ff;
+	}
+	.btntd{
+		text-align:center;
+	}
+	.btnpanel{
+		width:100%;
+	}
+</style>
+    
+    <apex:includeScript value="{!$Resource.UtilJS}" />
+        <apex:form id="theForm">
+            <apex:pageBlock id="unitresults">
+                <apex:pageMessages />
+            <!-- <apex:pageBlock >
+                Note: All modifications made on the page will be lost if Return button is clicked without clicking the Save button first. 
+            </apex:pageBlock> -->
+                <!-- <apex:pageBlockButtons > -->
+                <table width="100%">
+                	<tr>
+                		<td>
+                			<apex:outputlabel value="Tower Name: " />
+                			<apex:outputText value="{!TowName}" />
+                		</td>
+                		<td class="btntd" width="62%" style="float: right;padding-right:0.5en;">
+                    		<apex:commandButton value="Save" action="{!saveunits}" status="searchstatus" rerender="unitresults"/>
+                   			<apex:outputtext value=" " />
+                    		<apex:commandButton value="Return" action="{!cancelunits}"/>
+	                    	<apex:actionStatus id="searchstatus">
+								<apex:facet name="start">
+									<apex:image value="{!$Resource.ajaxloader}"/>
+								</apex:facet>
+							</apex:actionStatus>
+						</td>
+					
+							<!-- <td class="btntd" width="62%" style="float: right;padding-right:0.5en;"></td> -->
+							<td width="38%">
+								<!-- <apex:outputPanel id="pagingPanel1" rendered="{!(NOT(Showunit.size == 0))}" layout="block" style="float: right;padding-right:0.5en;" >
+    		          				<c:RBI_Paginator reRenderComponent="unitresults,pagingPanel1" PageManager="{!objPageManager}"   statusComponent="" id="bottom_paginator1"/>
+           		        		</apex:outputPanel> -->
+							</td>
+						</tr>
+					</table>
+                <!-- </apex:pageBlockButtons> -->
+                    <apex:pageBlockTable value="{!unitDetails}" var="a" id="table">
+                    	<apex:column headerValue="Name">
+                        	<apex:inputField value="{!a.name}" style="width:120px;height:12px;font-size:80%;"/>
+                        </apex:column>
+                        <apex:column headerValue="Floor">
+                        	<apex:outputField value="{!a.Floor__c}" style="height:12px;font-size:80%;"/>
+                        </apex:column>
+                        <apex:column headerValue="Unit Type">
+                        	<apex:outputtext value="{!a.Unit_Type__c}" style="height:12px;font-size:80%;"/>
+                        </apex:column>
+                        <apex:column headerValue="Carpet Area (sqft)">
+                        	<apex:outputtext value="{!a.Carpet_Area_Sq_Ft__c}" style="height:12px;font-size:80%;"/>
+                        </apex:column>
+                        <apex:column headerValue="Super Area (sqft)">
+                        	<apex:outputtext value="{!a.Super_Area_Sq_Ft__c}" style="height:12px;font-size:80%;"/>
+                        </apex:column>
+                        
+					</apex:pageBlockTable>
+					<table width="100%">
+						<tr>
+                			<td class="btntd" width="62%" style="float: right;padding-right:0.5en;">
+                    			<apex:commandButton value="Save" action="{!saveunits}" status="searchstatus1" rerender="unitresults"/>
+                   
+                    			<apex:commandButton value="Return" action="{!cancelunits}"/>
+	                    		<apex:actionStatus id="searchstatus1">
+									<apex:facet name="start">
+										<apex:image value="{!$Resource.ajaxloader}"/>
+									</apex:facet>
+								</apex:actionStatus>
+							</td>
+							<td width="38%">
+								<apex:outputPanel id="pagingPanel" rendered="{!(NOT(Showunit.size == 0))}" layout="block" style="float: right;padding-right:0.5en;" >
+    		          				<c:RBI_Paginator reRenderComponent="unitresults,pagingPanel" PageManager="{!objPageManager}"   statusComponent="" id="bottom_paginator"/>
+           		        		</apex:outputPanel>
+							</td>
+						</tr>
+					</table>
+            </apex:pageBlock>
+        </apex:form>
+</apex:page>

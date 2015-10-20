@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomLabels xmlns="http://soap.sforce.com/2006/04/metadata">
+    <labels>
+        <fullName>RBI_AccountId</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>RBI Account record id</shortDescription>
+        <value>001O000000DxsCl</value>
+    </labels>
+    <labels>
+        <fullName>RBI_BarChartlink</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>GoogleBarChartlink</shortDescription>
+        <value>http://chart.apis.google.com/chart?chs=600x300&amp;cht=bvs&amp;chxt=x,y&amp;chbh=r,5,5&amp;chco=7B93D5</value>
+    </labels>
+    <labels>
+        <fullName>RBI_DVUTSRBucket</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>DVUTSR Reports bucket</shortDescription>
+        <value>RealtyBITSRDVUReports-SB</value>
+    </labels>
+    <labels>
+        <fullName>RBI_DefaultContact</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Used in ExceptionBatch when there is no customer for a visit.</shortDescription>
+        <value>003O000000FOEnB</value>
+    </labels>
+    <labels>
+        <fullName>RBI_DefaultPASMgrEmailId</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Default PAS Manager Email Id</shortDescription>
+        <value>swapna.patnaikuni@tugboat.in</value>
+    </labels>
+    <labels>
+        <fullName>RBI_DefaultPASMgrId</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Default PAS Manager Id</shortDescription>
+        <value>00590000001SVHM</value>
+    </labels>
+    <labels>
+        <fullName>RBI_DefaultPASMrgName</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Default PAS manager name.</shortDescription>
+        <value>Administrator</value>
+    </labels>
+    <labels>
+        <fullName>RBI_EnvURL</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>URL for Current Environment</shortDescription>
+        <value>https://cs5.salesforce.com</value>
+    </labels>
+    <labels>
+        <fullName>RBI_Exception_Status_Closed</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>RBI_Exception Status Closed</shortDescription>
+        <value>00XO0000000M8uC</value>
+    </labels>
+    <labels>
+        <fullName>RBI_Exception_Status_Closed_For_Customer</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>RBI_Exception Status Closed For Customer</shortDescription>
+        <value>00XO0000000M8yn</value>
+    </labels>
+    <labels>
+        <fullName>RBI_FTRBucket</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>RBI_FTRBucket</shortDescription>
+        <value>RealtyBIFTRReports-SB</value>
+    </labels>
+    <labels>
+        <fullName>RBI_Generic_Duplicate_ErrorMsg</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Generic error message for duplicates.</shortDescription>
+        <value>A record with the same value already exist.</value>
+    </labels>
+    <labels>
+        <fullName>RBI_ImgFormat</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>RBI_ImgFormat</shortDescription>
+        <value>jpg</value>
+    </labels>
+    <labels>
+        <fullName>RBI_KLoginPwd</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Kleeto Login Password</shortDescription>
+        <value>realty@123</value>
+    </labels>
+    <labels>
+        <fullName>RBI_KLoginToken</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Kleeto Login Token</shortDescription>
+        <value>6f20ee92b6cbd4ed0def503afa3b55f6</value>
+    </labels>
+    <labels>
+        <fullName>RBI_LineChartlink</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LineChartlink</shortDescription>
+        <value>http://chart.apis.google.com/chart?chxt=y,x&amp;chs=600x320&amp;cht=lxy&amp;chco=3072F3,FF0000,FF9900&amp;chxr=0,0,100,20|1,0,50,10&amp;chds=0,50&amp;chg=0,10,10,0</value>
+    </labels>
+    <labels>
+        <fullName>RBI_LowestFrequencyCycle</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Used in batch apex for low frequency check.</shortDescription>
+        <value>10</value>
+    </labels>
+    <labels>
+        <fullName>RBI_ManagerPortalId</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Portal User Id for Customer Portal Manager</shortDescription>
+        <value>060O00000004cOE</value>
+    </labels>
+    <labels>
+        <fullName>RBI_MaxTowerSelErrMes</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Whenever an user selects more than 10 towers</shortDescription>
+        <value>You can only select upto 10 towers.</value>
+    </labels>
+    <labels>
+        <fullName>RBI_OrgId</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Organization Id</shortDescription>
+        <value>00DO0000000YoJV</value>
+    </labels>
+    <labels>
+        <fullName>RBI_OrgWideEmailAddr</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Organization wide email address Id used for sending mails.</shortDescription>
+        <value>0D2O000000000Zk</value>
+    </labels>
+    <labels>
+        <fullName>RBI_PMSDefaultFrequency</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>This is used in FollowUpBatch Class.</shortDescription>
+        <value>60</value>
+    </labels>
+    <labels>
+        <fullName>RBI_PriceListAddFloor</fullName>
+        <categories>RBI</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>RBI_PriceListAdd</shortDescription>
+        <value>To Floor should be greater than or equals to From Floor</value>
+    </labels>
+    <labels>
+        <fullName>RBI_ProjectImportTemplateId</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>ProjectImportTemplateId</shortDescription>
+        <value>00XO0000000MAwA</value>
+    </labels>
+    <labels>
+        <fullName>RBI_ProjectTowerSelection</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Tower Select</shortDescription>
+        <value>Please select Tower Name</value>
+    </labels>
+    <labels>
+        <fullName>RBI_ProjectUnitButtonDisable</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>GenerateButton Disable</shortDescription>
+        <value>No Units are existing for the selected tower. Please generate the report later.</value>
+    </labels>
+    <labels>
+        <fullName>RBI_S3ImgBucket</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>S3 Images Bucket name</shortDescription>
+        <value>RealtyBIProjectImages-SB</value>
+    </labels>
+    <labels>
+        <fullName>RBI_S3Link</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>RBI_S3Link</shortDescription>
+        <value>https://s3.amazonaws.com</value>
+    </labels>
+    <labels>
+        <fullName>RBI_SiteURL</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>URL for Site</shortDescription>
+        <value>http://crms.rbidev.cs5.force.com</value>
+    </labels>
+    <labels>
+        <fullName>RBI_SystemAdminId</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Id for system administrator</shortDescription>
+        <value>00590000001SVHM</value>
+    </labels>
+    <labels>
+        <fullName>RBI_TempIdForCustProjectApproved</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Used when customer project is approved</shortDescription>
+        <value>00XO0000000M9SE</value>
+    </labels>
+    <labels>
+        <fullName>RBI_TempIdForCustProjectRejected</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Used when customer project is rejected.</shortDescription>
+        <value>00XO0000000M9SJ</value>
+    </labels>
+    <labels>
+        <fullName>RBI_TemplateIdForPRMStatusChange</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Template Id used whenever the status of the project status is changed to PMR</shortDescription>
+        <value>00XO0000000M6xv</value>
+    </labels>
+    <labels>
+        <fullName>RBI_TowerSelectErrMes</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Whenever an User clicked generatepdf without selecting tower.</shortDescription>
+        <value>Please select atleast one tower.</value>
+    </labels>
+    <labels>
+        <fullName>RBI_UnitReportTemplate</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>UnitReportTemplate</shortDescription>
+        <value>00XO0000000M6ws</value>
+    </labels>
+    <labels>
+        <fullName>RBI_UserPortalId</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Portal User Id for Customer Portal User</shortDescription>
+        <value>060O00000004cPb</value>
+    </labels>
+    <labels>
+        <fullName>RBI_VisitOffSet</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Used to create the follow up before 10 days from today.</shortDescription>
+        <value>10</value>
+    </labels>
+</CustomLabels>

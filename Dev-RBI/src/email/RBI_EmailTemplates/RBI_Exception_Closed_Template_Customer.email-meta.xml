@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>This template is used for sending a mail when all the exception status is closed</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>RBI_Exception Closed Template for Customer</name>
+    <style>none</style>
+    <subject>All Exception&apos;s Status is closed</subject>
+    <type>text</type>
+</EmailTemplate>

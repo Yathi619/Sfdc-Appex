@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Portal xmlns="http://soap.sforce.com/2006/04/metadata">
+    <active>true</active>
+    <admin>crmadmin@realtybi.in.rbidev</admin>
+    <description>Realty BI Customer Portal - User</description>
+    <emailSenderAddress>anand.chagi@tugboat.in</emailSenderAddress>
+    <emailSenderName>crmadmin@realtybi.in.rbidev</emailSenderName>
+    <enableSelfCloseCase>false</enableSelfCloseCase>
+    <forgotPassTemplate>unfiled$public/CustomerPortalChangePwdEmail</forgotPassTemplate>
+    <headerDocument>RealtyBI_Dev/RBI_HeaderForUser.html</headerDocument>
+    <isSelfRegistrationActivated>false</isSelfRegistrationActivated>
+    <logoutUrl>https://crms.rbidev.cs5.force.com/apex/RBI_Logout</logoutUrl>
+    <newPassTemplate>unfiled$public/CustomerPortalChangePwdEmail</newPassTemplate>
+    <newUserTemplate>unfiled$public/CustomerPortalNewUserEmail</newUserTemplate>
+    <selfRegUserDefaultProfile>rbi customer portal user</selfRegUserDefaultProfile>
+    <selfRegUserDefaultRole>Worker</selfRegUserDefaultRole>
+    <selfRegUserTemplate>unfiled$public/CustomerPortalSelfRegUserEmail</selfRegUserTemplate>
+    <showActionConfirmation>false</showActionConfirmation>
+    <type>CustomerSuccess</type>
+</Portal>

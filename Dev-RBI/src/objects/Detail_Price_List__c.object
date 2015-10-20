@@ -1,0 +1,1055 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>Stores project level &amp; visit level price list information</description>
+    <enableActivities>false</enableActivities>
+    <enableEnhancedLookup>true</enableEnhancedLookup>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableReports>false</enableReports>
+    <fields>
+        <fullName>ProjPriceUniqueKey__c</fullName>
+        <caseSensitive>true</caseSensitive>
+        <externalId>true</externalId>
+        <label>ProjPriceUniqueKey</label>
+        <length>80</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>true</unique>
+    </fields>
+    <fields>
+        <fullName>Project_Id__c</fullName>
+        <description>Used in Visit trigger.</description>
+        <externalId>false</externalId>
+        <formula>Visit__r.Project__r.Id</formula>
+        <label>Project Id</label>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Project_Name__c</fullName>
+        <description>Used in Visit trigger handler.</description>
+        <externalId>false</externalId>
+        <formula>Tower__r.Project__r.Name</formula>
+        <label>Project Name</label>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Project__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Project Id</description>
+        <externalId>false</externalId>
+        <label>Project</label>
+        <referenceTo>Project__c</referenceTo>
+        <relationshipLabel>Detail Price List</relationshipLabel>
+        <relationshipName>Detail_Price_List</relationshipName>
+        <required>false</required>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Rate_0__c</fullName>
+        <externalId>false</externalId>
+        <label>Rate per sqft - 0</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Rate_10__c</fullName>
+        <description>Stores per square feet rate</description>
+        <externalId>false</externalId>
+        <label>Rate per sqft - 10</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Rate_11__c</fullName>
+        <description>Stores per square feet rate</description>
+        <externalId>false</externalId>
+        <label>Rate per sqft - 11</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Rate_12__c</fullName>
+        <description>Stores per square feet rate</description>
+        <externalId>false</externalId>
+        <label>Rate per sqft - 12</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Rate_13__c</fullName>
+        <description>Stores per square feet rate</description>
+        <externalId>false</externalId>
+        <label>Rate per sqft - 13</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Rate_14__c</fullName>
+        <description>Stores per square feet rate</description>
+        <externalId>false</externalId>
+        <label>Rate per sqft - 14</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Rate_15__c</fullName>
+        <description>Stores per square feet rate</description>
+        <externalId>false</externalId>
+        <label>Rate per sqft - 15</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Rate_16__c</fullName>
+        <description>Stores per square feet rate</description>
+        <externalId>false</externalId>
+        <label>Rate per sqft - 16</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Rate_17__c</fullName>
+        <description>Stores per square feet rate</description>
+        <externalId>false</externalId>
+        <label>Rate per sqft - 17</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Rate_18__c</fullName>
+        <description>Stores per square feet rate</description>
+        <externalId>false</externalId>
+        <label>Rate per sqft - 18</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Rate_19__c</fullName>
+        <description>Stores per square feet rate</description>
+        <externalId>false</externalId>
+        <label>Rate per sqft - 19</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Rate_1__c</fullName>
+        <description>Stores per square feet rate</description>
+        <externalId>false</externalId>
+        <label>Rate per sqft - 1</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Rate_20__c</fullName>
+        <description>Stores per square feet rate</description>
+        <externalId>false</externalId>
+        <label>Rate per sqft - 20</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Rate_21__c</fullName>
+        <description>Stores per square feet rate</description>
+        <externalId>false</externalId>
+        <label>Rate per sqft - 21</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Rate_22__c</fullName>
+        <description>Stores per square feet rate</description>
+        <externalId>false</externalId>
+        <label>Rate per sqft - 22</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Rate_23__c</fullName>
+        <description>Stores per square feet rate</description>
+        <externalId>false</externalId>
+        <label>Rate per sqft - 23</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Rate_24__c</fullName>
+        <description>Stores per square feet rate</description>
+        <externalId>false</externalId>
+        <label>Rate per sqft - 24</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Rate_25__c</fullName>
+        <description>Stores per square feet rate</description>
+        <externalId>false</externalId>
+        <label>Rate per sqft - 25</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Rate_26__c</fullName>
+        <description>Stores per square feet rate</description>
+        <externalId>false</externalId>
+        <label>Rate per sqft - 26</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Rate_27__c</fullName>
+        <description>Stores per square feet rate</description>
+        <externalId>false</externalId>
+        <label>Rate per sqft - 27</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Rate_28__c</fullName>
+        <description>Stores per square feet rate</description>
+        <externalId>false</externalId>
+        <label>Rate per sqft - 28</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Rate_29__c</fullName>
+        <description>Stores per square feet rate</description>
+        <externalId>false</externalId>
+        <label>Rate per sqft - 29</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Rate_2__c</fullName>
+        <description>Stores per square feet rate</description>
+        <externalId>false</externalId>
+        <label>Rate per sqft - 2</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Rate_30__c</fullName>
+        <description>Stores per square feet rate</description>
+        <externalId>false</externalId>
+        <label>Rate per sqft - 30</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Rate_31__c</fullName>
+        <description>Stores per square feet rate</description>
+        <externalId>false</externalId>
+        <label>Rate per sqft - 31</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Rate_32__c</fullName>
+        <description>Stores per square feet rate</description>
+        <externalId>false</externalId>
+        <label>Rate per sqft - 32</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Rate_33__c</fullName>
+        <description>Stores per square feet rate</description>
+        <externalId>false</externalId>
+        <label>Rate per sqft - 33</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Rate_34__c</fullName>
+        <description>Stores per square feet rate</description>
+        <externalId>false</externalId>
+        <label>Rate per sqft - 34</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Rate_35__c</fullName>
+        <description>Stores per square feet rate</description>
+        <externalId>false</externalId>
+        <label>Rate per sqft - 35</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Rate_36__c</fullName>
+        <description>Stores per square feet rate</description>
+        <externalId>false</externalId>
+        <label>Rate per sqft - 36</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Rate_37__c</fullName>
+        <description>Stores per square feet rate</description>
+        <externalId>false</externalId>
+        <label>Rate per sqft - 37</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Rate_38__c</fullName>
+        <description>Stores per square feet rate</description>
+        <externalId>false</externalId>
+        <label>Rate per sqft - 38</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Rate_39__c</fullName>
+        <description>Stores per square feet rate</description>
+        <externalId>false</externalId>
+        <label>Rate per sqft - 39</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Rate_3__c</fullName>
+        <description>Stores per square feet rate</description>
+        <externalId>false</externalId>
+        <label>Rate per sqft - 3</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Rate_40__c</fullName>
+        <description>Stores per square feet rate</description>
+        <externalId>false</externalId>
+        <label>Rate per sqft - 40</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Rate_41__c</fullName>
+        <description>Stores per square feet rate</description>
+        <externalId>false</externalId>
+        <label>Rate per sqft - 41</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Rate_42__c</fullName>
+        <description>Stores per square feet rate</description>
+        <externalId>false</externalId>
+        <label>Rate per sqft - 42</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Rate_43__c</fullName>
+        <description>Stores per square feet rate</description>
+        <externalId>false</externalId>
+        <label>Rate per sqft - 43</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Rate_44__c</fullName>
+        <description>Stores per square feet rate</description>
+        <externalId>false</externalId>
+        <label>Rate per sqft - 44</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Rate_45__c</fullName>
+        <description>Stores per square feet rate</description>
+        <externalId>false</externalId>
+        <label>Rate per sqft - 45</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Rate_46__c</fullName>
+        <description>Stores per square feet rate</description>
+        <externalId>false</externalId>
+        <label>Rate per sqft - 46</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Rate_47__c</fullName>
+        <description>Stores per square feet rate</description>
+        <externalId>false</externalId>
+        <label>Rate per sqft - 47</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Rate_48__c</fullName>
+        <description>Stores per square feet rate</description>
+        <externalId>false</externalId>
+        <label>Rate per sqft - 48</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Rate_49__c</fullName>
+        <description>Stores per square feet rate</description>
+        <externalId>false</externalId>
+        <label>Rate per sqft - 49</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Rate_4__c</fullName>
+        <description>Stores per square feet rate</description>
+        <externalId>false</externalId>
+        <label>Rate per sqft - 4</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Rate_50__c</fullName>
+        <description>Stores per square feet rate</description>
+        <externalId>false</externalId>
+        <label>Rate per sqft - 50</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Rate_51__c</fullName>
+        <description>Stores per square feet rate</description>
+        <externalId>false</externalId>
+        <label>Rate per sqft - 51</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Rate_52__c</fullName>
+        <description>Stores per square feet rate</description>
+        <externalId>false</externalId>
+        <label>Rate per sqft - 52</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Rate_53__c</fullName>
+        <description>Stores per square feet rate</description>
+        <externalId>false</externalId>
+        <label>Rate per sqft - 53</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Rate_54__c</fullName>
+        <description>Stores per square feet rate</description>
+        <externalId>false</externalId>
+        <label>Rate per sqft - 54</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Rate_55__c</fullName>
+        <description>Stores per square feet rate</description>
+        <externalId>false</externalId>
+        <label>Rate per sqft - 55</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Rate_56__c</fullName>
+        <description>Stores per square feet rate</description>
+        <externalId>false</externalId>
+        <label>Rate per sqft - 56</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Rate_57__c</fullName>
+        <description>Stores per square feet rate</description>
+        <externalId>false</externalId>
+        <label>Rate per sqft - 57</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Rate_58__c</fullName>
+        <description>Stores per square feet rate</description>
+        <externalId>false</externalId>
+        <label>Rate per sqft - 58</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Rate_59__c</fullName>
+        <description>Stores per square feet rate</description>
+        <externalId>false</externalId>
+        <label>Rate per sqft - 59</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Rate_5__c</fullName>
+        <description>Stores per square feet rate</description>
+        <externalId>false</externalId>
+        <label>Rate per sqft - 5</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Rate_60__c</fullName>
+        <description>Stores per square feet rate</description>
+        <externalId>false</externalId>
+        <label>Rate per sqft - 60</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Rate_61__c</fullName>
+        <description>Stores per square feet rate</description>
+        <externalId>false</externalId>
+        <label>Rate per sqft - 61</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Rate_62__c</fullName>
+        <description>Stores per square feet rate</description>
+        <externalId>false</externalId>
+        <label>Rate per sqft - 62</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Rate_63__c</fullName>
+        <description>Stores per square feet rate</description>
+        <externalId>false</externalId>
+        <label>Rate per sqft - 63</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Rate_64__c</fullName>
+        <description>Stores per square feet rate</description>
+        <externalId>false</externalId>
+        <label>Rate per sqft - 64</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Rate_65__c</fullName>
+        <description>Stores per square feet rate</description>
+        <externalId>false</externalId>
+        <label>Rate per sqft - 65</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Rate_66__c</fullName>
+        <description>Stores per square feet rate</description>
+        <externalId>false</externalId>
+        <label>Rate per sqft - 66</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Rate_67__c</fullName>
+        <description>Stores per square feet rate</description>
+        <externalId>false</externalId>
+        <label>Rate per sqft - 67</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Rate_68__c</fullName>
+        <description>Stores per square feet rate</description>
+        <externalId>false</externalId>
+        <label>Rate per sqft - 68</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Rate_69__c</fullName>
+        <description>Stores per square feet rate</description>
+        <externalId>false</externalId>
+        <label>Rate per sqft - 69</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Rate_6__c</fullName>
+        <description>Stores per square feet rate</description>
+        <externalId>false</externalId>
+        <label>Rate per sqft - 6</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Rate_70__c</fullName>
+        <description>Stores per square feet rate</description>
+        <externalId>false</externalId>
+        <label>Rate per sqft - 70</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Rate_71__c</fullName>
+        <description>Stores per square feet rate</description>
+        <externalId>false</externalId>
+        <label>Rate per sqft - 71</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Rate_72__c</fullName>
+        <description>Stores per square feet rate</description>
+        <externalId>false</externalId>
+        <label>Rate per sqft - 72</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Rate_73__c</fullName>
+        <description>Stores per square feet rate</description>
+        <externalId>false</externalId>
+        <label>Rate per sqft - 73</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Rate_74__c</fullName>
+        <description>Stores per square feet rate</description>
+        <externalId>false</externalId>
+        <label>Rate per sqft - 74</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Rate_75__c</fullName>
+        <description>Stores per square feet rate</description>
+        <externalId>false</externalId>
+        <label>Rate per sqft - 75</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Rate_76__c</fullName>
+        <description>Stores per square feet rate</description>
+        <externalId>false</externalId>
+        <label>Rate per sqft - 76</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Rate_77__c</fullName>
+        <description>Stores per square feet rate</description>
+        <externalId>false</externalId>
+        <label>Rate per sqft - 77</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Rate_78__c</fullName>
+        <description>Stores per square feet rate</description>
+        <externalId>false</externalId>
+        <label>Rate per sqft - 78</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Rate_79__c</fullName>
+        <description>Stores per square feet rate</description>
+        <externalId>false</externalId>
+        <label>Rate per sqft - 79</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Rate_7__c</fullName>
+        <description>Stores per square feet rate</description>
+        <externalId>false</externalId>
+        <label>Rate per sqft - 7</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Rate_80__c</fullName>
+        <description>Stores per square feet rate</description>
+        <externalId>false</externalId>
+        <label>Rate per sqft - 80</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Rate_8__c</fullName>
+        <description>Stores per square feet rate</description>
+        <externalId>false</externalId>
+        <label>Rate per sqft - 8</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Rate_9__c</fullName>
+        <description>Stores per square feet rate</description>
+        <externalId>false</externalId>
+        <label>Rate per sqft - 9</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Tower_Hyperlink__c</fullName>
+        <externalId>false</externalId>
+        <formula>HYPERLINK(&quot;/&quot; + Id,  Tower__r.Name, &quot;_blank&quot;)</formula>
+        <label>Tower</label>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Tower__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Tower</label>
+        <referenceTo>Tower__c</referenceTo>
+        <relationshipLabel>Detail Price List</relationshipLabel>
+        <relationshipName>Detail_Price_List</relationshipName>
+        <required>false</required>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Visit__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Stores relationship with visit</description>
+        <externalId>false</externalId>
+        <label>Visit</label>
+        <referenceTo>Visit__c</referenceTo>
+        <relationshipLabel>Detail Price List</relationshipLabel>
+        <relationshipName>Detail_Price_List</relationshipName>
+        <required>false</required>
+        <type>Lookup</type>
+    </fields>
+    <label>Detail Price List</label>
+    <listViews>
+        <fullName>All</fullName>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <nameField>
+        <displayFormat>DPL-{0000}</displayFormat>
+        <label>Detail Price List Name</label>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Detail Price List</pluralLabel>
+    <searchLayouts/>
+    <sharingModel>ReadWrite</sharingModel>
+    <validationRules>
+        <fullName>Project_Id_Should_Not_be_blank_for_PMS_V</fullName>
+        <active>true</active>
+        <description>Project ID field should be blank for all the entities associated with PMS Visit</description>
+        <errorConditionFormula>AND( 
+NOT(ISBLANK( Project__c )), 
+NOT(ISBLANK(Visit__c)) 
+
+)</errorConditionFormula>
+        <errorMessage>Please ensure that either Project Id or Visit Id is blank!</errorMessage>
+    </validationRules>
+    <webLinks>
+        <fullName>Add_PriceList</fullName>
+        <availability>online</availability>
+        <displayType>massActionButton</displayType>
+        <height>600</height>
+        <linkType>url</linkType>
+        <masterLabel>Add PriceList</masterLabel>
+        <openType>sidebar</openType>
+        <protected>false</protected>
+        <requireRowSelection>false</requireRowSelection>
+        <url>/apex/RBI_PriceListAddPage?prjid={!Project__c.Id}</url>
+    </webLinks>
+    <webLinks>
+        <fullName>Add_Price_List</fullName>
+        <availability>online</availability>
+        <displayType>massActionButton</displayType>
+        <height>600</height>
+        <linkType>url</linkType>
+        <masterLabel>Add Price List</masterLabel>
+        <openType>sidebar</openType>
+        <protected>false</protected>
+        <requireRowSelection>true</requireRowSelection>
+        <url>/apex/RBI_PriceListAddPage?id={!Visit__c.Id}</url>
+    </webLinks>
+</CustomObject>

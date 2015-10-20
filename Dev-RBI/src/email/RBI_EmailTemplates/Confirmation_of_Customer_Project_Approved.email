@@ -1,0 +1,7 @@
+Hi {!Contact.Account_Name__c}Team,
+
+Your project is approved by our business head.
+Project Name : {!Project__c.Project_Name__c}
+
+Thanks and Regards,
+RealtyBI Team.

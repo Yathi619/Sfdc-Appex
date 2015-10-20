@@ -1,0 +1,580 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <enableActivities>false</enableActivities>
+    <enableEnhancedLookup>true</enableEnhancedLookup>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableReports>true</enableReports>
+    <fields>
+        <fullName>Actual_Basement_Floors__c</fullName>
+        <externalId>false</externalId>
+        <label>No.of Basement Floors</label>
+        <precision>10</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Actual_Parking_Floors__c</fullName>
+        <externalId>false</externalId>
+        <label>No.of Parking Floors</label>
+        <precision>10</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Actual_ResCom_Floors__c</fullName>
+        <externalId>false</externalId>
+        <label>No.of Residential / Commercial Floors</label>
+        <precision>10</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Avg_Developer_BSP_per_Sq_Ft__c</fullName>
+        <externalId>false</externalId>
+        <label>Avg Developer BSP (per Sq Ft)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Avg_Resale_Price_per_Sq_Ft__c</fullName>
+        <externalId>false</externalId>
+        <label>Avg Resale Price (per Sq Ft)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Construction_Start_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Construction Start Date</label>
+        <required>false</required>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Deviation__c</fullName>
+        <description>Stores the deviation for a Tower</description>
+        <externalId>false</externalId>
+        <label>Deviation</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Yes</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>No</fullName>
+                <default>true</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Cannot Comment</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Duration__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF( ISNULL(Proposed_Completion_Date__c)  ||  ISNULL(Launch_Date__c), 0, 
+((YEAR( Proposed_Completion_Date__c ) - YEAR(Launch_Date__c)) *12) + (MONTH(
+Proposed_Completion_Date__c ) - MONTH( Launch_Date__c )))</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Duration</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Floor_Slabs_to_be_cast__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(ISBLANK(Planned_Parking_Floors__c), 0, Planned_Parking_Floors__c)+IF(ISBLANK(Planned_ResCom_Floors__c), 0, Planned_ResCom_Floors__c)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Floor Slabs to be cast</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Launch_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Launch Date</label>
+        <required>false</required>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Launched_Units__c</fullName>
+        <externalId>false</externalId>
+        <label>Launched Units</label>
+        <precision>10</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Max_Avg_Developer_BSP_per_Sq_Ft__c</fullName>
+        <externalId>false</externalId>
+        <label>Max Avg Developer BSP (per Sq Ft)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Max_Avg_Resale_Price_Per_Sqft__c</fullName>
+        <description>Used to store Avg Resale Price (Per Sqft)</description>
+        <externalId>false</externalId>
+        <label>Max Avg Resale Price (Per Sqft)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Max_Floors__c</fullName>
+        <description>Used in validation rule</description>
+        <externalId>false</externalId>
+        <formula>IF( Planned__c &lt; Proposed__c , Proposed__c,Planned__c )</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Max Floors</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Min_Avg_Developer_BSP_per_Sq_Ft__c</fullName>
+        <description>Used to store min avg developer BSP</description>
+        <externalId>false</externalId>
+        <label>Min Avg Developer BSP (per Sq Ft)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Min_Avg_Resale_Price_Per_Sqft__c</fullName>
+        <description>Used to store Min Avg Resale Price (Per Sqft)</description>
+        <externalId>false</externalId>
+        <label>Min Avg Resale Price (Per Sqft)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Planned_Basement_Floors__c</fullName>
+        <externalId>false</externalId>
+        <label>No.of Basement Floors</label>
+        <precision>10</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Planned_Parking_Floors__c</fullName>
+        <externalId>false</externalId>
+        <label>No.of Parking Floors</label>
+        <precision>10</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Planned_ResCom_Floors__c</fullName>
+        <externalId>false</externalId>
+        <label>No.of Residential / Commercial Floors</label>
+        <precision>10</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Planned_Structure__c</fullName>
+        <externalId>false</externalId>
+        <formula>TEXT(Planned_Basement_Floors__c) &amp; &apos;B+&apos; &amp; TEXT(Planned_Parking_Floors__c) &amp; &apos;P+&apos;&amp;TEXT( Planned_ResCom_Floors__c)</formula>
+        <label>Planned Structure</label>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Planned__c</fullName>
+        <externalId>false</externalId>
+        <formula>Planned_Basement_Floors__c  +  Planned_Parking_Floors__c  +  Planned_ResCom_Floors__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Planned</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Project_Name__c</fullName>
+        <externalId>false</externalId>
+        <formula>Project__r.Project_Name__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Project Name</label>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Project__c</fullName>
+        <externalId>false</externalId>
+        <label>Project</label>
+        <referenceTo>Project__c</referenceTo>
+        <relationshipLabel>Towers</relationshipLabel>
+        <relationshipName>Towers</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>Project_construction_start_date__c</fullName>
+        <externalId>false</externalId>
+        <formula>Project__r.Construction_Start_Date__c</formula>
+        <label>Project construction start date</label>
+        <required>false</required>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Proposed_Completion_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Proposed Completion Date</label>
+        <required>false</required>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Proposed__c</fullName>
+        <externalId>false</externalId>
+        <formula>Actual_Basement_Floors__c  +  Actual_Parking_Floors__c  +  Actual_ResCom_Floors__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Proposed</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Proposed_completion_date_less_than_Launc__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF( OR( AND(ISNULL(Launch_Date__c), NOT(ISNULL( Proposed_Completion_Date__c))),(Proposed_Completion_Date__c &lt;= Launch_Date__c)) , true, false)</formula>
+        <label>Proposed completion date less than Launc</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Remarks__c</fullName>
+        <externalId>false</externalId>
+        <label>Remarks</label>
+        <required>false</required>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>ResCommCompare__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF( Actual_ResCom_Floors__c  &lt;  Planned_ResCom_Floors__c ,  Actual_ResCom_Floors__c ,  Planned_ResCom_Floors__c )</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>ResCommCompare</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Site_Structure__c</fullName>
+        <externalId>false</externalId>
+        <formula>TEXT(Actual_Basement_Floors__c)&amp;&apos;B+&apos;&amp;TEXT(Actual_Parking_Floors__c)&amp;&apos;P+&apos;&amp;TEXT(Actual_ResCom_Floors__c)</formula>
+        <label>Site Structure</label>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Sold_Units__c</fullName>
+        <externalId>false</externalId>
+        <label>Sold Units</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Sold_unit_greater_Than_Launched_Unit__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF( OR(AND(ISNULL(Launched_Units__c), NOT(ISNULL( Sold_Units__c))),(Sold_Units__c &gt; Launched_Units__c)), true, false)</formula>
+        <label>Sold unit greater Than Launched Unit</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>StartdtDuration__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF( ISNULL(Construction_Start_Date__c) || ISNULL(Launch_Date__c), 0,
+ ((YEAR( Construction_Start_Date__c ) - YEAR(Launch_Date__c)) *12) + (MONTH(
+ Construction_Start_Date__c ) - MONTH(Launch_Date__c)))</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>StartdtDuration</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Structure_as_per_Brochure__c</fullName>
+        <externalId>false</externalId>
+        <label>Tower Structure on site</label>
+        <length>20</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Structure_as_per_Plan__c</fullName>
+        <externalId>false</externalId>
+        <label>Structure as per Plan</label>
+        <length>20</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Total_Floors__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF( Planned__c  &lt;  Proposed__c , Planned__c ,Proposed__c)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Total Floors</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Total_Units__c</fullName>
+        <externalId>false</externalId>
+        <label>Total Units</label>
+        <summaryForeignKey>Unit__c.Tower_Id__c</summaryForeignKey>
+        <summaryOperation>count</summaryOperation>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Tower_18_Digit_ID__c</fullName>
+        <externalId>false</externalId>
+        <formula>Id &amp; 
+MID( 
+    &quot;ABCDEFGHIJKLMNOPQRSTUVWXYZ012345&quot;, 
+    MIN(FIND(MID(Id, 5, 1), &quot;ABCDEFGHIJKLMNOPQRSTUVWXYZ&quot;), 1) * 16 + 
+    MIN(FIND(MID(Id, 4, 1), &quot;ABCDEFGHIJKLMNOPQRSTUVWXYZ&quot;), 1) * 8 + 
+    MIN(FIND(MID(Id, 3, 1), &quot;ABCDEFGHIJKLMNOPQRSTUVWXYZ&quot;), 1) * 4 + 
+    MIN(FIND(MID(Id, 2, 1), &quot;ABCDEFGHIJKLMNOPQRSTUVWXYZ&quot;), 1) * 2 + 
+    MIN(FIND(MID(Id, 1, 1), &quot;ABCDEFGHIJKLMNOPQRSTUVWXYZ&quot;), 1) * 1 + 1, 
+    1) &amp; 
+MID( 
+    &quot;ABCDEFGHIJKLMNOPQRSTUVWXYZ012345&quot;, 
+    MIN(FIND(MID(Id, 10, 1), &quot;ABCDEFGHIJKLMNOPQRSTUVWXYZ&quot;), 1) * 16 + 
+    MIN(FIND(MID(Id, 9, 1), &quot;ABCDEFGHIJKLMNOPQRSTUVWXYZ&quot;), 1) * 8 + 
+    MIN(FIND(MID(Id, 8, 1), &quot;ABCDEFGHIJKLMNOPQRSTUVWXYZ&quot;), 1) * 4 + 
+    MIN(FIND(MID(Id, 7, 1), &quot;ABCDEFGHIJKLMNOPQRSTUVWXYZ&quot;), 1) * 2 + 
+    MIN(FIND(MID(Id, 6, 1), &quot;ABCDEFGHIJKLMNOPQRSTUVWXYZ&quot;), 1) * 1 + 1, 
+    1) &amp; 
+MID( 
+    &quot;ABCDEFGHIJKLMNOPQRSTUVWXYZ012345&quot;, 
+    MIN(FIND(MID(Id, 15, 1), &quot;ABCDEFGHIJKLMNOPQRSTUVWXYZ&quot;), 1) * 16 + 
+    MIN(FIND(MID(Id, 14, 1), &quot;ABCDEFGHIJKLMNOPQRSTUVWXYZ&quot;), 1) * 8 + 
+    MIN(FIND(MID(Id, 13, 1), &quot;ABCDEFGHIJKLMNOPQRSTUVWXYZ&quot;), 1) * 4 + 
+    MIN(FIND(MID(Id, 12, 1), &quot;ABCDEFGHIJKLMNOPQRSTUVWXYZ&quot;), 1) * 2 + 
+    MIN(FIND(MID(Id, 11, 1), &quot;ABCDEFGHIJKLMNOPQRSTUVWXYZ&quot;), 1) * 1 + 1, 
+    1)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Tower 18 Digit ID</label>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Unique_Tower_Name__c</fullName>
+        <caseSensitive>false</caseSensitive>
+        <description>Field to determine uniqueness of the Tower Name. This field gets updated through the workflow.</description>
+        <externalId>true</externalId>
+        <label>Unique Tower Name</label>
+        <length>98</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>true</unique>
+    </fields>
+    <fields>
+        <fullName>VisitDuration__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF( ISNULL(Project__r.Site_Visit_Date__c) || ISNULL(Launch_Date__c), 0, 
+((YEAR(Project__r.Site_Visit_Date__c) - YEAR(Launch_Date__c)) *12) + 
+(MONTH(Project__r.Site_Visit_Date__c) - MONTH( Launch_Date__c )))</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>VisitDuration</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <label>Tower</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>Project_Name__c</columns>
+        <columns>Sold_Units__c</columns>
+        <columns>Total_Units__c</columns>
+        <columns>Construction_Start_Date__c</columns>
+        <columns>Launch_Date__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <nameField>
+        <label>Tower Name</label>
+        <type>Text</type>
+    </nameField>
+    <namedFilters>
+        <fullName>nf_01IO0000000917SMAQ_00NO0000000rjkqMAA</fullName>
+        <active>false</active>
+        <field>Detail_Price_List__c.Tower__c</field>
+        <filterItems>
+            <field>Tower__c.Project__r.Id</field>
+            <operation>equals</operation>
+            <valueField>Tower__c.Project__c</valueField>
+        </filterItems>
+        <isOptional>false</isOptional>
+        <name>Detail Price List_Tower</name>
+    </namedFilters>
+    <pluralLabel>Towers</pluralLabel>
+    <searchLayouts>
+        <customTabListAdditionalFields>Launch_Date__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Construction_Start_Date__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Project_Name__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Proposed_Completion_Date__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Total_Units__c</customTabListAdditionalFields>
+        <lookupDialogsAdditionalFields>Structure_as_per_Plan__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Structure_as_per_Brochure__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Avg_Developer_BSP_per_Sq_Ft__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Launched_Units__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Project__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Project_Name__c</lookupDialogsAdditionalFields>
+        <searchResultsAdditionalFields>Project_Name__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Sold_Units__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Total_Units__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Launch_Date__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Construction_Start_Date__c</searchResultsAdditionalFields>
+    </searchLayouts>
+    <sharingModel>ControlledByParent</sharingModel>
+    <validationRules>
+        <fullName>Construction_Start_Date_of_the_Tower</fullName>
+        <active>true</active>
+        <description>User should be allowed to add construction start date of the tower only if the construction start date of the project is present</description>
+        <errorConditionFormula>OR(AND( NOT( ISNULL(Project_construction_start_date__c)),ISNULL( Construction_Start_Date__c )) ,AND(ISNULL(Project_construction_start_date__c),NOT(ISNULL(Construction_Start_Date__c))))</errorConditionFormula>
+        <errorMessage>You are not allowed to add construction start date of the tower if the construction start date of the project is blank and Viceversa</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>MAX_Dev_BSP_should_be_greater_than_MIN</fullName>
+        <active>true</active>
+        <errorConditionFormula>Min_Avg_Developer_BSP_per_Sq_Ft__c &gt; Max_Avg_Developer_BSP_per_Sq_Ft__c</errorConditionFormula>
+        <errorMessage>&apos;Max Avg Developer BSP&apos; should be greater than &apos;Min Avg  Developer BSP&apos;</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Max_Av_Resale_should_be_greater_than_Min</fullName>
+        <active>true</active>
+        <errorConditionFormula>Min_Avg_Resale_Price_Per_Sqft__c &gt; Max_Avg_Resale_Price_Per_Sqft__c</errorConditionFormula>
+        <errorMessage>&apos;Max Avg Resale BSP &apos;should be greater than &apos;Min Avg Resale BSP&apos;</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Proposed_Completion_date_Validation_Rule</fullName>
+        <active>true</active>
+        <description>Proposed completion date should be greater than launch date</description>
+        <errorConditionFormula>OR( 
+AND(ISNULL(Launch_Date__c), NOT(ISNULL( Proposed_Completion_Date__c))),Proposed_Completion_Date__c &lt;= Launch_Date__c
+)</errorConditionFormula>
+        <errorMessage>Proposed completion date should be greater than launch date</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Proposed_Date_greater_than_Start_Date</fullName>
+        <active>true</active>
+        <errorConditionFormula>Proposed_Completion_Date__c   &lt;   Construction_Start_Date__c</errorConditionFormula>
+        <errorDisplayField>Proposed_Completion_Date__c</errorDisplayField>
+        <errorMessage>Proposed Completion Date should be greater than Construction start date</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Sold_Unit_Validation_Rule</fullName>
+        <active>true</active>
+        <description>Unit sold should be less than or equal to launched units</description>
+        <errorConditionFormula>OR(
+  AND(ISNULL(Launched_Units__c), NOT(ISNULL( Sold_Units__c))),Sold_Units__c  &gt; Launched_Units__c
+)</errorConditionFormula>
+        <errorMessage>Sold units should be less than or equal to launched units</errorMessage>
+    </validationRules>
+    <webLinks>
+        <fullName>Upload_Images</fullName>
+        <availability>online</availability>
+        <description>Button for Uploading Images</description>
+        <displayType>button</displayType>
+        <linkType>url</linkType>
+        <masterLabel>Upload Images</masterLabel>
+        <openType>replace</openType>
+        <protected>false</protected>
+        <url>/apex/news3object?TowerId={!Tower__c.Id}&amp;ProjName={!Tower__c.Project__c}&amp;TowName={!Tower__c.Name}</url>
+    </webLinks>
+</CustomObject>

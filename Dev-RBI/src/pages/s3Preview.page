@@ -1,0 +1,10 @@
+<apex:page standardController="AWS_S3_Object__c" extensions="RBI_s3PreviewExtn">
+
+<!-- <script>window.location.href="https://s3.amazonaws.com/{!AWS_S3_Object__c.Bucket_Name__c}/{!AWS_S3_Object__c.File_Name__c}";</script> -->
+<apex:form >
+<apex:inputHidden value="{!AWS_S3_Object__c.Bucket_Name__c}"/>
+<apex:inputHidden value="{!AWS_S3_Object__c.File_Name__c}"/>
+<script>window.location.href="{!qrystring}";</script>
+</apex:form>
+
+</apex:page>

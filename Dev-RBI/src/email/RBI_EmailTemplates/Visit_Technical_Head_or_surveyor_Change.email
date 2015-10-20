@@ -1,0 +1,7 @@
+Hello {!Visit__c.OwnerFullName},
+
+You are assigned to below given visit.
+Visit Name : {!Visit__c.Name}
+
+Thanks & Regards.
+RealtyBI Team

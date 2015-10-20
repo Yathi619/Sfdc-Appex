@@ -1,0 +1,57 @@
+<apex:page showHeader="false" title="{!$Label.site.error2}" cache="false">
+<html>
+    <head>
+    <title>Realty BI Error Page</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+        <script>
+            function goBack()
+            {
+              window.history.back()
+            }
+        </script>
+        <style type="text/css">
+            #bodycss{
+            padding-top: 5%;
+            width:100%;
+            text-align: center;
+            }
+            #maindiv{
+               margin: auto;
+               height: 425px;
+               width: 815px;
+               background:url(/resource/1365772892000/RBI_Logout_Page) no-repeat;
+               padding: 18px 0px 0px 0px;
+            }
+            #logo {
+                padding: 105px 0px 0px 0px;
+                background: url(/resource/1377694700000/RBI_Logo) no-repeat top;
+            }
+            #subdiv{
+                padding-top: 4%;
+                font-family: biondi;                
+            }
+        </style>
+    </head>
+    <body id="bodycss" align="center">
+        <div align="center" id="maindiv">
+        <div id="logo"></div>
+            <div align="center" id="subdiv">     
+            <apex:outputPanel layout="block" style="padding-top:0px;">
+                <apex:panelGrid cellpadding="10" cellspacing="0" columns="2"> 
+                <apex:image url="{!$Resource.RBI_Error}" />
+                    <apex:panelGroup >
+                        <br/>
+                        <apex:outputText styleClass="title"> <font face="biondi" size="1"> You are not authorized to export the Project data. Please contact <a href="mailto:admin@realtybi.in"> Realty BI Admin </a> if problem persists. </font> </apex:outputText>
+                        <!-- <u><i><font face="biondi" size="4">Invalid Page</font></i></u> -->
+                        <br/><br/><br/>
+                        <a href='javascript:goBack()'><font face="biondi" size="2">Click here to Go Back</font></a>
+                        <br/><br/><br/>
+                        <!-- <apex:outputText styleClass="title"> <font face="biondi" size="1"> You are not authorized to export the Project data. Please contact <a href="mailto:admin@realtybi.in"> Realty BI Admin </a> if problem persists. </font> </apex:outputText> -->
+                        </apex:panelGroup>
+                </apex:panelGrid> 
+            </apex:outputPanel>
+            </div>
+        </div>
+    </body>
+</html>   
+</apex:page>

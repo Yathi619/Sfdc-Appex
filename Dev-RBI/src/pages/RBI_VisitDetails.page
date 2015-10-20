@@ -1,0 +1,180 @@
+<!-- 
+    Type:       VF Page
+    Purpose:    Used by the Customer in Customer Portal to see the Documents for TSR and DVU Visits records. Also, Customer can see
+    			the query details for each document. This can be accessed in Customer Portal under My Projects tab - Status subtab and 
+    			clicking on Visit Name.           
+
+    ---------------------------------------------------------------------------------------------------------------
+    History:
+    
+    25-Apr-2013     Created		Tugboat Info Solutions Pvt. Ltd
+
+-->
+<apex:page standardController="Visit__c" extensions="RBI_DocQryDetails" standardStylesheets="true" showHeader="true" sidebar="true">
+	<apex:stylesheet value="{!$Resource.RBI_RealtyCss}"/>
+	<style type="text/css">
+	#srchresults{
+	background-color: #e3f3ff;
+	}
+	
+	.btntd{
+	text-align:center;
+	}
+	.btnpanel{
+	width:100%;
+	}
+	.alphabet .alphatd {
+	
+	
+	border-right:1px solid #CFCECE;
+	padding-right:8px;
+	}
+	.alphabet .alphatd a {
+	color: #015ba7;
+	font-weight:normal;
+	font-size:91%;
+	text-align:right;
+	}
+	#showdata table{
+	border:0;
+	border-spacing:0;
+	border-right:1px solid #A8BBCA;
+	border-left:1px solid #A8BBCA;
+	border-top:2px solid #EC1F71;
+	}
+	#showdata table tr.dataRow.highlight td, #showdata table tr.dataRow.highlight th {
+	background-color: #e3f3ff;
+	}
+	/*body .pbBody table.list tr.dataRow.highlight td, body .pbBody table.list tr.dataRow.highlight th {
+	background-color: #e3f3ff;
+	}*/
+	#showdata table td, #showdata table th
+	{
+	border-bottom: 1px solid #A8BBCA;
+	
+	}
+	
+	 .headerRow th{white-space:nowrap;background-color:#ccc;padding:3px;margin:1px;font-weight:bold;border:none}
+	.list .headerRow th{border-bottom:2px solid #ccc;white-space:nowrap} 
+	body .pbBody table.list tr.headerRow td,
+	body .pbBody table.list tr.headerRow th {
+	background: #f2f3f3;
+	border-width: 0 0 1px 1px;
+	border-color: #e0e3e5;
+	color: #000;
+	font-size: .9em;
+	font-weight: bold;
+	padding: 5px 2px 4px 5px;
+	border: 1px solid #ededed;
+	}
+	body .apexp .pbBody table.list {
+	border: 1px solid #e0e3e5;
+	}
+	.heading {
+	  text-align:left;
+	  color:#FFFFFF;
+	 
+	}
+	.heading h1 {
+	  /*display:inline-block;*/
+	  font-family:Georgia, "Times New Roman", Times, serif;
+	  font-weight:100;
+	  font-size:22px;
+	  font-color:#FFF;
+	  position:relative;
+	  top:10px;
+	  background:#036CA5;
+	  padding:5px 0px;
+	  }
+	}
+	</style>
+	<apex:form >
+    	<apex:outputPanel id="visitDetails">
+        	<apex:pageBlock title="Visit Details"  >
+            	<apex:pageBlockSection columns="2">
+	                <apex:outputfield value="{!Visit__c.Visit_Report__c}" />
+	                <apex:outputfield value="{!Visit__c.Status__c}"  style="width:150px"/>
+	                <!-- <apex:outputfield value="{!Visit__c.Surveyor__c}"  style="width:150px"/> -->
+	                <apex:outputfield value="{!Visit__c.Start_Date__c}"  style="width:150px"/>
+	                <apex:outputfield value="{!Visit__c.Closed_Date__c}"  style="width:150px"/>
+	                <apex:outputfield value="{!Visit__c.Title_Search_Date__c}"  style="width:150px"/>
+	                <!-- <apex:outputfield value="{!Visit__c.Team_Leader__c}"  style="width:150px"/> -->
+	                <apex:outputfield value="{!Visit__c.Legal_Agency__c}"  style="width:150px"/>
+	            </apex:pageBlockSection>
+            <apex:pageBlockSection columns="1" title="Remarks">
+            	<apex:outputfield value="{!Visit__c.Remarks__c}" style="width:400px"/>
+            </apex:pageBlockSection>
+            <apex:pageBlockSection title="Documents" />
+            <apex:pageblocktable id="docList" value="{!Visit__c.Project_Document_Status__r}" var="v" cellpadding="3" border="0">
+            	<apex:column headervalue="Name" >
+                     <apex:actionSupport action="{!selectRow}" event="onclick" rerender="Qrytable" status="statusmsg">
+                     	<apex:param name="selqryId" value="{!v.Id}" assignTo="{!docId}" />
+                        	 </apex:actionSupport>
+                     <apex:outputtext value="{!v.Project_Document__r.Name}"></apex:outputtext>
+                </apex:column>
+                <apex:column headervalue="Document Type" rendered="{!docRecFlag}">
+                     <apex:actionSupport action="{!selectRow}" event="onclick" rerender="Qrytable" status="statusmsg">
+                                         <apex:param name="selqryId" value="{!v.Id}" assignTo="{!docId}" />
+                                  </apex:actionSupport>
+                     <!-- <apex:outputtext value="{!v.Document_Type__c}"></apex:outputtext>   -->
+                     <apex:outputtext value="{!v.Project_Document__r.Document_Type__c}"></apex:outputtext>
+                </apex:column>
+                <apex:column headervalue="Document Description" rendered="{!docRecFlag}">
+                	<apex:actionSupport action="{!selectRow}" event="onclick" rerender="Qrytable" status="statusmsg">
+                    	<apex:param name="selqryId" value="{!v.Id}" assignTo="{!docId}" />
+                    </apex:actionSupport>
+                    <apex:outputtext value="{!v.Project_Document__r.Document_Description__c}"></apex:outputtext>
+                </apex:column>
+                <apex:column headervalue="Document Status" style="width:12%">
+                	<apex:actionSupport action="{!selectRow}" event="onclick" rerender="Qrytable" status="statusmsg">
+                    	<apex:param name="selqryId" value="{!v.Id}" assignTo="{!docId}" />
+                    </apex:actionSupport>
+                    	<apex:outputtext value="{!v.Document_Status__c}"/>
+                </apex:column>
+                <apex:column headervalue="Date of Approval" rendered="{!docRecFlag == false}">
+                	<apex:actionSupport action="{!selectRow}" event="onclick" rerender="Qrytable" status="statusmsg">
+						<apex:param name="selqryId" value="{!v.Id}" assignTo="{!docId}" />
+    				</apex:actionSupport>
+                	<apex:outputfield value="{!v.Date_of_Approval__c}"></apex:outputfield>
+                </apex:column>
+                <apex:column headervalue="Auth. Signatory" rendered="{!docRecFlag == false}">
+                	<apex:actionSupport action="{!selectRow}" event="onclick" rerender="Qrytable" status="statusmsg">
+						<apex:param name="selqryId" value="{!v.Id}" assignTo="{!docId}" />
+    				</apex:actionSupport>
+                	<apex:outputfield value="{!v.Authorized_Signatory__c}"></apex:outputfield>
+                </apex:column>
+                <apex:column headervalue="Doc. Information Matched?" rendered="{!docRecFlag == false}">
+                	<apex:actionSupport action="{!selectRow}" event="onclick" rerender="Qrytable" status="statusmsg">
+						<apex:param name="selqryId" value="{!v.Id}" assignTo="{!docId}" />
+    				</apex:actionSupport>
+                	<apex:outputfield value="{!v.Document_Information_Matched__c}"></apex:outputfield>
+                </apex:column>
+                
+             </apex:pageblocktable>
+             
+             <apex:outputpanel id="outpan">  
+             	<apex:pageBlockSection id="qrylst" title="Query List" columns="1"> </apex:pageBlockSection>
+                 
+        		<apex:pageblocktable id="Qrytable" value="{!queryList}"  var="q" rendered="{!disQry}">
+        			
+		      		<apex:column headervalue="Document Name" style="width:19%" > 
+						<apex:outputtext value="{!q.Project_Document_Status__r.Project_Document__r.Name}"/>
+					</apex:column>
+					<apex:column headervalue="Document Type" style="width:19%" > 
+						<apex:outputtext value="{!q.Project_Document_Status__r.Project_Document__r.Document_Type__c}"/>
+					</apex:column>
+		      		<apex:column headervalue="Query Initiated Date" style="width:19%" > 
+						<apex:outputtext value="{!q.Query_Initiated_Date__c}"/>
+					</apex:column> 
+					<apex:column headervalue="Query Description"> 
+						<apex:outputtext value="{!q.Query_Description__c}"/>
+					</apex:column>
+					<apex:column headervalue="Query Resolved Date">
+						<apex:outputtext value="{!q.Query_Resolved_Date__c}"/>
+					</apex:column>
+				</apex:pageblocktable>
+			</apex:outputpanel>
+		</apex:pageBlock>
+	</apex:outputPanel>
+   </apex:form>
+</apex:page>

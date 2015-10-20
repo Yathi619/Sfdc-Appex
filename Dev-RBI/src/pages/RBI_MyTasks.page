@@ -1,0 +1,168 @@
+<!-- 
+    Type:       VF Page
+    Purpose:    Used to projects waiting for Customer Approval under My Tasks tab, in Customer Portal.           
+
+    ---------------------------------------------------------------------------------------------------------------
+    History:
+    
+    01-May-2013     Created		Tugboat Info Solutions Pvt. Ltd
+
+-->
+<apex:page Controller="RBI_MyTasks" action="{!InitialLoad}"  standardStylesheets="true" showHeader="true" sidebar="true">
+<apex:stylesheet value="{!$Resource.RBI_RealtyCss}"/>
+<style type="text/css">
+#srchresults{
+background-color: #e3f3ff;
+}
+
+.btntd{
+text-align:center;
+}
+.btnpanel{
+width:100%;
+}
+.alphabet .alphatd {
+
+
+border-right:1px solid #CFCECE;
+padding-right:8px;
+}
+.alphabet .alphatd a {
+color: #015ba7;
+font-weight:normal;
+font-size:91%;
+text-align:right;
+}
+#showdata table{
+border:0;
+border-spacing:0;
+border-right:1px solid #A8BBCA;
+border-left:1px solid #A8BBCA;
+/*border-top:2px solid #EC1F71;*/
+border-top:2px solid #351792;
+}
+#showdata table tr.dataRow.highlight td, #showdata table tr.dataRow.highlight th {
+background-color: #e3f3ff;
+}
+/*body .pbBody table.list tr.dataRow.highlight td, body .pbBody table.list tr.dataRow.highlight th {
+background-color: #e3f3ff;
+}*/
+#showdata table td, #showdata table th
+{
+border-bottom: 1px solid #A8BBCA;
+
+}
+
+ .headerRow th{white-space:nowrap;background-color:#ccc;padding:3px;margin:1px;font-weight:bold;border:none}
+.list .headerRow th{border-bottom:2px solid #ccc;white-space:nowrap} 
+body .pbBody table.list tr.headerRow td,
+body .pbBody table.list tr.headerRow th {
+background: #f2f3f3;
+border-width: 0 0 1px 1px;
+border-color: #e0e3e5;
+color: #000;
+font-size: .9em;
+font-weight: bold;
+padding: 5px 2px 4px 5px;
+border: 1px solid #ededed;
+}
+body .apexp .pbBody table.list {
+border: 1px solid #e0e3e5;
+}
+.heading {
+  text-align:left;
+  color:#FFFFFF;
+ 
+}
+.heading h1 {
+  /*display:inline-block;*/
+  font-family:Georgia, "Times New Roman", Times, serif;
+  font-weight:100;
+  font-size:22px;
+  font-color:#FFF;
+  position:relative;
+  top:10px;
+  background:#036CA5;
+  padding:5px 0px;
+  }
+}
+.sidebarModuleHeader h2{
+background-color: #036CA5;
+color: #FFFFFF;
+font-family: Arial, Helvetica, sans-serif;
+font-weight: bold;
+font-size: 91%;
+padding: 5px 15px;
+border-radius: 4px;
+}
+</style> 
+	<apex:form >
+		<div class="sidebarModuleHeader">
+			<h2>My Tasks</h2>
+		</div>
+    	<apex:pageBlock id="srchresults">
+  			<table class="alphabet">
+				<tr>
+					<td width="80%"></td>
+					<apex:repeat value="{!SerchAlpabet}" var="nn">
+						<td class="alphatd">
+							<apex:commandLink action="{!display}"  reRender="srchresults" ><apex:param value="{!nn}" name="sss"  assignTo="{!SearchVar}"/> 
+							{!nn}</apex:commandLink>
+						</td>
+					</apex:repeat>
+				</tr>
+			</table> 
+			<div id="showdata"> 
+	    		<apex:pageBlockTable value="{!ProDetails}" var="a">
+	            	<apex:column headerValue="Project Name" >
+	        			<apex:commandLink action="{!detail}" value="{!a.Project_Id__r.Project_Name__c}">
+	        				<apex:param name="selectedProj" assignTo="{!SelectedProjId}" value="{!a.Project_Id__c}"/>
+	        			</apex:commandLink>	
+	         		</apex:column>
+	        		<apex:column headerValue="Approval Status">
+	                    <apex:outputField value="{!a.Project_Approval_Status__c}" />
+	                </apex:column>
+	        		<apex:column headerValue="Developer Name">
+	                    <apex:outputField value="{!a.Project_Id__r.Developer_Name__c}" />
+	                </apex:column>
+	        		<apex:column headervalue="Project City" value="{!a.Project_Id__r.Site_Address_City__c }" />
+	        		<apex:column headerValue="Project Location">
+	                    <apex:outputField value="{!a.Project_Id__r.Project_Region__c}" />
+	                </apex:column>
+	       	       	<apex:column value="{!a.Project_Id__r.Project_Type__c}" />
+	        		<apex:column headerValue="Launch Date">
+	                    <apex:outputField value="{!a.Project_Id__r.Launch_Date__c}" />
+	                </apex:column>
+				</apex:pageBlockTable>
+        	</div>
+        	<table width="100%">
+				<tr>
+					<td width="62%" style="float: right;padding-right:0.5en;"> </td>
+					<td width="38%">
+						<apex:outputPanel id="pagingPanel" rendered="{!(NOT(ShowPro.size == 0))}" layout="block" style="float: right;padding-right:0.5en;" >
+    		          		<c:RBI_Paginator reRenderComponent="srchresults, pagingPanel" PageManager="{!objPageManager}"   statusComponent="" id="bottom_paginator"/>
+           		        </apex:outputPanel>
+					</td>
+				</tr>
+			</table>
+           	<div id="nodata" style = "display:none;">
+				<p><b>No record by selected letter.</b></p>
+			</div>  
+			<script>
+					var sze='{!sizee}';
+					sz=parseInt(sze);
+					//  alert(sz);
+					if(sz>0)
+					{
+						document.getElementById('showdata').style.display="block";
+						document.getElementById('nodata').style.display="none";
+					}
+					else
+					{
+						document.getElementById('showdata').style.display="none";
+						document.getElementById('nodata').style.display="block";
+					}
+			</script>
+    	</apex:pageBlock>
+	</apex:form>
+</apex:page>
